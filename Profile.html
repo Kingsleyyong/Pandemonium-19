@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Edit Profile</title>
+        <link rel="stylesheet" href="style2.css"/>
+        <script type="text/javascript" src="javascript1.js"></script>
+    </head>
+    <body>
+        <form name="profileForm" id="profileForm">
+            <p id="dp">
+                <img src="image/default.jpg" alt="Default Profile Picture"/><br/>
+                <input type="file" name="displayPicture" accept="image/*">
+            </p>
+            <br/>
+            <p><label>Username : </label>
+                <input type="text" name="username" maxlength="24" size="29px"/>
+            </p>
+            <p><label>Gender : </label>
+                <select name="gender">
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+            </p>
+            <p><label>Date of Birth : </label>
+                <input type="date" name="dob" min="1941-01-01" max="2009-12-31"/>
+            </p>
+            <p><label>Contact Number : </label>
+                <input type="tel" name="phone" pattern="([0]{1}[1]{1}[0-9]{8})|([0]{1}[1]{1}[0-9]{9})" size="29px" placeholder="01X-(7 to 8 digits)">
+            </p>
+            <p><label>Email Address : </label>
+                <input type="email" name="email" size="29px"/>
+            </p>
+            <p><label>Residential Address : </label>
+                <textarea name="address" rows="6" cols="31"></textarea>
+            </p>
+            <br/>
+            <button type="submit" name="savebtn" id="savebtn" value="SAVE">SAVE</button>
+        </form>
+    </body>
+</html>

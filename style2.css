@@ -4,9 +4,36 @@
     font-family: Arial, Helvetica, sans-serif;
     margin: 0.2em;
 }
-#dp {
-    text-align: center;
+#profileForm {
+    margin-left: 2%;
 }
 #dp img {
     width: 8em;
+}
+#profileForm label {
+    display: inline-block;
+    width: 180px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: white;
+  -webkit-box-shadow: 0 0 0px 1000px #30343F inset;
+}
+
+#profileForm textarea {
+    vertical-align: middle;
+}
+#savebtn {
+    padding: 2%;
+}
+#savebtn:hover {
+    background-color: #8997D2;
 }
