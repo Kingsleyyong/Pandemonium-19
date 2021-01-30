@@ -2,37 +2,53 @@
     background-color: #30343F;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
-    margin: 0.2em;
+    margin: 5px;
 }
 #profileForm {
-    margin-left: 2%;
+    margin: 24px;
 }
-#dp img {
-    width: 8em;
+#prof {
+    margin: 24px;
+}
+div {
+    margin: 10px;
+}
+#dp {
+    float: left;
+}
+#dpt {
+    font-size: 12px;
+}
+#dp img , #profilepic {
+    width: 120px;
 }
 #profileForm label {
     display: inline-block;
-    width: 180px;
+    width: 240px;
 }
-
+input , select, textarea {
+    font-size: 21px;
+}
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus,
 textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus,
-select:-webkit-autofill,
-select:-webkit-autofill:hover,
-select:-webkit-autofill:focus {
+textarea:-webkit-autofill:focus {
   -webkit-text-fill-color: white;
   -webkit-box-shadow: 0 0 0px 1000px #30343F inset;
 }
-
 #profileForm textarea {
     vertical-align: middle;
 }
+#field {
+    font-size: 21px;
+    margin-left: 290px;
+}
 #savebtn {
-    padding: 2%;
+    padding: 12px;
+    margin-left: 770px;
+    margin-top: 24px;
 }
 #savebtn:hover {
     background-color: #8997D2;
