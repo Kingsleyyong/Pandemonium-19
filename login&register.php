@@ -167,20 +167,17 @@ session_start();
 										die;
 									}
 								}
+							}
+							else
+							{
+								?>
+								<script type="text/javascript">
+								alert("Invalid user name or password!");
+								</script>
+								<?php
 							}				
 						}
-						else
-						{
-						?>
-							<script type="text/javascript">
-								alert("Invalid username or password");
-							</script>
-						<?php
-						}
-					
-					}else
-					{
-						echo "Invalid information";
+						
 					}
 				} ?>
 

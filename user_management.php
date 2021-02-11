@@ -24,8 +24,6 @@ session_start();
 		}
 
 		.user-container table{
-			width: 800px;
-			height: 410px;
 			position: relative;
 			margin: 7% auto;
 			border-color: #30343F;
@@ -92,25 +90,25 @@ session_start();
 
 <!-- for deleting user -->
 <?php 
+
 if(isset($_GET['pagedelete']))
 {
 	$id = $_GET['id'];
-	$deleteResult = mysqli_query($con, "delete from user where id = $id");
 
 	// if fail to delete record.
-	if(!$deleteResult)
+	if($deleteResult = mysqli_query($con, "delete from user where id = $id"))
 	{
-		echo "fail to delete record";
+		?>
+		<script type="text/javascript">
+		alert("You have successfull deleted a record");
+		</script>
+	<?php
 	}
 	else
 	{
-		?>
-			<script type="text/javascript">
-				alert("You have successfull deleted a record");
-			</script>
-		<?php
+		echo "fail to delete record";
 	}
 	
-	header("Location: user_management.php");
+	header("refresh:0.5; url= user_management.php" );
 }
 ?>
