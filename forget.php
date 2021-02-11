@@ -22,7 +22,7 @@
 			$mail->isHTML();
 			$mail->Username = 'corona.iwp.management@gmail.com';
 			$mail->Password = '123@abdef';
-			$mail->SetFrom('no-reply@corona.admin.org');
+			$mail->SetFrom('no-reply@gmail.com');
 			$mail->Subject = 'Password resetting';
 			$mail->Body='Your password have been resetted to 123abc';
 			$mail->AddAddress($email);

@@ -122,7 +122,7 @@ session_start();
 			</section>
 
 		<!--login form -->
-			<form id="signin" class="inputGroup" action="login&register.php" method="post">
+			<form id="signin" class="inputGroup" action="" method="post">
 				<input type="Email" class="inputMember" placeholder="Email" name="email" required>
 				<input type="password" class="inputMember" placeholder="Password" name="password" required>
 				<span style="padding: 10px;">Select User Type : <select name="usertype">
@@ -171,7 +171,11 @@ session_start();
 						}
 						else
 						{
-							echo '<script type="text/JavaScript"> alert("Invalid username or password");</script>';
+						?>
+							<script type="text/javascript">
+								alert("Invalid username or password");
+							</script>
+						<?php
 						}
 					
 					}else
