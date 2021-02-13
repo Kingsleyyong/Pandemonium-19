@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mechandise</title>
+    <!-- NAV UI Import here -->
+    <?php require("navbar.html"); ?> 
 </head>
 <body>
     <h1>Maybe will something here.</h1>
@@ -26,5 +28,7 @@
         </figure>
     </div> -->
     
+    <!-- Footer UI Import Here -->
+    <?php require("footer.html"); ?> 
 </body>
 </html>
