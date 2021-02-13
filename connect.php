@@ -3,7 +3,7 @@
 $dbhost = "localhost";
 $dbuser = "root";
 $dbpass = "";
-$dbname = "login_db";
+$dbname = "IWP_Project";
 
 //to connect
 if(!$con  = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname))

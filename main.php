@@ -8,11 +8,11 @@
 </head>
 <body>
     <!-- NAV UI Import here -->
-    <?php require(""); ?> 
+    <?php require("navbar.html"); ?> 
 
     <iframe src="https://ourworldindata.org/grapher/total-cases-covid-19?tab=map" width="100%" height="600px"></iframe>
 
     <!-- Footer UI Import Here -->
-    <?php require(""); ?> 
+    <?php require("footer.html"); ?> 
 </body>
 </html>

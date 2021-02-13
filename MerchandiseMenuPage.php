@@ -8,7 +8,10 @@
 <body>
     <h1>Maybe will something here.</h1>
     <h3>Tal something about the money we get will be donate to somewhere.</h3>
-    <div>
+
+    
+
+    <!-- <div>
         <figure>
             <img src="images/cloth mask.png" alt="">
             <figcaption>Cotton Mask</figcaption>
@@ -21,7 +24,7 @@
             <img src="images/shirt.png" alt="">
             <figcaption>T-Shirt</figcaption>
         </figure>
-    </div>
+    </div> -->
     
 </body>
 </html>
