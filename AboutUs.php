@@ -6,7 +6,9 @@
         
     </head>
     <body>
-        
+        <!-- Header at here -->
+        <?php require("navbar.html") ?>
+
         <img src="assets/logo.png" id="aboutUsLogo" alt="Pandemonium 19" onclick="location.href='main.php'"/>
         <div id="aboutUs">
             <h3 id="aboutTitle">About Us</h3>
@@ -27,7 +29,7 @@
                 <p>YONG<br/>JING PING</p><p>1191202279</p>
             </div>
             <div class="about">
-                <img src="assets/Koee.jpg" id="us" alt="KoEe"><br/>
+                <img src="assets/Koee.jpeg" id="us" alt="KoEe"><br/>
                 <p>HO<br/>KO EE</p><p>1191202709</p>
             </div>
         </div>
