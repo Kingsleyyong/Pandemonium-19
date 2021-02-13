@@ -9,6 +9,7 @@
         <!-- Header at here -->
         <?php require("navbar.html") ?>
 
+        <!-- issues here with the css design by lyn n your navbar's design  -->
         <img src="assets/logo.png" id="aboutUsLogo" alt="Pandemonium 19" onclick="location.href='main.php'"/>
         <div id="aboutUs">
             <h3 id="aboutTitle">About Us</h3>
