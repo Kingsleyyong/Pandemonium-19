@@ -10,7 +10,7 @@ body {
     color: white;
 }
 #gameList {
-    background-image: url("image/background.jpg");
+    background-image: url("background.jpg");
     background-size: cover;
 }
 #gameBox1 , #gameBox2 , #gameBox3{
@@ -51,16 +51,18 @@ body {
     width: 18%;
     float: left;
     font-size: 1.2em;
+    border: #5c6274 0.5px solid;
 }
 .about #us {
     width: 80%;
 }
 .about:hover {
     color: white;
-    background-image: url("image/background.jpg");
+    background-image: url("background.jpg");
     background-size: cover;
     cursor: default;
     box-shadow: #E4D9FF 2px 2px 2px;
+    border: none;
 }
 #vision {
     font-size: 1.2em;
