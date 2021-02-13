@@ -1,0 +1,95 @@
+.contact_mail{
+    position: relative;
+    left: 1px;
+    top: 100px;
+<!--position for email contact text -->
+}
+
+.contactmail2{
+    position: relative;
+    left: 1px;
+    top: 140px;
+<!--position for email text -->
+}
+
+.contactmail3{
+    position: relative;
+    left: 1px;
+    top: 180px;
+<!--position for phone contact text -->
+}
+
+.contactmail4{
+    position: relative;
+    left: 1px;
+    top: 220px;
+<!--position for phone contact text -->
+}
+
+#submission{
+    position: relative;
+    left: 1px;
+    top: 260px;
+<!--position for phone contact text -->
+}
+
+#fname{
+    position: relative;
+    right: 85px;
+    top: 30px;
+    padding-left: 0;
+}
+
+#lname{
+    position: relative;
+    right: 155px;
+    top: 30px;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+#email{
+    position: relative;
+    right: 85px;
+    top: 30px;
+}
+
+#phone{
+    position: relative;
+    right: 105px;
+    top: 30px;
+}
+
+#message{
+    position: relative;
+    right: 60px;
+    top: 30px;
+    resize: none;
+}
+
+#messa{
+    position: relative;
+    bottom: 65px;
+}
+
+#map{
+    float: right;
+    position: relative;
+    left: 200px;
+    bottom: 150px;
+}
+
+.asterisk{
+    color: red;
+}
+
+#location{
+    position: relative;
+    left: 550px;
+    top: 130px;
+}
+
+#co:hover{
+    background-color: #E4D9FF;
+    cursor: pointer;
+}
