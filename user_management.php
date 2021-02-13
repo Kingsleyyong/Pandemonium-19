@@ -35,7 +35,7 @@ session_start();
 	<script type="text/javascript">
 		function confirmation()
 		{
-			var confirmm = confirm("Do you want to delete this movie?");
+			var confirmm = confirm("Are you sure you want to delete record?");
 			if(confirmm)
 			{
 				return true;
