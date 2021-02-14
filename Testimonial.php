@@ -5,7 +5,7 @@
     <title>Testimonial</title>
     <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
-    <link href="testimonial.css" rel="stylesheet">
+    <link href="assets\testimonial.css" rel="stylesheet">
     <!-- NAV UI Import here -->
     <?php require("navbar.html"); ?> 
 </head>
@@ -33,12 +33,12 @@
     <table>
         <tr>
             <td>
-                <a><img src="No_Picture.jpg" alt="NP" id="pic_1"></a>
+                <a><img src="assets\No_Picture.jpg" alt="NP" id="pic_1"></a>
                 <p><span id="title1"></span></p>
                 <p style="position: relative;left: 120px"><a href="Story%20page.html">Read More</a></p>
             </td>
             <td>
-                <a><img src="No_Picture.jpg" alt="NP" id="pic_2"></a>
+                <a><img src="assets\No_Picture.jpg" alt="NP" id="pic_2"></a>
                 <p><span id="title2"></span></p>
                 <p style="position: relative;left: 370px"><a href="Story%20page.html">Read More</a></p>
             </td>
@@ -51,12 +51,12 @@
     <table>
         <tr>
             <td>
-                <a><img src="No_Picture.jpg" alt="NP" id="pic_3"></a>
+                <a><img src="assets\No_Picture.jpg" alt="NP" id="pic_3"></a>
                 <p><span id="title3"></span></p>
                 <p style="position: relative;left: 120px"><a href="Story%20page.html">Read More</a></p>
             </td>
             <td>
-                <a><img src="No_Picture.jpg" alt="NP" id="pic_4"></a>
+                <a><img src="assets\No_Picture.jpg" alt="NP" id="pic_4"></a>
                 <p><span id="title4"></span></p>
                 <p style="position: relative;left: 370px"><a href="Story%20page.html">Read More</a></p>
             </td>
