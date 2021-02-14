@@ -8,7 +8,7 @@
 	if($result = mysqli_query($con,$sql))
 	{
 		$record = mysqli_fetch_assoc($result);
-		$querrry = "update user set password = '123abc' where userEmail = '$email'";
+		$querrry = "update user set userPassword = '123abc' where userEmail = '$email'";
 		if($resullt = mysqli_query($con,$querrry))
 		{
 			//sending an email
