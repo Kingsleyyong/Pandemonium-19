@@ -38,12 +38,12 @@
 
     function allow_music_on() {
         Playing ? audio.pause() : audio.play();
-    };
+    }
 
     audio.onplaying = function() {
         Playing = true;
-    };
+    }
     audio.onpause = function() {
         Playing = false;
-    };
+    }
 </script>

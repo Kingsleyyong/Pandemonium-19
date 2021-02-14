@@ -4,11 +4,11 @@
 
 	$email = $_POST['email'];
 
-	$sql = "select * from user where  user_email = '$email' limit 1";
+	$sql = "select * from user where  userEmail = '$email' limit 1";
 	if($result = mysqli_query($con,$sql))
 	{
 		$record = mysqli_fetch_assoc($result);
-		$querrry = "update user set password = '123abc' where user_email = '$email'";
+		$querrry = "update user set password = '123abc' where userEmail = '$email'";
 		if($resullt = mysqli_query($con,$querrry))
 		{
 			//sending an email

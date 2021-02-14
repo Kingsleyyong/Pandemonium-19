@@ -2,9 +2,9 @@
 
 session_start();
 
-if(isset($_SESSION['id']))
+if(isset($_SESSION['userID']))
 {
-	unset($_SESSION['id']);
+	unset($_SESSION['userID']);
 }
 
 header("Location: login&register.php");

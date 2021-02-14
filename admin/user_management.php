@@ -68,13 +68,13 @@ session_start();
 
 			while($row = mysqli_fetch_assoc($result))
 			{
-				$userid = $row['id'];
+				$userid = $row['userID'];
 			?>
 			<tr>
-				<td><?php echo $row['id']?></td>
-				<td><?php echo $row['user_name']?></td>
-				<td><?php echo $row['user_email']?></td>
-				<td><?php echo $row['type']?></td>
+				<td><?php echo $row['userID']?></td>
+				<td><?php echo $row['userName']?></td>
+				<td><?php echo $row['userEmail']?></td>
+				<td><?php echo $row['userType']?></td>
 				<td><a href="user_detail.php?id=<?php echo $userid;?>&pageset=true">View Details</a></td>
 				<td><a href="user_detail_edit.php?id=<?php echo $userid;?>&pageedit=true">Edit Details</a></td>
 				<td><a href="?id=<?php echo $userid;?>&pagedelete=true" onclick="confirmation()" style="color: red;">Delete</a></td>
@@ -96,7 +96,7 @@ if(isset($_GET['pagedelete']))
 	$id = $_GET['id'];
 
 	// if fail to delete record.
-	if($deleteResult = mysqli_query($con, "delete from user where id = $id"))
+	if($deleteResult = mysqli_query($con, "delete from user where userID = $id"))
 	{
 		?>
 		<script type="text/javascript">

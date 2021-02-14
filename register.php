@@ -10,10 +10,13 @@ session_start();
 		$userName = $_POST['username'];
 		$userEmail = $_POST['email'];
 		$password = $_POST['password'];
+		$contact = $_POST['contact'];
+		$gender = $_POST['gender'];
+		$dob = filter_input(INPUT_POST,'dob');
 
 		if(!empty($userName) && !empty($password) && !empty($userEmail))
 		{
-			$query = "insert into user (user_name,user_email,password) values ('$userName','$userEmail','$password')";
+			$query = "insert into user (userName,userEmail,userPassword,userContact,gender,dateOfBirth) values ('$userName','$userEmail','$password','$contact','$gender','$dob')";
 			if($result = mysqli_query($con, $query))
 			{
 				?>

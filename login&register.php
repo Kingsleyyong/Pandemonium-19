@@ -21,9 +21,9 @@ session_start();
 
 		#loginbox {
 			width: 380px;
-			height: 480px;
+			height: 600px;
 			position: relative;
-			margin: 6% auto;
+			margin: 4% auto;
 			border: 1pt solid #30343F;
 			border-radius: 10px;
 			padding: 5px;
@@ -142,7 +142,7 @@ session_start();
 
 					if( !empty($password) && !empty($userEmail))
 					{
-						$query = "select * from user where user_email = '$userEmail' limit 1";
+						$query = "select * from user where userEmail = '$userEmail' limit 1";
 
 						$result = mysqli_query($con,$query);
 
@@ -152,17 +152,17 @@ session_start();
 							{
 								$user_data = mysqli_fetch_assoc($result);
 
-								if($user_data['password'] === $password)
+								if($user_data['userPassword'] === $password)
 								{
-									if($user_data['type'] === "User")
+									if($user_data['userType'] === "User")
 									{
-										$_SESSION['id'] = $user_data['id'];
+										$_SESSION['userID'] = $user_data['userID'];
 										header("Location: index.php");
 										die;
 									}
-									else if($user_data['type'] === "Admin")
+									else if($user_data['userType'] === "Admin")
 									{
-										$_SESSION['id'] = $user_data['id'];
+										$_SESSION['userID'] = $user_data['userID'];
 										header("Location: adminpage.php");
 										die;
 									}
@@ -184,10 +184,13 @@ session_start();
 		<!-- Register form -->
 			<form id="Register" class="inputGroup" action="register.php" method="post">
 				<input type="text" class="inputMember" placeholder="Username" name="username" required>
+				<input type="text" class="inputMember" placeholder="Contact eg: 0123456789" name="contact" required>
+				<input type="text" class="inputMember" placeholder="male/female/others" name="gender" required>
 				<input type="Email" class="inputMember" placeholder=" Email" name="email" required>
 				<input type="password" class="inputMember" placeholder="Password" name= "password" required id="pass">
 				<input type="password" class="inputMember" placeholder="Confirm Password" name="confirm_password" required
 					id="confirm_password">
+				<input type="date" class="inputMember" name="dob" require>
 				<input type="checkbox" class="checkbox" required><span>I agree to the <a href="termNcondition.html"
 						target="_blank"><u>Terms & Conditions<u></a></span>
 				<button type="submit" class="LoginBtn">Register</button>
