@@ -1,11 +1,8 @@
-*{
+.loc {
     margin: 0.3em 1em;
     padding: 0.5em 0em;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
-}
-body {
-    margin: 0.3em 1em;
     background-color: #30343F;
     color: white;
 }
