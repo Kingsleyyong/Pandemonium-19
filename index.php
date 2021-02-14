@@ -14,7 +14,7 @@ session_start();
 <body>
 
 	<h1>User page</h1>
-	Hello, <?php echo $user_data['user_name']; ?><br>
+	Hello, <?php echo $user_data['userName']; ?><br>
 	<a href="logout.php">log out</a>
 
 
