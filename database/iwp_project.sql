@@ -55,7 +55,7 @@ CREATE TABLE `contact` (
   `firstName` varchar(50) NOT NULL,
   `lastName` varchar(50) NOT NULL,
   `contactEmail` varchar(50) NOT NULL,
-  `contactNumber` int(20) NOT NULL,
+  `contactNumber` varchar(11) NOT NULL,
   `message` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
