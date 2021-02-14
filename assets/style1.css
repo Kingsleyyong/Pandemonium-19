@@ -81,3 +81,21 @@
 #slogan:hover{
     letter-spacing: 16px;
 }
+
+#unmute{
+    background: url(http://upload.wikimedia.org/wikipedia/commons/3/3f/Mute_Icon.svg) no-repeat;
+    border: none;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    outline: none;
+}
+
+#unnmute{
+    background: url(http://upload.wikimedia.org/wikipedia/commons/3/3f/Mute_Icon.svg) no-repeat;
+    border: none;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    outline: none;
+}
