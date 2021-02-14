@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Game List</title>
+        <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
         <link rel="stylesheet" href="assets/style1.css"/>
         <!-- NAV UI Import here -->
         <?php require("navbar.html"); ?>
