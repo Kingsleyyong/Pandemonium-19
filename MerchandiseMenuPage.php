@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mechandise</title>
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/CSS/style_Mechandise.css">
     <!-- NAV UI Import here -->
     <?php require("navbar.html"); ?> 

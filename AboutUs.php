@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>About Us</title>
+        <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
         <link rel="stylesheet" href="assets/style1.css"/>
         
     </head>

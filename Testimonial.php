@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Testimonial</title>
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
     <link href="testimonial.css" rel="stylesheet">
     <!-- NAV UI Import here -->
     <?php require("navbar.html"); ?> 
