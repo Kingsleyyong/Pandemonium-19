@@ -34,6 +34,8 @@
         }
         
     </script>
+    <!-- NAV UI Import here -->
+    <?php require("navbar.html"); ?> 
 </head>
 
 <body>
@@ -75,6 +77,7 @@
         <p> <input type="submit" value="Checkout" onclick="checkoutButton()"> </p>
 
     </div>
-
+    <!-- Footer UI Import Here -->
+    <?php require("footer.html"); ?>
 </body>
 </html>

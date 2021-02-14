@@ -11,30 +11,44 @@
 </head>
 <body class="bg-dark">
 <?php
-    include('connect.php');
-    $sql = 'SELECT ItemPrice FROM item order by ItemID';
-    $result = mysqli_query($con, $sql);
-    $items = mysqli_fetch_assoc($result);
+    require ('connect.php');
+
+    //query from database's table
+    $sql = 'SELECT ItemName, ItemPrice, ItemDescription, ItemMedia FROM item ORDER BY ItemID'; 
+    
+    //make query & get result
+    $result = mysqli_query($con, $sql); 
+
+    //fetch the result's row as an array
+    $items = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    
 ?>
 <body>
-    <div class="container-fluid p-5">
-        <div class="row bg-light justify-content-md-center rounded my-2">
-            <!-- This div is for one product (above this line) -->
-            <div class="col m-auto">
-                <!-- Product Image goes here -->
-                <img src="assets/default-image.png" width="100px" alt="product image">
-            </div>
-            <div class="col-8">
-                <h3>Product Name</h3>
-                <p>Product Description here <br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            </div>
-            <div class="col my-auto">
-                <!-- Product price and edit logic -->
-                <p>RMXX.XX</p>
-                <input type="button" value="Add to cart" class="btn btn-primary">
+
+    <?php foreach ($items as $item){ ?>
+   
+        <div class="container-fluid p-5">
+            <div class="row bg-light justify-content-md-center rounded my-2">
+                <!-- This div is for one product (above this line) -->
+                <div class="col m-auto">
+                    <!-- Product Image goes here -->
+                    <?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $item['ItemMedia'] ).'"/>'; ?>
+                </div>
+                <div class="col-8">
+                    <h3><?php echo $item["ItemName"]; ?></h3>
+                    <p><?php echo $item["ItemDescription"]; ?></p>
+                </div>
+                <div class="col my-auto">
+                    <!-- Product price and edit logic -->
+                    <p>RM <?php echo $item["ItemPrice"]; ?> </p>
+                    <a href="CartPage.php"><input type="button" value="Add to cart" class="btn btn-primary"></a> 
+                </div>
             </div>
         </div>
-    </div>
+
+    <?php } ?>
+
     <!-- Footer UI Import Here -->
     <?php require("footer.html"); ?> 
 </body>
