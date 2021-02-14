@@ -6,6 +6,13 @@
     <title>Mechandise</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
+
+    <script>
+        function describePageOpen(){
+            window.open("ItemDescPage.html");
+        }
+    </script>
+
     <!-- NAV UI Import here -->
     <?php require("navbar.html"); ?> 
 </head>
@@ -28,8 +35,8 @@
 
     <?php foreach ($items as $item){ ?>
    
-        <div class="container-fluid p-5">
-            <div class="row bg-light justify-content-md-center rounded my-2">
+        <div class="container-fluid p-5" >
+            <div class="row bg-light justify-content-md-center rounded my-2" onclick="describePageOpen()">
                 <!-- This div is for one product (above this line) -->
                 <div class="col m-auto">
                     <!-- Product Image goes here -->
@@ -37,12 +44,10 @@
                 </div>
                 <div class="col-8">
                     <h3><?php echo $item["ItemName"]; ?></h3>
-                    <p><?php echo $item["ItemDescription"]; ?></p>
                 </div>
                 <div class="col my-auto">
                     <!-- Product price and edit logic -->
                     <p>RM <?php echo $item["ItemPrice"]; ?> </p>
-                    <a href="CartPage.php"><input type="button" value="Add to cart" class="btn btn-primary"></a> 
                 </div>
             </div>
         </div>
