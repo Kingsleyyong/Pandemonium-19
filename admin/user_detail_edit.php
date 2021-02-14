@@ -47,16 +47,16 @@ session_start();
             if(isset($_GET['pageedit']))
             {
                 $userid = $_GET['id'];
-                $result = mysqli_query($con,"select * from user where id = $userid");
+                $result = mysqli_query($con,"select * from user where userID = $userid");
                 $details = mysqli_fetch_assoc($result);
                 echo "<p>ID : ".$userid."</p>";
                 ?>
 
                 <form name="editUser" method="post" action="">
-                    <p>User Name: <input type = "text" name = "user_name" size =50 value = "<?php echo $details['user_name']?>">
-                    <p>Email : <input type ="email" name="user_email" size=50 value="<?php echo $details['user_email'];?>">
-                    <p>Password : <input type = "text" name="user_pass" size=50 value="<?php echo $details['password'];?>">
-                    <p>Role ( Admin / User ) : <input type = "text" name="user_role" size=5 value="<?php echo $details['type'];?>">
+                    <p>User Name: <input type = "text" name = "user_name" size =50 value = "<?php echo $details['userName']?>">
+                    <p>Email : <input type ="email" name="user_email" size=50 value="<?php echo $details['userEmail'];?>">
+                    <p>Password : <input type = "text" name="user_pass" size=50 value="<?php echo $details['userPassword'];?>">
+                    <p>Role ( Admin / User ) : <input type = "text" name="user_role" size=5 value="<?php echo $details['userType'];?>">
                     <p><input type="submit" name="savebtn" value="Update">
                 </form> 
             <?php
@@ -75,7 +75,7 @@ if(isset($_POST['savebtn']))
     $usrPass = $_POST['user_pass'];
     $usrRole = $_POST['user_role'];
 
-    $result = mysqli_query($con,"update user set user_name = '$usrName', user_email = '$usrEmail', password = '$usrPass', type='$usrRole' where id = '$userid'");
+    $result = mysqli_query($con,"update user set userName = '$usrName', userEmail = '$usrEmail', userPassword = '$usrPass', userType='$usrRole' where userID = '$userid'");
     if($result)
     {
         ?>

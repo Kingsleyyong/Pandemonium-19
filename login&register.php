@@ -142,7 +142,7 @@ session_start();
 
 					if( !empty($password) && !empty($userEmail))
 					{
-						$query = "select * from user where user_email = '$userEmail' limit 1";
+						$query = "select * from user where userEmail = '$userEmail' limit 1";
 
 						$result = mysqli_query($con,$query);
 
@@ -152,17 +152,17 @@ session_start();
 							{
 								$user_data = mysqli_fetch_assoc($result);
 
-								if($user_data['password'] === $password)
+								if($user_data['userPassword'] === $password)
 								{
-									if($user_data['type'] === "User")
+									if($user_data['userType'] === "User")
 									{
-										$_SESSION['id'] = $user_data['id'];
+										$_SESSION['userID'] = $user_data['userID'];
 										header("Location: index.php");
 										die;
 									}
-									else if($user_data['type'] === "Admin")
+									else if($user_data['userType'] === "Admin")
 									{
-										$_SESSION['id'] = $user_data['id'];
+										$_SESSION['userID'] = $user_data['userID'];
 										header("Location: adminpage.php");
 										die;
 									}

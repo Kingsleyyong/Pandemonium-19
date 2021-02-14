@@ -39,7 +39,7 @@ session_start();
 			{
 				$id = $_GET['id'];
 
-				$details = mysqli_query($con,"select * from user where id = $id");
+				$details = mysqli_query($con,"select * from user where userID = $id");
 
 				$detail = mysqli_fetch_assoc($details);
 				?>
@@ -49,23 +49,23 @@ session_start();
 					</tr>
 					<tr>
 						<td>User ID : </td>
-						<td><?php echo $detail['id'];?></td>
+						<td><?php echo $detail['userID'];?></td>
 					</tr>
 					<tr>
 						<td>User Name : </td>
-						<td><?php echo $detail['user_name'];?></td>
+						<td><?php echo $detail['userName'];?></td>
 					</tr>
 					<tr>
 						<td>User Email : </td>
-						<td><?php echo $detail['user_email'];?></td>
+						<td><?php echo $detail['userEmail'];?></td>
 					</tr>
 					<tr>
 						<td>Password : </td>
-						<td><?php echo $detail['password'];?></td>
+						<td><?php echo $detail['userPassword'];?></td>
 					</tr>
 					<tr>
 						<td>User Role : </td>
-						<td><?php echo $detail['type'];?></td>
+						<td><?php echo $detail['userType'];?></td>
 					</tr>
 
 				</table>
