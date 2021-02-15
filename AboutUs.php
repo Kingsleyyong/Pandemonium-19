@@ -14,7 +14,7 @@
                 <h3 id="aboutTitle">About Us</h3>
                 <div class="about" style="margin-left: 4.8%;">
                     <img src="assets/Matt.jpg" id="us" alt="Matt"><br/>
-                    <p>MATTHEW<br/>LABIAL JOHN</p><p>1191202517</p>
+                    <p>MATTHEW<br/>LABIAL JOHN</p><p>1191202516</p>
                 </div>
                 <div class="about">
                     <img src="assets/Jamond.jpg" id="us" alt="Jamond"><br/>

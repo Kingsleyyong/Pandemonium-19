@@ -32,27 +32,31 @@
     
 ?>
 <body>
-
-    <?php foreach ($items as $item){ ?>
-   
         <div class="container-fluid p-5" >
-            <div class="row bg-light justify-content-md-center rounded my-2" onclick="describePageOpen()">
-                <!-- This div is for one product (above this line) -->
-                <div class="col m-auto">
-                    <!-- Product Image goes here -->
-                    <?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $item['ItemMedia'] ).'"/>'; ?>
+        <div class="row row-cols-3">
+            <?php foreach ($items as $item){ ?>
+   
+        
+                <div class="row-cols-1 bg-light rounded m-2 p-2" onclick="describePageOpen()">
+                    <!-- This div is for one product (above this line) -->
+                    <div class="col m-auto">
+                        <!-- Product Image goes here -->
+                        <?php echo '<img src="data:image/jpeg;base64,'.base64_encode( $item['ItemMedia'] ).'"/>'; ?>
+                    </div>
+                    <div class="col">
+                        <h3><?php echo $item["ItemName"]; ?></h3>
+                        <p><?php echo $item["ItemDescription"]; ?></p>
+                    </div>
+                    <div class="col my-auto">
+                        <!-- Product price and edit logic -->
+                        <p>RM <?php echo $item["ItemPrice"]; ?> </p>
+                    </div>
                 </div>
-                <div class="col-8">
-                    <h3><?php echo $item["ItemName"]; ?></h3>
-                </div>
-                <div class="col my-auto">
-                    <!-- Product price and edit logic -->
-                    <p>RM <?php echo $item["ItemPrice"]; ?> </p>
-                </div>
-            </div>
-        </div>
+            
 
     <?php } ?>
+    </div>
+        </div>
 
     <!-- Footer UI Import Here -->
     <?php require("footer.html"); ?> 
