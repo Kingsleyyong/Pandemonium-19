@@ -16,7 +16,8 @@ session_start();
 
 		if(!empty($userName) && !empty($password) && !empty($userEmail))
 		{
-			$query = "insert into user (userName,userEmail,userPassword,userContact,gender,dateOfBirth) values ('$userName','$userEmail','$password','$contact','$gender','$dob')";
+			$query = 	"INSERT INTO user (userName,userEmail,userPassword,userContact,gender,dateOfBirth) 
+						VALUE ('$userName','$userEmail','$password','$contact','$gender','$dob')";
 			if($result = mysqli_query($con, $query))
 			{
 				?>
