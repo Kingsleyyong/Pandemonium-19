@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mechandise</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+    crossorigin="anonymous">
     <script>
         function describePageOpen(){
             window.open("ItemDescPage.php");
@@ -19,8 +20,9 @@
 <?php
     require ('../Database/connect.php');
 
-    //query from database's table
-    $sql = 'SELECT ItemName, ItemPrice, ItemDescription, ItemMedia FROM item ORDER BY ItemID'; 
+    //query from item table
+    $sql = 'SELECT ItemName, ItemPrice, ItemDescription FROM item ORDER BY ItemID'; 
+    $sql_image = 'SELECT itemID, image FROM itemimg ORDER BY itemID';
     
     //make query & get result
     $result = mysqli_query($con, $sql); 

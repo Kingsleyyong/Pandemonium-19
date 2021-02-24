@@ -1,0 +1,25 @@
+.localbody {
+    background-color: #30343F;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 5px;
+} 
+#dp {
+    float: left;
+}
+#dpt {
+    font-size: 12px;
+}
+#dp img , #profilepic {
+    width: 120px;
+}
+#profileForm label {
+    display: inline-block;
+}
+#profileForm textarea {
+    vertical-align: middle;
+}
+#field {
+    font-size: 21px;
+    margin-left: 290px;
+}

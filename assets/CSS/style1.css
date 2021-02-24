@@ -1,0 +1,101 @@
+.loc {
+    margin: 0.3em 1em;
+    padding: 0.5em 0em;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #30343F;
+    color: white;
+}
+#gameList {
+    background-image: url("background.jpg");
+    background-size: cover;
+}
+#gameBox1 , #gameBox2 , #gameBox3{
+    color: #FAFAFF;
+    font-size: 3em;
+    border-radius: 0.2em;
+    box-shadow: white 2px 2px 2px;
+    text-shadow: lightgoldenrodyellow 1px 1px 3px;
+}
+#gameBox1:hover , #gameBox2:hover , #gameBox3:hover{
+    background-color:#E4D9FF;
+    color:#232257;
+    box-shadow:#8997D2 2px 2px 2px;
+    font-weight: bold;
+    text-shadow: brown 1px 1px 3px;
+    cursor: pointer;
+}
+#aboutUsLogo {
+    width: 80%;
+}
+#aboutUsLogo:hover {
+    cursor: pointer;
+}
+#aboutTitle {
+    font-size: 2.9em;
+    margin: 0;
+}
+#aboutUs {
+    margin: 0;
+    margin-bottom: 29%;
+    padding: 0;
+    display: block;
+}
+.about {
+    color: transparent;
+    padding: 0px;
+    margin: 2px;
+    width: 18%;
+    float: left;
+    font-size: 1.2em;
+    border: #5c6274 0.5px solid;
+}
+.about #us {
+    width: 80%;
+}
+.about:hover {
+    color: white;
+    background-image: url("background.jpg");
+    background-size: cover;
+    cursor: default;
+    box-shadow: #E4D9FF 2px 2px 2px;
+    border: none;
+}
+#vision {
+    font-size: 1.2em;
+}
+#topic {
+    font-weight: bold;
+    margin: 0;
+    color: #E4D9FF;
+}
+#topic:hover {
+    color: #8997D2;
+    text-shadow: 1px 1px 2px;
+    cursor: pointer;
+}
+#slogan{
+    letter-spacing: 12px;
+    margin: 0;
+}
+#slogan:hover{
+    letter-spacing: 16px;
+}
+
+#unmute{
+    background: url(http://upload.wikimedia.org/wikipedia/commons/3/3f/Mute_Icon.svg) no-repeat;
+    border: none;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    outline: none;
+}
+
+#unnmute{
+    background: url(http://upload.wikimedia.org/wikipedia/commons/3/3f/Mute_Icon.svg) no-repeat;
+    border: none;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    outline: none;
+}
