@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2021 at 02:49 PM
+-- Generation Time: Feb 25, 2021 at 12:19 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `cart` (
   `cartID` int(10) NOT NULL,
   `itemID` int(10) NOT NULL,
+  `quantity` int(10) NOT NULL,
   `shippingAddress` varchar(50) NOT NULL,
   `shippingFee` float(4,2) NOT NULL,
   `subTotal` float(5,2) NOT NULL,
@@ -41,12 +42,9 @@ CREATE TABLE `cart` (
 -- Dumping data for table `cart`
 --
 
-INSERT INTO `cart` (`cartID`, `itemID`, `shippingAddress`, `shippingFee`, `subTotal`, `totalPayment`, `userID`) VALUES
-(1, 1, 'bangkali road 2', 2.30, 0.00, 0.00, 1),
-(2, 2, 'ali jalan ali', 0.00, 0.00, 0.00, 7),
-(3, 3, 'ali jalan ali', 5.00, 0.00, 0.00, 9),
-(4, 3, 'ali jalan ali', 10.00, 20.00, 30.00, 10),
-(5, 3, 'ali jalan ali', 3.00, 40.00, 50.00, 7);
+INSERT INTO `cart` (`cartID`, `itemID`, `quantity`, `shippingAddress`, `shippingFee`, `subTotal`, `totalPayment`, `userID`) VALUES
+(1, 1, 0, 'bangkali road 2', 2.30, 0.00, 0.00, 1),
+(4, 3, 2, 'ali jalan ali', 10.00, 20.00, 30.00, 10);
 
 -- --------------------------------------------------------
 
@@ -112,7 +110,6 @@ CREATE TABLE `item` (
   `itemDescription` varchar(200) NOT NULL,
   `itemColour` varchar(10) DEFAULT NULL,
   `itemSize` varchar(10) DEFAULT NULL,
-  `quantitty` int(4) NOT NULL,
   `stockNumber` int(5) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -120,10 +117,10 @@ CREATE TABLE `item` (
 -- Dumping data for table `item`
 --
 
-INSERT INTO `item` (`itemID`, `itemName`, `itemPrice`, `itemDescription`, `itemColour`, `itemSize`, `quantitty`, `stockNumber`) VALUES
-(1, 'bangkaliroti', 2.50, 'a bangkali roti', 'brown', 'medium', 1, 23),
-(2, 'tomatoegg', 1.50, 'tomato plus egg', 'red', 'medium', 2, 10),
-(3, 'Dinosouregg', 5.60, 'egg', 'gray', 'medium', 1, 20);
+INSERT INTO `item` (`itemID`, `itemName`, `itemPrice`, `itemDescription`, `itemColour`, `itemSize`, `stockNumber`) VALUES
+(1, 'bangkaliroti', 2.50, 'a bangkali roti', 'brown', 'medium', 23),
+(2, 'tomatoegg', 1.50, 'tomato plus egg', 'red', 'medium', 10),
+(3, 'Dinosouregg', 5.60, 'egg', 'gray', 'medium', 20);
 
 -- --------------------------------------------------------
 
@@ -156,6 +153,7 @@ CREATE TABLE `story` (
   `storyID` int(10) NOT NULL,
   `storyAuthor` varchar(50) NOT NULL,
   `storyDate` date NOT NULL,
+  `storyTitle` varchar(100) NOT NULL,
   `storyBoard` varchar(2000) NOT NULL,
   `storyView` int(10) NOT NULL,
   `storyMedia` longblob DEFAULT NULL
@@ -165,8 +163,8 @@ CREATE TABLE `story` (
 -- Dumping data for table `story`
 --
 
-INSERT INTO `story` (`storyID`, `storyAuthor`, `storyDate`, `storyBoard`, `storyView`, `storyMedia`) VALUES
-(5, 'koee', '2021-02-03', 'A story of ko ee selling tomato fried egg', 100, NULL);
+INSERT INTO `story` (`storyID`, `storyAuthor`, `storyDate`, `storyTitle`, `storyBoard`, `storyView`, `storyMedia`) VALUES
+(5, 'koee', '2021-02-03', 'A story of ko ee selling tomato fried egg', 'One day ko ee went to bangkali road and eat tomato fried egg.', 100, NULL);
 
 -- --------------------------------------------------------
 
