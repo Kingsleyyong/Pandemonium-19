@@ -5,20 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mechandise</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
 
     <script>
         function describePageOpen(){
-            window.open("ItemDescPage.html");
+            window.open("ItemDescPage.php");
         }
     </script>
 
     <!-- NAV UI Import here -->
-    <?php require("navbar.html"); ?> 
+    <?php require("../Navigation Bar and Footer/navbar.html"); ?> 
 </head>
 <body class="bg-dark">
 <?php
-    require ('connect.php');
+    require ('../Database/connect.php');
 
     //query from database's table
     $sql = 'SELECT ItemName, ItemPrice, ItemDescription, ItemMedia FROM item ORDER BY ItemID'; 
@@ -59,6 +58,6 @@
         </div>
 
     <!-- Footer UI Import Here -->
-    <?php require("footer.html"); ?> 
+    <?php require("../Navigation Bar and Footer/footer.html"); ?> 
 </body>
 </html>

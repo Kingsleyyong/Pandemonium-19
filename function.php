@@ -5,10 +5,10 @@ function check_log($con)
 	if(isset($_SESSION['userID']))
 	{
 		$id = $_SESSION['userID'];
-		$query = "select * from user where userID = '$id' limit 1";
+		$query = "select * from user where userID = '$id'";
 
 		$result = mysqli_query($con,$query);
-		if($result && mysqli_num_rows($result) > 0)
+		if($result && mysqli_num_rows($result) == 1)
 		{
 			$user_data = mysqli_fetch_assoc($result);
 			return $user_data;

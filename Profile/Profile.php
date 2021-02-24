@@ -2,19 +2,21 @@
 <html>
     <head>
         <title>Edit Profile</title>
-        <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
-        <link rel="stylesheet" href="assets/style2.css"/>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script type="text/javascript" src="assets/javascript1.js"></script>
+        <link rel="stylesheet" href="../assets/style2.css"/>
+        <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+                                integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+                                crossorigin="anonymous">
+        <script type="text/javascript" src="../assets/javascript1.js"></script>
+        <!-- NAV UI Import here -->
+        <?php require("../Navigation Bar and Footer/navbar.html"); ?> 
     </head>
     <body class="bg-dark">
-        <!-- NAV UI Import here -->
-        <?php require("navbar.html"); ?> 
+        
         <div class="localbody pb-5">
-            <form name="profileForm" id="profileForm">
+            <form name="profileForm" id="profileForm" method="post">
                 <div class="p-3 pt-4 ml-5">
                     <p id="dp">
-                        <img src="assets/default.jpg" alt="Default Profile Picture"/><br/>
+                        <img src="../assets/default.jpg" alt="Default Profile Picture"/><br/>
                         <input type="file" name="displayPicture" accept="image/*" id="dpt" onchange="changeImage();">
                     </p>
                 </div>
@@ -33,7 +35,9 @@
                     </div>
                     <div class="form-group">
                         <label class="pr-4 mr-1">Contact Number : </label>
-                        <input type="tel" name="phone" class="form-control-lg" pattern="([0]{1}[1]{1}[0-9]{8})|([0]{1}[1]{1}[0-9]{9})" size="48px" placeholder="01X-(7 to 8 digits)" required>
+                        <input type="tel" name="phone" class="form-control-lg" 
+                            pattern="([0]{1}[1]{1}[0-9]{8})|([0]{1}[1]{1}[0-9]{9})" size="48px" 
+                            placeholder="01X-(7 to 8 digits)" required>
                     </div>
                     <div class="form-group">
                         <label class="pr-5">Email Address : </label>
@@ -47,6 +51,26 @@
             </form>
         </div>
         <!-- Footer UI Import Here -->
-        <?php require("footer.html"); ?> 
+        <?php require("../Navigation Bar and Footer/footer.html"); ?> 
     </body>
+
+    <?php
+        if(isset($_POST['savebtn'])){
+            // $pic = $_POST['displayPicture']
+            //$username = $_POST['username'];
+            // $gender = $_POST['gender'];
+            // $birthday = $_POST['dob'];
+            // $contactNumber = $_POST['phone'];
+            // $email = $_POST['email'];
+            // $address = $_POST['address'];
+
+            $query =    "UPDATE user 
+                        SET userName = '$username', userEmail = '$gender', userContact = '$contactNumber',
+                        userPassword = '$',
+                        gender, dateOfdate, residentalAddress, userType,
+                        profilePicture FROM user";
+
+        }
+
+    ?>
 </html>

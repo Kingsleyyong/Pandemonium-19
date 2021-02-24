@@ -2,10 +2,9 @@
 <html>
     <head>
         <title>Game List</title>
-        <link rel="stylesheet" href="assets/style1.css"/>
-        <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
+        <link rel="stylesheet" href="../assets/style1.css"/>
         <!-- NAV UI Import here -->
-        <?php require("navbar.html"); ?>
+        <?php require("../Navigation Bar and Footer/navbar.html"); ?>
     </head>
     <body id="gameList">
         <div><p id="gameBox1" name="MINI GAME" onclick=" location.href='MiniGame.html'">MINI GAME</p></div>
@@ -16,7 +15,7 @@
         onclick="changeImage()"></button>
 
      <!-- Footer UI Import Here -->
-     <?php require("footer.html"); ?>
+     <?php require("../Navigation Bar and Footer/footer.html"); ?>
 </html>
 
 <script>

@@ -8,9 +8,9 @@
 </head>
 <body>
     <div id="logoGroup">
-        <ul>
-            <li class="logo">LOGO</li>
-            <li class="cart">CART</li>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="main.php">PANDEMONIUM-19</a>
+            <a href="CartPage.php"><img src="" alt="Cart"></a>
         </ul>
     </div>
 
