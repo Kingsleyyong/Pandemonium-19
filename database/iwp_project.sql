@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2021 at 02:49 PM
+-- Generation Time: Feb 24, 2021 at 03:48 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -156,6 +156,7 @@ CREATE TABLE `story` (
   `storyID` int(10) NOT NULL,
   `storyAuthor` varchar(50) NOT NULL,
   `storyDate` date NOT NULL,
+  `storyTitle` varchar(100) NOT NULL,
   `storyBoard` varchar(2000) NOT NULL,
   `storyView` int(10) NOT NULL,
   `storyMedia` longblob DEFAULT NULL
@@ -165,8 +166,8 @@ CREATE TABLE `story` (
 -- Dumping data for table `story`
 --
 
-INSERT INTO `story` (`storyID`, `storyAuthor`, `storyDate`, `storyBoard`, `storyView`, `storyMedia`) VALUES
-(5, 'koee', '2021-02-03', 'A story of ko ee selling tomato fried egg', 100, NULL);
+INSERT INTO `story` (`storyID`, `storyAuthor`, `storyDate`, `storyTitle`, `storyBoard`, `storyView`, `storyMedia`) VALUES
+(5, 'koee', '2021-02-03', 'A story of ko ee selling tomato fried egg', 'One day ko ee went to bangkali road and eat tomato fried egg.', 100, NULL);
 
 -- --------------------------------------------------------
 
