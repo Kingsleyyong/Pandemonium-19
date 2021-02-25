@@ -2,33 +2,33 @@
 <html>
     <head>
         <title>About Us</title>
-        <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
-        <link rel="stylesheet" href="assets/style1.css"/>
+        <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
+        <link rel="stylesheet" href="../assets/CSS/style1.css"/>
     </head>
     <body class="bg-dark">
-        <?php require("navbar.html") ?>
+        <?php require("../Navigation Bar and Footer/navbar.html") ?>
         <div class="loc text-light text-center">
-            <img src="assets/logo.png" id="aboutUsLogo" alt="Pandemonium 19" onclick="location.href='main.php'"/>
+            <img src="../assets/logo.png" id="aboutUsLogo" alt="Pandemonium 19" onclick="location.href='main.php'"/>
             <div id="aboutUs">
                 <h3 id="aboutTitle">About Us</h3>
                 <div class="about" style="margin-left: 4.8%;">
-                    <img src="assets/Matt.jpg" id="us" alt="Matt"><br/>
+                    <img src="../assets/Matt.jpg" id="us" alt="Matt"><br/>
                     <p>MATTHEW<br/>LABIAL JOHN</p><p>1191202516</p>
                 </div>
                 <div class="about">
-                    <img src="assets/Jamond.jpg" id="us" alt="Jamond"><br/>
+                    <img src="../assets/Jamond.jpg" id="us" alt="Jamond"><br/>
                     <p>CHEW<br/>ZHI PENG</p><p>1191202464</p>
                 </div>
                 <div class="about">
-                    <img src="assets/Lyn.jpg" id="us" alt="Lyn"><br/>
+                    <img src="../assets/Lyn.jpg" id="us" alt="Lyn"><br/>
                     <p>CHAN<br/>LIN CHEE</p><p>1191202546</p>
                 </div>
                 <div class="about">
-                    <img src="assets/Kingsley.jpg" id="us" alt="Kingsley"><br/>
+                    <img src="../assets/Kingsley.jpg" id="us" alt="Kingsley"><br/>
                     <p>YONG<br/>JING PING</p><p>1191202279</p>
                 </div>
                 <div class="about">
-                    <img src="assets/Koee.jpeg" id="us" alt="KoEe"><br/>
+                    <img src="../assets/Koee.jpeg" id="us" alt="KoEe"><br/>
                     <p>HO<br/>KO EE</p><p>1191202709</p>
                 </div>
             </div>
