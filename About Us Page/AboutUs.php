@@ -1,48 +1,60 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>About Us</title>
-        <link rel="stylesheet" href="../assets/CSS/style1.css"/>
-        <?php require("../Navigation Bar and Footer/navbar.html") ?>   
+        <title>Game List</title>
+        <link rel="stylesheet" href="assets/CSS/style1.css"/>
+        <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
+        <!-- NAV UI Import here -->
+        <?php require("navbar.html"); ?>
     </head>
-
-    <body class="bg-dark">
-        <div class="loc text-light text-center">
-            <img src="../assets/logo.png" id="aboutUsLogo" alt="Pandemonium 19" onclick="location.href='../Index Page/main.php'"/>
-            <div id="aboutUs">
-                <h3 id="aboutTitle">About Us</h3>
-                <div class="about" style="margin-left: 4.8%;">
-                    <img src="../assets/Matt.jpg" id="us" alt="Matt"><br/>
-                    <p>MATTHEW<br/>LABIAL JOHN</p><p>1191202516</p>
-                </div>
-                <div class="about">
-                    <img src="../assets/Jamond.jpg" id="us" alt="Jamond"><br/>
-                    <p>CHEW<br/>ZHI PENG</p><p>1191202464</p>
-                </div>
-                <div class="about">
-                    <img src="../assets/Lyn.jpg" id="us" alt="Lyn"><br/>
-                    <p>CHAN<br/>LIN CHEE</p><p>1191202546</p>
-                </div>
-                <div class="about">
-                    <img src="../assets/Kingsley.jpg" id="us" alt="Kingsley"><br/>
-                    <p>YONG<br/>JING PING</p><p>1191202279</p>
-                </div>
-                <div class="about">
-                    <img src="../assets/Koee.jpeg" id="us" alt="KoEe"><br/>
-                    <p>HO<br/>KO EE</p><p>1191202709</p>
-                </div>
-            </div>
-            <div id="vision" style="clear: both;">
-                <h3 id="aboutTitle">Our Vision</h3>
-                <p>
-                    As we all know, the COVID-19 pandemic in Malaysia has become more and more serious. 
-                    In order to raise Malaysians’ awareness of the COVID-19 outbreak, we decided to share knowledge on this topic through 
-                    <span id="topic" onclick="location.href='#aboutUsLogo'">'PANDEMONIUM 19'</span> website.<br/><br/>
-                    Let's break the COVID-19 chain together!
-                </p>
-                <!-- <h1>Slogan</h1> -->
-                <p id="slogan">STAYING APART IS THE BEST WAY TO STAY SAFE</p>
-            </div>
-        </div>
+    <body id="gameList">
+        <div><p id="gameBox1" name="MINI GAME" onclick=" location.href='MiniGame.html'">MINI GAME</p></div>
+        <div><p id="gameBox2" name="TRIVIA"onclick=" location.href='Trivia.html' ">TRIVIA</p></div>
+        <div><p id="gameBox3" name="QUIZ" onclick=" location.href='Quiz.html' ">QUIZ</p></div>
     </body>
+    <button id="unmute"><img src="http://upload.wikimedia.org/wikipedia/commons/2/21/Speaker_Icon.svg" id="unnmute"
+        onclick="changeImage()"></button>
+
+     <!-- Footer UI Import Here -->
+     <?php require("footer.html"); ?>
 </html>
+
+<script>
+    var audio;
+    var play_button;
+
+function allow_music_on(){
+    audio = new Audio();
+    audio.src = "game%20music.mp3";
+    audio.loop = true;
+    audio.play();
+    play_button = document.getElementById("unmute");
+    play_button.addEventListener("click", playPause);
+
+    function playPause()
+    {
+        if(audio.paused)
+        {
+            audio.play();
+        }
+        else
+        {
+            audio.pause();
+        }
+    }
+
+
+}
+function changeImage()
+    {
+        if (document.getElementById("unnmute").src == "http://upload.wikimedia.org/wikipedia/commons/2/21/Speaker_Icon.svg")
+        {
+            document.getElementById("unnmute").src = "http://upload.wikimedia.org/wikipedia/commons/3/3f/Mute_Icon.svg";
+        }
+        else
+        {
+            document.getElementById("unnmute").src = "http://upload.wikimedia.org/wikipedia/commons/2/21/Speaker_Icon.svg";
+        }
+    }
+    window.addEventListener("load", allow_music_on);
+</script>
