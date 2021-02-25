@@ -50,8 +50,7 @@
 </html>
 
 <!-- PHP Side -->
-<?php
-include("data_connection.php");
+<?php include("data_connection.php");
 
 if(isset($_POST["Submission"]))
 {
@@ -61,7 +60,7 @@ if(isset($_POST["Submission"]))
     $phone_number = $_POST["phone"];
     $message = $_POST["message"];
 
-    $info = "INSERT INTO contact_personal_details (first_name, last_name, phone_num, email, message)
+    $info = "INSERT INTO contact (firstName, lastName, contactNumber, contactEmail, message)
             values ('$first_name', '$last_name', '$phone_number', '$email', '$message')";
 
     if ($result = mysqli_query($conn, $info))
