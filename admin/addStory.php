@@ -1,40 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head><title>Add New Story</title>
-    <link href="#" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
-<body>
-
-<div id="wrapper">
-
-    <div id="left">
-    </div>
-
-    <div id="right">
-
-        <h1>Add Story</h1>
-
-        <form name="addStoryfrm" method="post" action="">
-
-            <p><label>Story name</label><input type="text" name="Story_title" size="80" required>
-
-            <p><label>Story Author</label><input type="text" name="Story_author" size="80" required>
-
-            <p><label>Image</label><input type="file" name="img" size="10" accept="image/*" required>
-
-            <p><label>Story</label><textarea cols="60" rows="4" name="story_text" required></textarea>
-
-            <p><label>Posted Date:</label><input type="date" name="story_release_date" required>
-
-            <p><input type="submit" name="savebtnstory" id="button" value="SAVE STORY">
-
+<body class="bg-dark text-white">
+        <form name="addStoryfrm" method="post" class="m-4" action="">
+            <div class="row">
+                <h1>Add Story</h1>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Story name</label>
+                    <input type="text" class="form-control" size="80" name="Story_title" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Story Author</label>
+                    <input type="text" name="Story_author" class="form-control" size="80" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md">
+                    <label>Image</label>
+                    <input type="file" name="img" size="10" class="form-control-file" accept="image/*" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Posted Date:</label>
+                    <input type="date" name="story_release_date" class="form-control" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md">
+                    <label>Story</label>
+                    <textarea cols="60" rows="4" name="story_text" class="form-control" required></textarea>
+                </div>
+            </div>
+            <input type="submit" name="savebtnstory" class="btn btn-primary" id="button" value="SAVE STORY">
         </form>
-
-    </div>
-
-</div>
-
-
 </body>
 </html>
 
