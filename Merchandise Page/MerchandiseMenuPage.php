@@ -22,13 +22,15 @@
 
     //query from item table
     $sql = 'SELECT ItemName, ItemPrice, ItemDescription FROM item ORDER BY ItemID'; 
-    $sql_image = 'SELECT itemID, image FROM itemimg ORDER BY itemID';
+    $sql_image = 'SELECT image FROM itemimg ORDER BY itemID';
     
     //make query & get result
     $result = mysqli_query($con, $sql); 
+    $image_result = mysqli_query($con, $sql_image);
 
     //fetch the result's row as an array
     $items = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    $images = mysqli_fetch_all($image_result, MYSQLI_ASSOC);
 
     
 ?>
@@ -37,7 +39,6 @@
         <div class="row row-cols-3">
             <?php foreach ($items as $item){ ?>
    
-        
                 <div class="row-cols-1 bg-light rounded m-2 p-2" onclick="describePageOpen()">
                     <!-- This div is for one product (above this line) -->
                     <div class="col m-auto">

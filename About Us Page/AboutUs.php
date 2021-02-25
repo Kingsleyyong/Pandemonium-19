@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>About Us</title>
-        <link rel="stylesheet" href="../assets/style1.css"/>
+        <link rel="stylesheet" href="../assets/CSS/style1.css"/>
         <?php require("../Navigation Bar and Footer/navbar.html") ?>   
     </head>
 

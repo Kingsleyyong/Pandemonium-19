@@ -61,7 +61,7 @@
                 </p>
             </td>
         </tr>
-        <?php include "data_connection.php";
+        <?php include "../Database/data_connection.php";
 
         $per_page = 6; //the page we want per page
 

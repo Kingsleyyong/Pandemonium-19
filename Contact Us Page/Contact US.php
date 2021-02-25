@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Contact Us</title>
-    <link href="Contact US.css" rel="stylesheet">
+    <link href="../assets/CSS/Contact Us.css" rel="stylesheet">
 </head>
 <body style="margin: auto;display: block;width: 600px">
 
