@@ -35,6 +35,7 @@
                 </div>
             </div>
             <input type="submit" name="savebtnstory" class="btn btn-primary" id="button" value="SAVE STORY">
+            <input type="submit" id="button1" value="BACK TO MANAGE TESTIMONIAL"  class="btn btn-info" onclick="location.href = 'manage testimonial.php'">
         </form>
 </body>
 </html>
