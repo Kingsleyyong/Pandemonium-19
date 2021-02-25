@@ -134,7 +134,7 @@
     <?php
     for ($p = 1; $p <= $num_page; $p++)
     {
-        echo '<a style="padding-left: 100px;" href="manage testimonial_delete.php?page=' . $p . '">' . $p . '</a> ';
+        echo '<a style="padding-left: 100px;" href="Contact List.php?page=' . $p . '">' . $p . '</a> ';
     }?>
 
 </div>
