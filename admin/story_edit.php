@@ -1,4 +1,4 @@
-<<?php include("data_connection.php"); ?>
+<?php include("data_connection.php"); ?>
 
 <html>
 <head><title>Edit a Movie</title>
