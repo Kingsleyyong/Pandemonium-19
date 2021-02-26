@@ -26,10 +26,18 @@
             overflow: hidden !important;
             text-overflow: ellipsis;
         }
+
+        #testitable table, #testitable th, #testitable tr, #testitable td{
+            border: 1pt solid black;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+
+       
     </style>
 </head>
 <body>
-<table>
+<table >
     <tr>
         <td style="padding-left: 50px" >
         <td style="padding-left: 20px"><button class="_button" onclick="location.href = 'manage testimonial.php'">ALL</button></td>
@@ -48,13 +56,13 @@
     </tr>
 </table>
 <hr>
-<div>
+<div id="testitable">
     <table>
         <tr>
-            <td><th >Page ID</th></td>
-            <td><th >Date  Posted</th></td>
-            <td><th>Page Title</th></td>
-            <td><th >Manage</th></td>
+            <th>Page ID</th>
+            <th>Date  Posted</th>
+            <th>Page Title</th>
+            <th>Manage</th>
         </tr>
         <?php include "data_connection.php";
 
@@ -94,14 +102,10 @@
 
                 ?>
                 <tr>
-                    <td style="padding-left: 95px">
-                        <p style="word-spacing: 4cm;"><span style="word-spacing: normal" ><?php echo $id;?></span>
-                            <span style="word-spacing: normal"><?php echo $date;?></span>
-                            <span style="word-spacing: normal;" class="dots"><?php echo $title;?></span></p>
-                    </td>
-                </tr>
-                <tr>
-                    <td><hr></td>
+                    <td><?php echo $id;?></td>
+                    <td><?php echo $date;?></td>
+                    <td><?php echo $title;?></td>
+                    <td></td>
                 </tr>
                 <?php
             }
@@ -118,7 +122,7 @@
             {
                 ?>
                 <tr>
-                    <td rowspan="5">NO RESULT</td>
+                    <td colspan="4" style="text-align: center;">NO RESULT</td>
                 </tr>
         <?php
             }
@@ -131,14 +135,10 @@
                     $title = $row["storyTitle"];
                     ?>
                     <tr>
-                        <td style="padding-left: 95px">
-                            <p style="word-spacing: 4cm;"><span style="word-spacing: normal" ><?php echo $id;?></span>
-                                <span style="word-spacing: normal"><?php echo $date;?></span>
-                                <span style="word-spacing: normal;" class="dots"><?php echo $title;?></span></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><hr></td>
+                        <td><?php echo $id;?></td>
+                        <td><?php echo $date;?></td>
+                        <td><?php echo $title;?></td>
+                        <td></td>
                     </tr>
                     <?php
                 }
