@@ -11,16 +11,18 @@
 
 <?php
     require ('../Database/connect.php');
-    if(isset($_GET['id'])){
-        $ID = $_GET['id'];
-        $ID = mysqli_real_escape_string($con, $_GET['id']);
+    if(isset($_GET['pageMerchan'])){
+        $ID = mysqli_real_escape_string($con,$_GET['id']);
 
-        $sql = 'SELECT itemName, itemPrice, itemDescription, itemColour, itemSize, stockNumber, image FROM item WHERE itemID = "$ID"';
+        $sql = "SELECT itemName, itemPrice, itemDescription, itemColour, itemSize, stockNumber, image FROM item WHERE itemID = '$ID'";
 
-        $result = mysqli_query($con, $sql);
+        $result = mysqli_query($con, $sql) or die("error");
 
         $info = mysqli_fetch_assoc($result);
         
+    }
+    else{
+        echo "not connected";
     }
     
 ?>
@@ -40,7 +42,7 @@
             </ul>
         </div>
         <div id="mainPic"><?php echo '<img width = 150dp height = 130dp src="data:image/jpeg;base64,'.
-                    base64_encode( $info['image'] ).'"/>'; ?>" alt=""></div>
+                    base64_encode( $info['image'] ).'" alt=""/>'?></div>
     </div>
 
     <div id="descriptionGroup">

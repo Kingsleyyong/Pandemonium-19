@@ -42,7 +42,7 @@
     <tr>
         <td style="padding-left: 50px" >
         <td style="padding-left: 20px"><button class="_button">Edit</button></td>
-        <td style="padding-left: 20px"><button class="_button" onclick="location.href">Delete</button></td>
+        <td style="padding-left: 20px"><button class="_button" onclick="location.href ='manage testimonial_delete.php'">Delete</button></td>
         <td style="padding-left: 20px" ><button class="_button" onclick="location.href = 'addStory.php'">Add Story</button></td>
         <td style="padding-left: 20px">
             <form class="search_box" name="search_testimonial">
