@@ -1,17 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap/min/js"></script>
+    <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
     <title>Item Description Page</title>
 </head>
+
+<?php
+    require ('../Database/connect.php');
+    if(isset($_GET['id'])){
+        $ID = $_GET['id'];
+        $ID = mysqli_real_escape_string($con, $_GET['id']);
+
+        $sql = 'SELECT itemName, itemPrice, itemDescription, itemColour, itemSize, stockNumber, image FROM item WHERE itemID = "$ID"';
+
+        $result = mysqli_query($con, $sql);
+
+        $info = mysqli_fetch_assoc($result);
+        
+    }
+    
+?>
+
 <body>
-    <div id="logoGroup">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="main.php">PANDEMONIUM-19</a>
-            <a href="CartPage.php"><img src="" alt="Cart"></a>
-        </ul>
+    <div class="bg-dark d-flex justify-content-center">
+        <div class="p-3">PANDEMONIUM-19</div>
+        <div class="ml-auto p-3"><a href="CartPage.php"><img src="" alt="CartLogo"></a></div>
     </div>
 
     <div id="picGroup">
@@ -22,18 +39,19 @@
                 <li class="picSelection"><img src="" alt=""></li>
             </ul>
         </div>
-        <div id="mainPic"><img src="images/cloth mask.png" alt=""></div>
+        <div id="mainPic"><?php echo '<img width = 150dp height = 130dp src="data:image/jpeg;base64,'.
+                    base64_encode( $info['image'] ).'"/>'; ?>" alt=""></div>
     </div>
 
     <div id="descriptionGroup">
-        <h1>Cotton Mask</h1>
-        <p id="itemPrice">RM 5</p>
-        <p id="itemDescription">Here is the item description.</p>
+        <h1> <?php echo $info['itemName'];?> </h1>
+        <p id="itemPrice">RM <?php echo $info['itemPrice'];?></p>
+        <p id="itemDescription"><?php echo $info['itemDescription'];?></p>
         <br>
-        <label for="stockLeft">Stock Left: </label>
+        <label for="stockLeft">Stock Left: <?php echo $info['stockNumber'];?></label>
 
         <form action="">
-            <label for="choices">Color: </label>
+            <label for="choices">Colour: <?php echo $info['itemColour'];?></label>
             <select name="maskChoices" id="choice">
                 <option value=""></option>
             </select>
