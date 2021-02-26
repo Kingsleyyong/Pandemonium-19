@@ -40,13 +40,11 @@
 <div>
     <table>
         <tr>
-            <td style="padding-left: 50px">
-                <p style="word-spacing: 4cm;"><span style="word-spacing: normal">Contact ID</span>
-                    <span style="word-spacing: normal">Name</span>
-                    <span style="word-spacing: normal">Email</span>
-                    <span style="word-spacing: normal;">Phone Number</span>
-                    <span style="word-spacing: normal;">Manage</span>
-                </p>
+            <td><th>Contact ID</th></td>
+            <td><th>Name</th></td>
+            <td><th>Email</th></td>
+            <td><th>Phone Number</th></td>
+            <td ><th colspan="3">Manage</th></td>
             </td>
         </tr>
         <?php include "data_connection.php";
@@ -82,13 +80,13 @@
         $num_page = ceil($number_of_result/$per_page);
 
         // to know which page number user is on
-        if (!isset($_POST['p']))
+        if (!isset($_GET["page"]))
         {
             $p = 1;
         }
         else
         {
-            $p = $_POST['p'];
+            $p = $_GET["page"];
         }
 
         $first_page_result = ($p - 1) * $per_page;
@@ -107,21 +105,17 @@
 
             ?>
             <tr>
-                <td style="padding-left: 95px">
-                    <p style="word-spacing: 3cm;"><span style="word-spacing: normal" ><?php echo $Cid;?></span>
-                        <span style="word-spacing: normal"><?php echo $f_name . " " . $l_name;?></span>
-                        <span style="word-spacing: normal;"><?php echo $email;?></span>
-                        <span style="word-spacing: normal;"><?php echo $number_contact;?></span>
-                        <span style="word-spacing: normal;">
+                <td><?php echo $f_name . " " . $l_name;?></td>
+                <td><?php echo $email;?></th></td>
+                <td><?php echo $number_contact;?></td>
+                <td>
                         <a style="text-decoration: none;" href="?_delete=true&id=<?php echo $Cid;?>" onclick="confirmation()">DELETE</a>
-                    </span>
-                        <span>
+                </td>
+                        <td>
                         <a style="text-decoration: none;word-spacing: normal;"
                            href="Contact%20View%20More%20Detail.php?id=<?php echo $Cid;?>&pageset=true">
                             VIEW MORE DETAILS</a>
-                    </span>
-                    </p>
-                </td>
+                        </td>
             </tr>
             <tr>
                 <td><hr></td>
