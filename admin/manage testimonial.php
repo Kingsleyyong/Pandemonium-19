@@ -64,27 +64,27 @@
 
             $query = "SELECT * FROM story";
 
-            $result = mysqli_query($conn, $query) or die( mysqli_error($conn));;
+            $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
             $number_of_result = mysqli_num_rows($result);//used to count number of rows results
 
             //to know the number page available
             $num_page = ceil($number_of_result/$per_page);
 
             // to know which page number user is on
-            if (!isset($_POST['p']))
+            if (!isset($_GET['page']))
             {
                 $p = 1;
             }
             else
             {
-                $p = $_POST['p'];
+                $p = $_GET['page'];
             }
 
             $first_page_result = ($p - 1) * $per_page;
+            
+            $query = "select * from story limit $first_page_result,$per_page";
 
-            $query = 'SELECT * FROM story LIMIT ' . $first_page_result . ',' . $per_page;
-
-            $result = mysqli_query($conn, $query) or die( mysqli_error($conn));;
+            $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
 
             while($row = mysqli_fetch_array($result))
             {
