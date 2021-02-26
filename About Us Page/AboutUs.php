@@ -32,8 +32,6 @@
                     <p>HO<br/>KO EE</p><p>1191202709</p>
                 </div>
             </div>
-            <button id="unmute"><img src="http://upload.wikimedia.org/wikipedia/commons/2/21/Speaker_Icon.svg" id="unnmute"
-                                     onclick="changeImage()"></button>
             <div id="vision" style="clear: both;">
                 <h3 id="aboutTitle">Our Vision</h3>
                 <p>
@@ -46,6 +44,9 @@
                 <p id="slogan">STAYING APART IS THE BEST WAY TO STAY SAFE</p>
             </div>
         </div>
+        <button id="unmute">
+            <img src="http://upload.wikimedia.org/wikipedia/commons/2/21/Speaker_Icon.svg" id="unnmute" width="100px" onclick="changeImage()">
+        </button>
     </body>
 </html>
 

@@ -60,6 +60,14 @@ if (isset($_POST['savebtnstory']))
         </script>
         <?php
     }
+    else
+    {
+        ?>
+<script>
+    alert("Error Happened");
+</script>
+<?php
+    }
 }
 ?>
 

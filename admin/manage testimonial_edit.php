@@ -74,13 +74,13 @@
         $num_page = ceil($number_of_result/$per_page);
 
         // to know which page number user is on
-        if (!isset($_POST['p']))
+        if (!isset($_GET['page']))
         {
             $p = 1;
         }
         else
         {
-            $p = $_POST['p'];
+            $p = $_GET['page'];
         }
 
         $first_page_result = ($p - 1) * $per_page;
