@@ -38,7 +38,7 @@
             <?php foreach ($items as $item){?> 
 
                 <!-- This div is for one product -->
-                <a href="ItemDescPage.php?id=<?php echo $item['itemID'];?>">
+                <a href="ItemDescPage.php?id=<?php echo $item['itemID'];?>&pageMerchan=true">
                     <div class="row-cols-1 bg-light rounded m-2 p-2" >
                         <div class="col m-auto">
                             <!-- Product Image goes here -->
