@@ -5,7 +5,8 @@
     <title>Testimonial</title>
     <link href="../assets/CSS/testimonial.css" rel="stylesheet">
     <!-- NAV UI Import here -->
-    <?php require("../Navigation Bar and Footer/navbar.php"); ?> 
+    <?php require("../Navigation Bar and Footer/navbar.html"); ?>
+    <?php include("data_connection.php"); ?>
 </head>
 
 <body class="bg-dark text-light">
@@ -14,10 +15,10 @@
         <tr> <!--to let the color of button remain differential colour-->
         <td><div id="button_remain_color"></div></td>
         <td>
-            <button type="button" class="btn btn-primary">Most View Story</button> <!-- for class toggle_view_button-->
+            <button type="button" class="btn btn-primary" name="most_view">Most View Story</button> <!-- for class toggle_view_button-->
         </td>
         <td>
-            <button type="button" class="btn btn-primary">Latest Story</button> <!-- for class toggle_view_button-->
+            <button type="button" class="btn btn-primary" name="latest_story">Latest Story</button> <!-- for class toggle_view_button-->
         </td>
         <td id="storyboard">
             Story of Frontliners & Covid Patients
@@ -30,58 +31,100 @@
     <div class="row p-3">
         <!--- Since 1 row got 4 col, when print 4 column close div tag (line 52) and start a new row (line 30)  
               Every story (1 column) have starting tag of line 33 and ending tag of line 37--->
+        <?php include ("data_connection.php");
+        $per_page = 4; //the page we want per page
+
+        $query = "SELECT * FROM story";
+
+        $result = mysqli_query($conn, $query) or die( mysqli_error($conn));;
+        $number_of_result = mysqli_num_rows($result);//used to count number of rows results
+
+        //to know the number page available
+        $num_page = ceil($number_of_result/$per_page);
+
+        // to know which page number user is on
+        if (!isset($_GET["page"]))
+        {
+            $page = 1;
+        }
+        else
+        {
+            $page = $_GET["page"];
+        }
+
+        $first_page_result = ($page - 1) * $per_page;
+
+        $query = 'SELECT * FROM story LIMIT ' . $first_page_result . ',' . $per_page;
+
+        $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
+
+        if (isset($_GET["most_view"]))
+        {
+        }
+        else if (isset($_GET["latest_story"]))
+        {
+            $query = 'SELECT storyID, storyAuthor, storyDate(updated_at), storyTitle,
+             as date FROM story ORDER BY updated_at ASC and LIMIT ' . $first_page_result . ',' . $per_page;
+
+            $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
+            ?>
         <div class="col px-4 mx-4">
-            <a><img src="../assets/No_Picture.jpg" class="mx-auto d-block" alt="NP" id="pic_1">
-            <p class="text-center"><span id="title1">Title</span></p>
-            <p class="text-right">Read More</p></a>
+                <?php
+                while($row = mysqli_fetch_array($result))
+                {
+                ?><a href='Story page.php?id=<?php echo $row['storyID'];?>">&page_set=true">
+                <?php echo '<img src="data:image/jpeg;base64,'. base64_encode( $result['storyMedia'] ).'" alt="" class="mx-auto d-block" alt="NP" id="pic_1"/>'?>
+                <p class="text-center"><span id="title1"><?php echo $row['storyTitle'];?></span></p>
+                <p class="text-right">Read More</p></a>
         </div>
-        <div class="col px-4 mx-4">
-            <a><img src="../assets/No_Picture.jpg" class="mx-auto d-block" alt="NP" id="pic_1">
-            <p class="text-center"><span id="title1">Title</span></p>
-            <p class="text-right">Read More</p></a>
+        <?php
+                }
+        }
+        else
+        {
+            $query = 'SELECT * FROM story LIMIT ' . $first_page_result . ',' . $per_page;
+
+            $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
+            ?>
+                <?php
+            while($row = mysqli_fetch_array($result))
+            {
+            ?>
+            <div class="col px-4 mx-4">
+                    <a href="Story%20page.php?id=<?php echo $row['storyID'];?>&pageset=true">
+                    <?php echo '<img class="mx-auto d-block" width = 150dp height = 130dp src="data:image/jpeg;base64,'.
+                base64_encode($row['storyMedia']).'" alt=""/>'?>
+                <p class="text-center"><span id="title1"><?php echo $row['storyTitle'];?></span></p>
+                <p class="text-right">Read More</p></a>
         </div>
-        <div class="col px-4 mx-4">
-            <a><img src="../assets/No_Picture.jpg" class="mx-auto d-block" alt="NP" id="pic_1">
-            <p class="text-center"><span id="title1">Title</span></p>
-            <p class="text-right">Read More</p></a>
-        </div>
-        <div class="col px-4 mx-4">
-            <a><img src="../assets/No_Picture.jpg" class="mx-auto d-block" alt="NP" id="pic_1">
-            <p class="text-center"><span id="title1">Title</span></p>
-            <p class="text-right">Read More</p></a>
-        </div>
-    </div>
-    <div class="row p-3">
-        <!--- Since 1 row got 4 col, when print 4 column close div tag (line 52) and start a new row (line 30)  
-              Every story (1 column) have starting tag of line 33 and ending tag of line 37--->
-        <div class="col px-4 mx-4">
-            <a><img src="../assets/No_Picture.jpg" class="mx-auto d-block" alt="NP" id="pic_1">
-            <p class="text-center"><span id="title1">Title</span></p>
-            <p class="text-right">Read More</p></a>
-        </div>
-        <div class="col px-4 mx-4">
-            <a><img src="../assets/No_Picture.jpg" class="mx-auto d-block" alt="NP" id="pic_1">
-            <p class="text-center"><span id="title1">Title</span></p>
-            <p class="text-right">Read More</p></a>
-        </div>
-        <div class="col px-4 mx-4">
-            <a><img src="../assets/No_Picture.jpg" class="mx-auto d-block" alt="NP" id="pic_1">
-            <p class="text-center"><span id="title1">Title</span></p>
-            <p class="text-right">Read More</p></a>
-        </div>
-        <div class="col px-4 mx-4">
-            <a><img src="../assets/No_Picture.jpg" class="mx-auto d-block" alt="NP" id="pic_1">
-            <p class="text-center"><span id="title1">Title</span></p>
-            <p class="text-right">Read More</p></a>
+        <?php
+            }
+        }
+        ?>
         </div>
     </div>
     <!-- don't touch below code (for navigation)-->
     <div class="row my-3">
         <div class="col">
-            <a href="#"><p class="text-center">&laquo; Previous</p></a>
+            <a href="Testimonial.php?page=<?php echo ($page - 1);?>"><p class='text-center'>&laquo; Previous</p></a>
         </div>
+        <?php
+        if ()
+        {
+            ?>
+            <a href="Testimonial.php?page=<?php echo 1;?>"><p class='text-center'>&laquo; Previous</p></a>
+        <?php
+        }
+        ?>
+
+        <?php
+        for ($p = 1; $p <= $num_page; $p++)
+        {
+        echo '<a style="padding-left: 100px;" href="Testimonial.php?page=' . $p . '">' . $p . '</a> ';
+        }
+        ?>
         <div class="col">
-            <a href="#"><p class="text-center">Next &raquo;</p></a>
+            <a href="Testimonial.php?page=<?php echo ($page + 1);?>"><p class='text-center'>Next &raquo;</p></a>
         </div>
     </div>
 </div>
