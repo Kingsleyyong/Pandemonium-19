@@ -29,31 +29,15 @@ session_start();
                 document.getElementById("quantityValue").innerHTML=value;
             }
         }
-        function minus()
-            {
-                document.getElementById('quantityValue').value = parseInt(document.getElementById('quantityValue').value) - 1;
 
-                var checknumifzero = parseInt(document.getElementById('quantityValue').value);
-
-                if(checknumifzero < 1) //preventing to get negative value
-                {
-                    document.getElementById('quantityValue').value = 0;
-                }
-            }   
-
-            function plus(max)
-            {
-                
-
-                if(document.getElementById('quantityValue').value>=max)
-                {
-                    alert("No more stock left.");
-                }
-                else{
-                    document.getElementById('quantityValue').value = parseInt(document.getElementById('quantityValue').value) + 1;
-                }
+        function plus(max){
+            if(document.getElementById('quantityValue').value>=max){
+                alert("No more stock left.");
+            }else{
+                document.getElementById('quantityValue').value = parseInt(document.getElementById('quantityValue').value) + 1;
             }
-    </script>
+        }
+</script>
 
 <?php
     
@@ -88,6 +72,8 @@ session_start();
                     <p id="itemDescription"><?php echo $info['itemDescription'];?></p>
                     <p for="stockLeft">Stock Left:  <?php echo $info['stockNumber'];?></p>
                     <p for="choices">Color: <?php echo $info['itemColour'];?> </p>
+                    <p for="size">Size: <?php echo $info['itemSize'];?> </p>
+
                 </div>
                 <form action="" method="get">
                     <div class="pb-4">
@@ -113,12 +99,12 @@ session_start();
 
         $cartID = mysqli_fetch_assoc($result);
         
-        $sql_item_add = 'INSERT INTO cartrecord (cartID, itemID, quantity)
-                        VALUES("$cartID['cartID']", itemID="$ID", quantity="quantity")';
+        // $sql_item_add = 'INSERT INTO cartrecord (cartID, itemID, quantity)
+        //                 VALUES("$cartID['cartID']", itemID="$ID", quantity="quantity")';
                         
         foreach($cartID as $idCart){
-            $sql_item_add = 'INSERT INTO cartrecord (cartID, itemID, quantity)
-                        VALUES("$idCart['cartID']", itemID="$ID", quantity="quantity")';
+            // $sql_item_add = 'INSERT INTO cartrecord (cartID, itemID, quantity)
+            //             VALUES("$idCart['cartID']", itemID="$ID", quantity="quantity")';
                         
         }
         $result2 = mysqli_query($con, $sql_item_add);

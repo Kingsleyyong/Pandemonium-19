@@ -11,7 +11,8 @@
         window.addEventListener('DOMContentLoaded', errorMessage);
 
         function errorMessage(){
-            if(document.getElementsByTagName('textarea')['shipAddress'].value==''){
+            var length = document.getElementsByTagName('textarea')['shipAddress'].innerHTML.length;
+            if(length==0){
                 document.getElementById('shipSubtotal').style.cssText='color: red; font-weight: bold;';
                 document.getElementById('total').style.cssText='color: red; font-weight: bold;';
                 document.getElementById('shipSubtotal').innerHTML='Please enter your address.';
@@ -19,23 +20,16 @@
                 
             }
             else{
-                document.getElementById('shipSubtotal').innerHTML='';
-                document.getElementById('total').innerHTML='';
-            }  
-        }
-        var value=0;
-        function minus(){
-            if(value!=0){
-                value -= 1;
-                document.getElementById("quantityValue").innerHTML=value;
-            }
-        }
-        function plus(){
-            value += 1;
-            document.getElementById("quantityValue").innerHTML=value;
+                var shippingFees = length*0.5;
+                var total = <?php echo json_encode($merchantTotal); ?>;
+                console.log(total);
+                document.getElementById('shipSubtotal').innerHTML='RM '+shippingFees.toFixed(2);
+                document.getElementById('total').innerHTML='RM '+total.toFixed(2);
+            } 
         }
         
     </script>
+    
     <!-- NAV UI Import here -->
     <?php require("../Navigation Bar and Footer/navbar.php") ?>
 </head>
@@ -44,62 +38,88 @@
     <div class="container">
         <!-- This is the items that inside the cart,scrollable -->
         <div class="row rounded bg-secondary text-light p-4">
-            <div id="col-sm">
-                <img src="../assets/cloth mask.png" class="rounded mx-auto d-block" width="200px" alt="">
-            </div>
             <div class="col-sm mx-4">
-                <h1>Cotton Mask</h1>
                 <div class="rounded bg-info p-2 my-3">
-                    <p class="font-weight-bold" id="itemPrice">RM 5</p>
-                    <p id="itemDescription">Here is the item description.</p>
-                    <br>
+<?php
+    require ('../Database/connect.php');
+    $merchantTotal;
+    if(isset($_REQUEST['id'])){
+        $userID = $_REQUEST['id'];
+
+        $result = mysqli_query($con, "SELECT cartID, shippingAddress FROM cart WHERE userID=$userID");
+
+        foreach($result as $row):
+            $cartID = $row ['cartID'];
+            $address = $row ['shippingAddress'];
+            // $address = "";
+
+            $result2 = mysqli_query($con,"SELECT itemID, quantity FROM cartrecord WHERE cartID='$cartID'");
+            foreach($result2 as $row2):
+                $itemID = $row2['itemID'];
+                $itemAmount = $row2['quantity'];
+
+                $result3 = mysqli_query($con, "SELECT * FROM item WHERE itemID = '$itemID'");
+                foreach($result3 as $row3):
+                    $itemName = $row3['itemName'];
+                    $itemPrice = $row3['itemPrice'];
+                    $itemColour = $row3['itemColour'];
+                    $itemSize = $row3['itemSize'];
+                    $stock = $row3['stockNumber'];
+                    $image = '<img class="rounded mx-auto d-block" width="200px" alt="" width = 150dp 
+                    height = 130dp src="data:image/jpeg;base64,'.base64_encode( $row3['image'] ).'"/>';
+                    $merchantTotal += $itemPrice;
+?>
+                    <?php echo $image; ?>            
+
+                    <h2> <?php echo $itemName; ?> </h2>
+
+                    <p class="font-weight-bold" id="itemPrice">RM <?php echo $itemPrice; ?></p>
                     
-                    <label for="stockLeft">Stock Left: </label>
+                    <label for="choices">Color: <?php echo $itemColour; ?> </label><br>
+
+                    <label for="size">Size: <?php echo $itemSize; ?> </label><br>
+
+                    <label for="quantity">Quantity: <?php echo $itemAmount; ?></label>
+
+<?php
+                endforeach;
+            endforeach;
+        endforeach;        
+    }
+?>
                 </div>
-                <form action="" class="pb-4">
-                    <label for="choices">Color: </label>
-                    <select name="maskChoices" class="form-control" id="choice">
-                        <option value=""></option>
-                    </select>
-                </form>
-                <div>
-                    <label for="quantity">Quantity: </label>
-                    <button class="btn btn-danger" onclick="minus()">-</button>
-                    <span id="quantityValue"></span>
-                    <button class="btn btn-success" onclick="plus()">+</button>
-                </div>
-                <br>
-                <input type="submit" class="btn btn-primary" value="Add To Cart">
             </div>
-        </div>
-    
+        </div>  
 
         <!-- Below is Purchase Summary side bar which was not scrollable -->
         <div class="row rounded bg-info text-light p-4">
             <div class="container">
-                <div class="row">
-                    <p class="col-sm">
-                        Shipping Address: <br>
-                        <textarea name="shipAddress" id="addressInput" cols="30" rows="5"
-                        placeholder="Please enter your address." onchange="errorMessage()"></textarea>
-                    </p>
-                    <p class="col-sm">
-                        Merchandse Subtotal: <br>
-                        <span id="merchandSubtotal"></span>
-                    </p>
-        
-                    <p class="col-sm">
-                        Shipping Subtotal: <br>
-                        <span id="shipSubtotal"></span>
-                    </p>
-                </div>
-                <div class="row">
-                    <p class="col-md">
-                        Total Payment: <br>
-                        <span id="total"></span>
-                    </p>
-                    <p class="col-sm"> <input type="submit" class="btn btn-primary" value="Checkout" onclick="checkoutButton()"> </p>
-                </div>
+                <form action="#" method="post"></form>
+                    <div class="row">
+                        <p class="col-sm">
+                            Shipping Address: <br>
+                            <textarea name="shipAddress" id="addressInput" cols="30" rows="5" placeholder="Please enter your address." onchange='errorMessage()'><?php echo $address;?></textarea>
+                        </p>
+                        <p class="col-sm">
+                            Merchandse Subtotal: <br>
+                            <span id="merchandSubtotal" name="merchandSubtotal">RM <?php echo number_format($merchantTotal, 2, '.', ''); ?></span>
+                        </p>
+            
+                        <p class="col-sm">
+                            Shipping Subtotal: <br>
+                            <span id="shipSubtotal" ></span>
+                        </p>
+                    </div>
+                    <div class="row">
+                        <p class="col-md">
+                            Total Payment: <br>
+                            <span id="total"></span>
+                        </p>
+                        <p class="col-sm"> 
+                            <input type="submit" class="btn btn-primary" value="Checkout" onclick="checkoutButton"> 
+                        </p>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -107,3 +127,7 @@
     <?php require("../Navigation Bar and Footer/footer.html"); ?> 
 </body>
 </html>
+
+<?php 
+
+?>

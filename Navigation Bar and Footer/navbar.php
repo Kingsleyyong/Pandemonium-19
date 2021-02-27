@@ -6,6 +6,7 @@ session_start();
 
 	$user_data = check_log($con);
     $uname = $user_data["userName"];
+    $uID = $user_data["userID"];
 ?>
 
 <!DOCTYPE html>
@@ -54,6 +55,7 @@ session_start();
               <div ><?php echo "Hi, ".$uname?></div>
               <a class="dropdown-item" href="../Profile/ViewProfile.php">View Profile</a>
               <a class="dropdown-item" href="../Profile/EditProfile.php">Edit Profile</a>
+              <a class="dropdown-item" href="../Merchandise Page/CartPage.php?id=<?php echo $uID; ?>">Your Cart</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="../signin_signup_signout_forgetpass_automail/SignInUp_UI.php">Log In</a>
             </div>
