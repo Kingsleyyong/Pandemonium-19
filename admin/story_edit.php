@@ -42,9 +42,8 @@
                         value="<?php echo $row['storyDate']; ?>">
 
                 <p><input type="submit" name="savebtnstory" id="button" value="UPDATE STORY">
-                <p><input type="submit" id="button1" value="BACK TO MANAGE TESTIMONIAL"
-                          onclick="location.href = 'manage testimonial.php'"></p>
             </form>
+            <p><button class="_button" onclick="location.href = 'manage testimonial.php'">BACK TO MANAGE TESTIMONIAL</button></p>
             <?php
         }
         ?>
