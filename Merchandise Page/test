@@ -4,3 +4,10 @@ if($cartAdd = mysqli_query($con,$itemAdding)){ ?>
         else{ ?>
             <script>alert("Error Occur." <?php echo $result?>);</script>
         <?php }
+
+
+if ($result == "") {
+    ?> <script>alert("<?php echo "no record"; ?>")</script> <?php
+} else {
+    ?> <script>alert("<?php echo "yes"; ?>")</script> <?php
+}
