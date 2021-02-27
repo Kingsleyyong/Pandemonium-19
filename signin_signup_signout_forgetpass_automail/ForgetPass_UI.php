@@ -55,7 +55,7 @@
 					<br><br>
 					<input type="submit" class="send" value="Send New Password">
 					<br><br><br>
-					<a href="login&register.php" style="text-decoration-line: none;">Back to login page</a>
+					<a href="SignInUp_UI.php" style="text-decoration-line: none;">Back to login page</a>
 				</fieldset>
 			</form>
 		</div>

@@ -29,7 +29,7 @@
 			
 			$mail->Send();
 
-			header("Location: login&register.php");
+			header("Location: SignInUp_UI.php");
 
 		}else{
 			echo "Error resetting";
