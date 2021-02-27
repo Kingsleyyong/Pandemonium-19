@@ -1,3 +1,11 @@
+<?php
+session_start();
+    require ('../Database/connect.php');
+	include("../signin_signup_signout_forgetpass_automail/function.php");
+
+	$user_data = check_log($con);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,28 +23,43 @@
                 document.getElementById("quantityValue").innerHTML=value;
             }
         }
-        function plus(max){
-            if(value>=max){
-                alert("No more stock left.");
+        function minus()
+            {
+                document.getElementById('quantityValue').value = parseInt(document.getElementById('quantityValue').value) - 1;
+
+                var checknumifzero = parseInt(document.getElementById('quantityValue').value);
+
+                if(checknumifzero < 1) //preventing to get negative value
+                {
+                    document.getElementById('quantityValue').value = 0;
+                }
+            }   
+
+            function plus(max)
+            {
+                
+
+                if(document.getElementById('quantityValue').value>=max)
+                {
+                    alert("No more stock left.");
+                }
+                else{
+                    document.getElementById('quantityValue').value = parseInt(document.getElementById('quantityValue').value) + 1;
+                }
             }
-            else{
-                value += 1;
-                document.getElementById("quantityValue").innerHTML=value;
-            }
-            
-        }
     </script>
 
 <?php
-    require ('../Database/connect.php');
-    if(isset($_GET['id'])){
-        $ID = mysqli_real_escape_string($con,$_GET['id']);
+    
+    if(isset($_GET['pagepass'])){
+        $ID = mysqli_real_escape_string($con, $_GET['id']);
 
         $sql = "SELECT itemName, itemPrice, itemDescription, itemColour, itemSize, stockNumber, image FROM item WHERE itemID = '$ID'";
 
         $result = mysqli_query($con, $sql) or die("error");
 
         $info = mysqli_fetch_assoc($result);
+
         
     }
     else{
@@ -60,28 +83,24 @@
                     <p for="stockLeft">Stock Left:  <?php echo $info['stockNumber'];?></p>
                     <p for="choices">Color: <?php echo $info['itemColour'];?> </p>
                 </div>
-                <form action="?" method="get">
+                <form action="" method="get">
                     <div class="pb-4">
                         <label for="quantity">Quantity: </label>
-                        <button type="button" class="btn btn-danger" onclick="minus()">-</button>
-                        <span id="quantityValue" name="quantity"></span>
-                        <button type="button" class="btn btn-success" onclick="plus(<?php echo $info['stockNumber'];?>)">+</button>
+                        <input type="button" class="btn btn-danger" onclick="minus()" value="-">
+                        <input type="number" id="quantityValue" name="quantity" value = 0 readonly style="background: transparent; border: 0; width:30px; color: white; text-align: center;">
+                        <input type="button" class="btn btn-success" onclick="plus(<?php echo $info['stockNumber'];?>)" value="+">
                     </div><br>
-                    </a><input type="submit" name="addToCart" class="btn btn-primary" value="Add To Cart">
+                    <input type="submit" name="addToCart" class="btn btn-primary" value="Add To Cart">
                 </form>
             </div>
         </div>
     </div>
-<script>
-    var value=0;
-    document.getElementById("quantityValue").innerHTML=value;
-</script>
 <?php
 
     if(isset($_GET['addToCart'])){
-        $quantity = $_GET['quantity'];
+        $quantity = $_GET['quantity']
 
-        ?> <script>alert("<?php echo $quantity; ?>")</script> <?php
+        ?> <script>alert("<?php echo $quantity; ?>");</script> <?php
 
         $sql_getting_cartID = 'SELECT cartID FROM cart WHERE userID=$ID';
 

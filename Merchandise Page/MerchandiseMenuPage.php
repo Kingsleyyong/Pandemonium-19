@@ -37,7 +37,7 @@
         <div class="row row-cols-3">
             <?php foreach ($items as $item){?> 
 
-                <a href="ItemDescPage.php?id=<?php echo $item['itemID'];?>">
+                <a href="ItemDescPage.php?id=<?php echo $item['itemID'];?>&pagepass=true">
                     <div class="row-cols-1 bg-light rounded m-2 p-2" >
                         <div class="col m-auto">
                             <?php echo '<img width = 150dp height = 130dp src="data:image/jpeg;base64,'.base64_encode( $item['image'] ).'"/>'; ?>
