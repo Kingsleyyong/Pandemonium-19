@@ -1,19 +1,3 @@
-<?php
-session_start();
-
-	include("../database/connect.php");
-	include("../signin_signup_signout_forgetpass_automail/function.php");
-
-	$user_data = check_log($con);
-    $upic = $user_data["profilePicture"];
-    $uname = $user_data["userName"];
-    $ugender = $user_data["gender"];
-    $udob = $user_data["dateOfBirth"];
-    $ucontact = $user_data["userContact"];
-    $uemail = $user_data["userEmail"];
-    $uaddress = $user_data["residentialAddress"];
-?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,12 +11,38 @@ session_start();
         <?php require("../Navigation Bar and Footer/navbar.php"); ?> 
 
     </head>
+
+    <?php 
+        include("data_connection.php");
+
+        if(isset($_GET['view'])) {
+            $uID = $_GET['uid'];
+            $result = mysqli_query($conn, "SELECT * FROM user WHERE userID=$uID");
+            $userData = mysqli_fetch_assoc($result);
+            
+            $upic = $user_data["profilePicture"];
+            $uname = $user_data["userName"];
+            $ugender = $user_data["gender"];
+            $udob = $user_data["dateOfBirth"];
+            $ucontact = $user_data["userContact"];
+            $uemail = $user_data["userEmail"];
+            $uaddress = $user_data["residentialAddress"];
+        }
+    ?>
+
     <body class="bg-dark text-light">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-4">
-                    <?php echo '<img class="d-block mx-auto img-fluid" src="data:image/jpeg;base64,'
-                            .base64_encode($upic).'" alt="Default Profile Pictur"/>'?>
+                    <?php 
+                        if($user_data['profilePicture']!=null) {
+                            echo '<img class="d-block mx-auto img-fluid" src="data:image/*;base64,'
+                                .base64_encode($upic).'" alt="Default Profile Picture"/>';
+                        }
+                        else {
+                            echo '<img src="../assets/default.jpg" class="mx-auto d-block img-fluid" alt="Default Profile Picture">';
+                        }  
+                    ?>
                 </div>
                 <div class="col">
                     <div class="container-fluid">
@@ -81,11 +91,11 @@ session_start();
                                     <label class="mx-2">Residential Address : </label>
                                 </div>
                                 <div class="col">
-                                    <textarae rows="6" cols="51" class="form-control-lg"><?php echo $uaddress; ?></textarea>
+                                    <textarae rows="6" cols="51" style="font-size: 1em" class="form-control-lg"><?php echo $uaddress; ?></textarea>
                                 </div>
                             </div>
 
-                            <a href="EditProfile.php"><button name="editbtn" id="editbtn" class="btn btn-primary m-auto" value="EDIT">EDIT</button>
+                            <a href="EditProfile.php?view&uid=<?php echo $user_data["userID"]; ?>"><button name="editbtn" id="editbtn" class="btn btn-primary m-auto" value="EDIT">EDIT</button>
                             
                         </div>
                 </div>
