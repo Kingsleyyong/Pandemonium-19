@@ -37,19 +37,15 @@
         <div class="row row-cols-3">
             <?php foreach ($items as $item){?> 
 
-                <!-- This div is for one product -->
                 <a href="ItemDescPage.php?id=<?php echo $item['itemID'];?>&pageMerchan=true">
                     <div class="row-cols-1 bg-light rounded m-2 p-2" >
                         <div class="col m-auto">
-                            <!-- Product Image goes here -->
                             <?php echo '<img width = 150dp height = 130dp src="data:image/jpeg;base64,'.base64_encode( $item['image'] ).'"/>'; ?>
                         </div>
                         <div class="col">
                             <h3><?php echo $item["itemName"]; ?></h3>
-                            <p><?php echo $item["itemDescription"]; ?></p>
                         </div>
                         <div class="col my-auto">
-                            <!-- Product price and edit logic -->
                             <p>RM <?php echo $item["itemPrice"]; ?> </p>
                         </div>
                     </div>

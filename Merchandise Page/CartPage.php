@@ -37,7 +37,7 @@
         
     </script>
     <!-- NAV UI Import here -->
-    <?php require("navbar.html"); ?> 
+    <?php require("../Navigation Bar and Footer/navbar.html"); ?> 
 </head>
 
 <body class="bg-dark">
@@ -104,6 +104,6 @@
         </div>
     </div>
     <!-- Footer UI Import Here -->
-    <?php require("footer.html"); ?>
+    <?php require("../Navigation Bar and Footer/footer.html"); ?>
 </body>
 </html>
