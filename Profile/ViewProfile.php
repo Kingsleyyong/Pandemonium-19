@@ -25,40 +25,72 @@ session_start();
         <script type="text/javascript" src="../assets/javascript1.js"></script>
         <!-- NAV UI Import here -->
         <?php require("../Navigation Bar and Footer/navbar.html"); ?> 
+
     </head>
     <body class="bg-dark text-light">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-4">
-                    <?php echo '<img class="d-block mx-auto" src="data:image/jpeg;base64,'
+                    <?php echo '<img class="d-block mx-auto img-fluid" src="data:image/jpeg;base64,'
                             .base64_encode($upic).'" alt="Default Profile Pictur"/>'?>
                 </div>
-                <div id="field">
-                    <div class="form-group">
-                        <label class="pr-4 mr-5">Username : </label>
-                        <label class="form-control-lg ml-2"><?php echo $uname; ?></label>
-                    </div>
-                    <p><label class="pr-5 mr-5">Gender : </label>
-                        <label class="mx-3"><?php echo $ugender; ?></label>
-                    </p>
-                    <div class="form-group">
-                        <label class="pr-5 mr-3">Date of Birth : </label>
-                        <label class="form-control-lg"><?php echo $udob; ?></label>
-                    </div>
-                    <div class="form-group">
-                        <label class="pr-4 mr-1">Contact Number : </label>
-                        <label class="form-control-lg"><?php echo $ucontact; ?></label>
-                    </div>
-                    <div class="form-group">
-                        <label class="pr-5">Email Address : </label>
-                        <label class="form-control-lg"><?php echo $uemail; ?></label>
-                    </div>
-                    <p><label>Residential Address : </label>
-                        <textarae rows="6" cols="51" class="form-control-lg"><?php echo $uaddress; ?></textarea>
-                    </p>
+                <div class="col">
+                    <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-3 collttr">
+                                    <label class="mx-2">Username : </label>
+                                </div>
+                                <div class="col">
+                                    <label class="mx-2"><?php echo $uname; ?></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3 collttr">
+                                    <label class="mx-2">Gender : </label>
+                                </div>
+                                <div class="col">
+                                    <label class="mx-2"><?php echo $ugender; ?></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3 collttr">
+                                    <label class="mx-2">Date of Birth : </label>
+                                </div>
+                                <div class="col">
+                                    <label class="mx-2"><?php echo $udob; ?></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3 collttr">
+                                    <label class="mx-2">Contact Number : </label>
+                                </div>
+                                <div class="col">
+                                    <label class="mx-2"><?php echo $ucontact; ?></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3 collttr">
+                                    <label class="mx-2">Email Address : </label>
+                                </div>
+                                <div class="col">
+                                    <label class="mx-2"><?php echo $uemail; ?></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3 collttr">
+                                    <label class="mx-2">Residential Address : </label>
+                                </div>
+                                <div class="col">
+                                    <textarae rows="6" cols="51" class="form-control-lg"><?php echo $uaddress; ?></textarea>
+                                </div>
+                            </div>
+
+                            <a href="EditProfile.php"><button name="editbtn" id="editbtn" class="btn btn-primary m-auto" value="EDIT">EDIT</button>
+                            
+                        </div>
                 </div>
+                
             </form>
-            <a href="EditProfile.php"><button name="editbtn" id="editbtn" class="btn btn-primary m-auto" value="EDIT">EDIT</button>
         </div>
         <!-- Footer UI Import Here -->
         <?php require("../Navigation Bar and Footer/footer.html"); ?> 

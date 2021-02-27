@@ -59,7 +59,7 @@
                 </a>
             </div>
             <div class="col rounded admincolbg m-4 p-3">
-                <a href="Contact List.php">
+                <a href="feedback(admin).php">
                     <div class="container">
                         <img src="../assets/admin/feedback.png" height="150px" class="mx-auto d-block" alt="">
                         <h2>Print Feedback</h2>
