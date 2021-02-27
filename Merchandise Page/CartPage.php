@@ -37,11 +37,7 @@
         
     </script>
     <!-- NAV UI Import here -->
-<<<<<<< HEAD
-    <?php require("../Navigation Bar and Footer/navbar.html") ?>
-=======
-    <?php require("../Navigation Bar and Footer/navbar.html"); ?> 
->>>>>>> 86e7607a405d6e7a67fe5806ddf777a68e0aca02
+    <?php require("../Navigation Bar and Footer/navbar.php") ?>
 </head>
 
 <body class="bg-dark">

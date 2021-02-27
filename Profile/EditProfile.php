@@ -23,7 +23,7 @@ session_start();
                                 integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
                                 crossorigin="anonymous">
         <!-- NAV UI Import here -->
-        <?php require("../Navigation Bar and Footer/navbar.html"); ?> 
+        <?php require("../Navigation Bar and Footer/navbar.php"); ?> 
     </head>
     <body class="bg-dark text-light">
         <div class="container-fluid">

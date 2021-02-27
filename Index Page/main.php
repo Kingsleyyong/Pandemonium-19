@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>x | Pandemonium-19</title>
     <!-- NAV UI Import here -->
-    <?php require("../Navigation Bar and Footer/navbar.html"); ?> 
+    <?php require("../Navigation Bar and Footer/navbar.php"); ?> 
 </head>
 <body>
 
