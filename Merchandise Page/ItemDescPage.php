@@ -8,9 +8,28 @@
     <title>Item Description Page</title>
 </head>
 
+<script>
+        function minus(){
+            if(value!=0){
+                value -= 1;
+                document.getElementById("quantityValue").innerHTML=value;
+            }
+        }
+        function plus(max){
+            if(value>=max){
+                alert("No more stock left.");
+            }
+            else{
+                value += 1;
+                document.getElementById("quantityValue").innerHTML=value;
+            }
+            
+        }
+    </script>
+
 <?php
     require ('../Database/connect.php');
-    if(isset($_GET['pageMerchan'])){
+    if(isset($_GET['id'])){
         $ID = mysqli_real_escape_string($con,$_GET['id']);
 
         $sql = "SELECT itemName, itemPrice, itemDescription, itemColour, itemSize, stockNumber, image FROM item WHERE itemID = '$ID'";
@@ -30,7 +49,8 @@
     <div class="container">
         <div class="row rounded bg-dark text-light p-4">
             <div id="col-sm">
-                <img src="../assets/cloth mask.png" class="rounded mx-auto d-block" width="200px" alt="">
+                <?php echo '<img class="rounded mx-auto d-block" width="200px" alt="" width = 150dp 
+                height = 130dp src="data:image/jpeg;base64,'.base64_encode( $info['image'] ).'"/>'; ?>
             </div>
             <div class="col-sm mx-4">
                 <h1> <?php echo $info['itemName'];?> </h1>
@@ -40,40 +60,42 @@
                     <p for="stockLeft">Stock Left:  <?php echo $info['stockNumber'];?></p>
                     <p for="choices">Color: <?php echo $info['itemColour'];?> </p>
                 </div>
-                <form action="CartPage.php" method="post" class="pb-4">
-                    <div>
+                <form action="?" method="get">
+                    <div class="pb-4">
                         <label for="quantity">Quantity: </label>
-                        <button class="btn btn-danger" onclick="minus()">-</button>
+                        <button type="button" class="btn btn-danger" onclick="minus()">-</button>
                         <span id="quantityValue" name="quantity"></span>
-                        <button class="btn btn-success" onclick="plus()">+</button>
-                    </div>
-                    <br>
-                    <input type="submit" name="addToCart" class="btn btn-primary" value="Add To Cart">
+                        <button type="button" class="btn btn-success" onclick="plus(<?php echo $info['stockNumber'];?>)">+</button>
+                    </div><br>
+                    </a><input type="submit" name="addToCart" class="btn btn-primary" value="Add To Cart">
                 </form>
             </div>
         </div>
     </div>
+<script>
+    var value=0;
+    document.getElementById("quantityValue").innerHTML=value;
+</script>
+<?php
 
-    <?php
-        if(isset($_POST['addTocart'])){
-            $quantity = $_POST['quantity'];
-            
-        }
-    ?>
-    
-    <script>
-        var value=0;
-        document.getElementById("quantityValue").innerHTML=value;
-        function minus(){
-            if(value!=0){
-                value -= 1;
-                document.getElementById("quantityValue").innerHTML=value;
-            }
-        }
-        function plus(){
-            value += 1;
-            document.getElementById("quantityValue").innerHTML=value;
-        }
-    </script>
+    if(isset($_GET['addToCart'])){
+        $quantity = $_GET['quantity'];
+
+        ?> <script>alert("<?php echo $quantity; ?>")</script> <?php
+
+        $sql_getting_cartID = 'SELECT cartID FROM cart WHERE userID=$ID';
+
+        $result = mysqli_query($con, $sql_getting_cartID);
+
+        ?> <script>alert("<?php echo $result; ?>")</script> <?php
+
+        $cartID = mysqli_fetch_assoc($result);
+
+        ?> <script>alert("<?php echo $cartID; ?>")</script> <?php
+
+        
+    }
+
+?>
 </body>
 </html>
