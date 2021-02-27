@@ -26,6 +26,12 @@
             overflow: hidden !important;
             text-overflow: ellipsis;
         }
+
+        .testiDel table, .testiDel th, .testiDel tr, .testiDel td{
+            border: 1pt solid black;
+            border-collapse: collapse;
+            padding: 10px;
+        }
     </style>
 
     <script type="text/javascript">
@@ -54,16 +60,13 @@
     </tr>
 </table>
 <hr>
-<div>
+<div class = "testiDel">
     <table>
         <tr>
-            <td style="padding-left: 50px">
-                <p style="word-spacing: 4cm;"><span style="word-spacing: normal">Page ID</span>
-                    <span style="word-spacing: normal">Date  Posted</span>
-                    <span style="word-spacing: normal">Page Title</span>
-                    <span style="word-spacing: normal;padding-left: 300px">Manage</span>
-                </p>
-            </td>
+            <th>Page ID</th>
+            <th>Date  Posted</th>
+            <th>Page Title</th>
+            <th>Manage</th>
         </tr>
         <?php include "data_connection.php";
         ob_start();
@@ -121,18 +124,10 @@
 
             ?>
             <tr>
-                <td style="padding-left: 95px">
-                    <p style="word-spacing: 4cm;"><span style="word-spacing: normal" ><?php echo $id;?></span>
-                        <span style="word-spacing: normal"><?php echo $date;?></span>
-                        <span style="word-spacing: normal;" class="dots"><?php echo $title;?></span>
-                        <span style="word-spacing: normal;padding-left: 1px">
-                        <a style="text-decoration: none;" href="?page_delete=true&id=<?php echo $id;?>" onclick="confirmation()">DELETE</a>
-                    </span>
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td><hr></td>
+                <td><?php echo $id;?></td>
+                <td><?php echo $date;?></td>
+                <td><?php echo $title;?></td>
+                <td><a style="text-decoration: none;" href="?page_delete=true&id=<?php echo $id;?>" onclick="confirmation()">DELETE</a></td>
             </tr>
             <?php
         }
