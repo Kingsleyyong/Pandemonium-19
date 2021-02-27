@@ -15,7 +15,13 @@ session_start();
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Item Description Page</title>
 </head>
-
+<style>
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+</style>
 <script>
         function minus(){
             if(value!=0){
@@ -87,7 +93,8 @@ session_start();
                     <div class="pb-4">
                         <label for="quantity">Quantity: </label>
                         <input type="button" class="btn btn-danger" onclick="minus()" value="-">
-                        <input type="number" id="quantityValue" name="quantity" value = 0 readonly style="background: transparent; border: 0; width:30px; color: white; text-align: center;">
+                        <input type="number" id="quantityValue" name="quantity" value = 0 readonly style="background: transparent; border: 0; 
+                        width:30px; color: white; text-align: center; ">
                         <input type="button" class="btn btn-success" onclick="plus(<?php echo $info['stockNumber'];?>)" value="+">
                     </div><br>
                     <input type="submit" name="addToCart" class="btn btn-primary" value="Add To Cart">
@@ -98,20 +105,29 @@ session_start();
 <?php
 
     if(isset($_GET['addToCart'])){
-        $quantity = $_GET['quantity']
+        $quantity = $_GET['quantity'];
 
-        ?> <script>alert("<?php echo $quantity; ?>");</script> <?php
-
-        $sql_getting_cartID = 'SELECT cartID FROM cart WHERE userID=$ID';
+        $sql_getting_cartID = 'SELECT cartID FROM cart WHERE userID="$ID"';
 
         $result = mysqli_query($con, $sql_getting_cartID);
 
-        ?> <script>alert("<?php echo $result; ?>")</script> <?php
-
         $cartID = mysqli_fetch_assoc($result);
+        
+        $sql_item_add = 'INSERT INTO cartrecord (cartID, itemID, quantity)
+                        VALUES("$cartID['cartID']", itemID="$ID", quantity="quantity")';
+                        
+        foreach($cartID as $idCart){
+            $sql_item_add = 'INSERT INTO cartrecord (cartID, itemID, quantity)
+                        VALUES("$idCart['cartID']", itemID="$ID", quantity="quantity")';
+                        
+        }
+        $result2 = mysqli_query($con, $sql_item_add);
 
-        ?> <script>alert("<?php echo $cartID; ?>")</script> <?php
-
+        if(!$result2){
+            ?> <script>alert("<?php echo "unsucessful"; ?>")</script> <?php
+        }else{
+            ?> <script>alert("<?php echo "sucessful"; ?>")</script> <?php
+        }
         
     }
 
