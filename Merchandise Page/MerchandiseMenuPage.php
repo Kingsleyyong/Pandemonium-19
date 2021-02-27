@@ -33,16 +33,16 @@
 ?>
 
 <body>
-        <div class="container-fluid p-5" >
-        <div class="row row-cols-3">
+    <div class="container-fluid p-5" >
+        <div class="row justify-content-md-center row-cols-3">
             <?php foreach ($items as $item){?> 
 
                 <a href="ItemDescPage.php?id=<?php echo $item['itemID'];?>">
-                    <div class="row-cols-1 bg-light rounded m-2 p-2" >
+                    <div class="row-cols-1 bg-light rounded m-4 p-2 py-4">
                         <div class="col m-auto">
-                            <?php echo '<img width = 150dp height = 130dp src="data:image/jpeg;base64,'.base64_encode( $item['image'] ).'"/>'; ?>
+                            <?php echo '<img width = "400dp" height = "400dp" class="mx-auto d-block" src="data:image/jpeg;base64,'.base64_encode( $item['image'] ).'"/>'; ?>
                         </div>
-                        <div class="col">
+                        <div class="col text-center">
                             <h3><?php echo $item["itemName"]; ?></h3>
                         </div>
                         <div class="col my-auto">
@@ -53,6 +53,8 @@
                 
             <?php } ?>
         </div>
+        <!-- when 3 items reach, close div tag (line 55) and start new div tag (line 37), both of these are for row
+             one column div tag starts at line 41 and ends at line 51 -->
     </div>
 
     <!-- Footer UI Import Here -->
