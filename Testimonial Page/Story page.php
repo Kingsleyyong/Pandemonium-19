@@ -19,6 +19,7 @@
         $title = $row['storyTitle'];
         $author = $row['storyAuthor'];
         $board = $row['storyBoard'];
+        $date = $row['storyDate'];
     }
 ?>
 
@@ -43,6 +44,7 @@
             <div class="col">
                 <h1 class="text-center"><?php echo $story_id; ?></h1>
                 <h4 class="text-center"><?php echo "Author : ".$author; ?></h4>
+                <h5 class="text-center"><?php echo "[ ".$date," ]"; ?></h5> 
                 <p class="my-3"><?php echo $board?></p>
             </div>
         </div>

@@ -51,9 +51,9 @@ session_start();
 
 
             <div class="dropdown-menu col align-self-end">
-              <div ><?php echo "Hi, ".$uname?></div>
-              <a class="dropdown-item" href="../Profile/ViewProfile.php">View Profile</a>
-              <a class="dropdown-item" href="../Profile/EditProfile.php">Edit Profile</a>
+              <div style="font-weight: bold; "><?php echo "Hi, ".$uname?></div>
+              <a class="dropdown-item" href="../Profile/ViewProfile.php?view&uid=<?php echo $user_data["userID"]; ?>">View Profile</a>
+              <a class="dropdown-item" href="../Profile/EditProfile.php?view&uid=<?php echo $user_data["userID"]; ?>">Edit Profile</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="../signin_signup_signout_forgetpass_automail/SignInUp_UI.php">Log In</a>
             </div>

@@ -28,10 +28,6 @@
 			<form id="signin" class="inputGroup" action="loginAction.php" method="post">
 				<input type="Email" class="inputMember" placeholder="Email" name="email" required>
 				<input type="password" class="inputMember" placeholder="Password" name="password" required>
-				<span style="padding: 10px;">Select User Type : <select name="usertype">
-					<option value="admin">admin</option>
-					<option value="user" selected>user</option>
-				</select></span>
 				<button type="submit" class="LoginBtn" name="login">Log In</button>
 				<a href="ForgetPass_UI.php" target="_blank" id="forget">Forget password</a>
 			</form>
