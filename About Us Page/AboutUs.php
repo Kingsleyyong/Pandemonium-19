@@ -40,7 +40,6 @@
                     <span id="topic" onclick="location.href='#aboutUsLogo'">'PANDEMONIUM 19'</span> website.<br/><br/>
                     Let's break the COVID-19 chain together!
                 </p>
-                <!-- <h1>Slogan</h1> -->
                 <p id="slogan">STAYING APART IS THE BEST WAY TO STAY SAFE</p>
             </div>
         </div>

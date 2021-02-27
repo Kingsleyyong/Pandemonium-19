@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
-    <title>Document</title>
+    <title>Add to Cart</title>
     
     <script>
         window.addEventListener('DOMContentLoaded', errorMessage);
@@ -37,7 +37,7 @@
         
     </script>
     <!-- NAV UI Import here -->
-    <?php require("navbar.html"); ?> 
+    <?php require("../Navigation Bar and Footer/navbar.html") ?>
 </head>
 
 <body class="bg-dark">
@@ -104,6 +104,6 @@
         </div>
     </div>
     <!-- Footer UI Import Here -->
-    <?php require("footer.html"); ?>
+    <?php require("../Navigation Bar and Footer/footer.html"); ?> 
 </body>
 </html>
