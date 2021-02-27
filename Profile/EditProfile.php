@@ -13,8 +13,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-4">
-                    <img src="../assets/default.jpg" class="d-block mx-auto" alt="Default Profile Picture"/><br/>
-                    <input type="file" required name="displayPicture" accept="image/*" id="dpt" onchange="changeImage();">
+                    <img src="../assets/default.jpg" class="d-block mx-auto" alt="Default Profile Picture" id="dp"/><br/>
+                    <input type="file" name="displayPicture" accept="image/*" id="dpt" onchange="changeImage();" required>
                 </div>
                 <div class="col">
                     <form name="profileForm" id="profileForm" method="post">
@@ -78,7 +78,15 @@
         <?php require("../Navigation Bar and Footer/footer.html"); ?> 
     </body>
 
-    <?php include("data_connection.php");
+    <?php include("data_connection.php"); ?>
+        <script>
+            function changeImage( ) {
+                dp.src=URL.createObjectURL(event.target.files[0]);
+            }
+        </script>
+
+    <?php
+
         if(isset($_POST['savebtn'])){
             $pic = $_POST['displayPicture'];
             $username = $_POST['username'];
