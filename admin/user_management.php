@@ -11,7 +11,8 @@ session_start();
 <html>
 <head>
 	<title>User Management</title>
-	<style type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<!--<style type="text/css">
 		body,html{
 			background-color: #30343F;		
 		}
@@ -31,7 +32,7 @@ session_start();
 			background-color: #E4D9FF;
 			text-align: center;
 		}
-	</style>
+	</style>-->
 	<script type="text/javascript">
 		function confirmation()
 		{
@@ -50,16 +51,16 @@ session_start();
 			
 	</script>
 </head>
-<body>
-
+<body class="bg-dark text-light">
+	<h1 class="m-3">User Management</h1>
 	<div class = "user-container">
-		<table>
+		<table class="table">
 			<tr>
-				<th>ID</th>
-				<th>Username</th>
-				<th>Email</th>
-				<th>Roles</th>
-				<th colspan="3">Option</th>
+				<th scope="col" class="text-center">ID</th>
+				<th scope="col" class="text-center">Username</th>
+				<th scope="col" class="text-center">Email</th>
+				<th scope="col" class="text-center">Roles</th>
+				<th scope="col" class="text-center" colspan="3">Option</th>
 			</tr>
 			<?php 
 
@@ -71,13 +72,13 @@ session_start();
 				$userid = $row['userID'];
 			?>
 			<tr>
-				<td><?php echo $row['userID']?></td>
-				<td><?php echo $row['userName']?></td>
-				<td><?php echo $row['userEmail']?></td>
-				<td><?php echo $row['userType']?></td>
-				<td><a href="user_detail.php?id=<?php echo $userid;?>&pageset=true">View Details</a></td>
-				<td><a href="user_detail_edit.php?id=<?php echo $userid;?>&pageedit=true">Edit Details</a></td>
-				<td><a href="?id=<?php echo $userid;?>&pagedelete=true" onclick="confirmation()" style="color: red;">Delete</a></td>
+				<td class="text-center"><?php echo $row['userID']?></td>
+				<td class="text-center"><?php echo $row['userName']?></td>
+				<td class="text-center"><?php echo $row['userEmail']?></td>
+				<td class="text-center"><?php echo $row['userType']?></td>
+				<td class="text-center"><a href="user_detail.php?id=<?php echo $userid;?>&pageset=true">View Details</a></td>
+				<td class="text-center"><a href="user_detail_edit.php?id=<?php echo $userid;?>&pageedit=true">Edit Details</a></td>
+				<td class="text-center"><a href="?id=<?php echo $userid;?>&pagedelete=true" onclick="confirmation()" style="color: red;">Delete</a></td>
 			</tr>
 			<?php
 			}

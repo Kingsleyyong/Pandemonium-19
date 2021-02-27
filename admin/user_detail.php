@@ -11,30 +11,14 @@ session_start();
 <html>
 <head>
 	<title>User Detail</title>
-	<style type="text/css">
-		body,html{
-			background-color: #30343F;
-		}
-		#detailWrap{
-			width: 380px;
-			height: 300px;
-			position: relative;
-			margin: 6% auto;
-			border: 1pt solid #30343F;
-			border-radius: 10px;
-			padding: 5px;
-			background-color: #E4D9FF;
-		}
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-		#detailWrap table,td,tr,th{
-			padding: 10px;
-		}
-
-	</style>
 </head>
-<body>
-	<div id="detailWrap">
-		<?php
+<body class="bg-dark text-light">
+    <div class="container">
+        <div class="row my-3">
+            <div class="col">
+			<?php
 			if(isset($_GET['pageset']))
 			{
 				$id = $_GET['id'];
@@ -43,32 +27,46 @@ session_start();
 
 				$detail = mysqli_fetch_assoc($details);
 				?>
-				<table>
-					<tr>
-						<th colspan="2">User Detail</th>
-					</tr>
-					<tr>
-						<td>User ID : </td>
-						<td><?php echo $detail['userID'];?></td>
-					</tr>
-					<tr>
-						<td>User Name : </td>
-						<td><?php echo $detail['userName'];?></td>
-					</tr>
-					<tr>
-						<td>User Email : </td>
-						<td><?php echo $detail['userEmail'];?></td>
-					</tr>
-					<tr>
-						<td>Password : </td>
-						<td><?php echo $detail['userPassword'];?></td>
-					</tr>
-					<tr>
-						<td>User Role : </td>
-						<td><?php echo $detail['userType'];?></td>
-					</tr>
-
-				</table>
+				<div class="row my-3">
+					<div class="col">
+						ID: 
+					</div>
+					<div class="col">
+						<?php echo $detail['userID'];?>
+					</div>
+        		</div>
+				<div class="row my-3">
+					<div class="col">
+						User Name: 
+					</div>
+					<div class="col">
+						<?php echo $detail['userName'];?>
+					</div>
+        		</div>
+				<div class="row my-3">
+					<div class="col">
+						Email : 
+					</div>
+					<div class="col">
+						<?php echo $detail['userEmail'];?>
+					</div>
+				</div>
+				<div class="row my-3">
+					<div class="col">
+						Password : 
+					</div>
+					<div class="col">
+						<?php echo $detail['userPassword'];?>
+					</div>
+				</div>
+				<div class="row my-3">
+					<div class="col">
+						Role ( Admin / User ) : 
+					</div>
+					<div class="col">
+						<?php echo $detail['userType'];?>
+					</div>
+				</div>
 				<?php
 			}
 		?>
