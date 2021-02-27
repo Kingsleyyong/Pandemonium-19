@@ -2,62 +2,51 @@
 
 <html>
 <head><title>Movie Detail</title>
-    <link href="design.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
-<body>
+<body class="bg-dark text-light"> 
 
-<div id="wrapper">
-
-    <div id="left">
+<div id="container">
+    <div class="row mx-2 my-3">
+        <div class="col">
+            <h1>Details of The Contact</h1>
+        </div>
     </div>
-
-    <div id="right">
-
-        <h1>Details of The Contact</h1>
-
-        <?php
-        if(isset($_GET['pageset']))
-        {
-            $id = $_GET["id"];
-            $result = mysqli_query($conn, "select * from contact where contactID = $id");
-            $row = mysqli_fetch_assoc($result);
-
-            echo "<br><b>Contact ID</b><br>";
-            echo $row["contactID"];
-            ?>
-            <hr>
-        <?php
-            echo "<br><br><b>First Name</b><br>";
-            echo $row["firstName"];
-            ?>
-            <hr>
             <?php
-            echo "<br><br><b>Last Name</b><br>";
-            echo $row["lastName"];
-            ?>
-            <hr>
-            <?php
-            echo "<br><br><b>Contact Email</b><br>";
-            echo $row["contactEmail"];
-            ?>
-        <hr>
-            <?php
-            echo "<br><br><b>Contact Number</b><br>";
-            echo $row["contactNumber"];
-            ?>
-            <hr>
-            <?php
-            echo "<br><br><b>Message Leave</b><br>";
-            echo $row["message"];
-            ?>
-        <hr>
-            <?php
-        }
-        ?>
+            if(isset($_GET['pageset']))
+            {
+                $id = $_GET["id"];
+                $result = mysqli_query($conn, "select * from contact where contactID = $id");
+                $row = mysqli_fetch_assoc($result);
 
-
-    </div>
-
+                echo '<div class="row mx-2 my-3"><div class="col">Contact ID</div></div><div class="row mx-2 my-3"><div class="col">';
+                echo $row["contactID"];
+                ?>
+            <?php
+                echo '</div></div><div class="row mx-2 my-3"><div class="col">First Name</div></div><div class="row mx-2 my-3"><div class="col">';
+                echo $row["firstName"];
+                ?>
+                <?php
+                echo '</div></div><div class="row mx-2 my-3"><div class="col">Last Name</div></div><div class="row mx-2 my-3"><div class="col">';
+                echo $row["lastName"];
+                ?>
+                <?php
+                echo '</div></div><div class="row mx-2 my-3"><div class="col">Contact Email</div></div><div class="row mx-2 my-3"><div class="col">';
+                echo $row["contactEmail"];
+                ?>
+                <?php
+                echo '</div></div><div class="row mx-2 my-3"><div class="col">Contact Number</div></div><div class="row mx-2 my-3"><div class="col">';
+                echo $row["contactNumber"];
+                ?>
+                <?php
+                echo '</div></div><div class="row mx-2 my-3"><div class="col">Message Leave</div></div><div class="row mx-2 my-3"><div class="col">';
+                echo $row["message"];
+                ?>
+                <?php
+            echo '</div></div>';
+            }
+            ?>  
 </div>
 
 
