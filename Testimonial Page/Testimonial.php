@@ -5,7 +5,7 @@
     <title>Testimonial</title>
     <link href="../assets/CSS/testimonial.css" rel="stylesheet">
     <!-- NAV UI Import here -->
-    <?php require("../Navigation Bar and Footer/navbar.html"); ?> 
+    <?php require("../Navigation Bar and Footer/navbar.php"); ?> 
 </head>
 
 <body class="bg-dark text-light">
