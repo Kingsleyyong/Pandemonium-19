@@ -1,7 +1,7 @@
 <?php
 	//allow link to every page when user logged in
 	session_start();
-	require("../Database/connect.php");
+	require("../database/connect.php");
 	// include("../function.php");
 ?>
 
@@ -40,12 +40,13 @@
 			<form id="Register" class="inputGroup" action="registerAction.php" method="post">
 				<input type="text" class="inputMember" placeholder="Username" name="username" required>
 				<input type="text" class="inputMember" placeholder="Contact eg: 0123456789" name="contact" required>
-				<input type="text" class="inputMember" placeholder="male/female/others" name="gender" required>
+				<input type="radio" class="inputMemberRB" name="gender" value="Male" required>Male
+				<input type="radio" class="inputMemberRB" name="gender" value="Female" required>Female
 				<input type="Email" class="inputMember" placeholder=" Email" name="email" required>
 				<input type="password" class="inputMember" placeholder="Password" name= "password" required id="pass">
 				<input type="password" class="inputMember" placeholder="Confirm Password" name="confirm_password" required
 					id="confirm_password">
-				<input type="date" class="inputMember" name="dob" require placeholder="Date Of Birth">
+				<input type="date" class="inputMember" name="dob" required placeholder="Date Of Birth">
 				<input type="checkbox" class="checkbox" required><span>I agree to the <a href="termNcondition_UI.html"
 						target="_blank"><u>Terms & Conditions<u></a></span>
 				<button type="submit" class="LoginBtn">Register</button>

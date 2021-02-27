@@ -45,6 +45,12 @@ session_start();
               </a> 
             <!--- If user signed in, show profile. 
             Else, show sign in. -->
+            <?php 
+              if()
+
+            ?>
+
+
             <div class="dropdown-menu col align-self-end">
               <div ><?php echo "Hi, ".$uname?></div>
               <a class="dropdown-item" href="../Profile/ViewProfile.php">View Profile</a>

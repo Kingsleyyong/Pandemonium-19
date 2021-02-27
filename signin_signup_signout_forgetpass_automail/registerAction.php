@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-	include("connect.php");
+	include("../database/connect.php");
 	include("function.php");
 
 	//if a form is posted
@@ -13,6 +13,10 @@ session_start();
 		$contact = $_POST['contact'];
 		$gender = $_POST['gender'];
 		$dob = filter_input(INPUT_POST,'dob');
+
+		
+
+
 
 		if(!empty($userName) && !empty($password) && !empty($userEmail))
 		{
@@ -30,7 +34,7 @@ session_start();
 			{
 				echo "Fail to register";
 			}
-			header("refresh: 0.5; url = login&register.php");
+			header("refresh: 0.5; url = SignInUp_Ui.php");
 		}else
 		{
 			echo "Invalid information";
