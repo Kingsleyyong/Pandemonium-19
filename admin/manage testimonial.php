@@ -64,7 +64,7 @@
 
         $query = 'SELECT * FROM story LIMIT ' . $first_page_result . ',' . $per_page;
 
-        $result = mysqli_query($conn, $query) or die( mysqli_error($conn));;
+        $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
 
         if (!isset($_POST['search']))
         {

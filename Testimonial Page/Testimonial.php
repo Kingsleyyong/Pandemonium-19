@@ -5,7 +5,7 @@
     <title>Testimonial</title>
     <link href="../assets/CSS/testimonial.css" rel="stylesheet">
     <!-- NAV UI Import here -->
-    <?php require("../Navigation Bar and Footer/navbar.html"); ?>
+    <?php require("../Navigation Bar and Footer/navbar.php"); ?>
     <?php include("data_connection.php"); ?>
 </head>
 
@@ -106,17 +106,15 @@
     <!-- don't touch below code (for navigation)-->
     <div class="row my-3">
         <div class="col">
-            <a href="Testimonial.php?page=<?php echo ($page - 1);?>"><p class='text-center'>&laquo; Previous</p></a>
-        </div>
-        <?php
-        if ()
-        {
+            <?php
+            if ($page != 1)
+            {
+                ?>
+                <a href="Testimonial.php?page=<?php echo 1;?>"><p class='text-center'>&laquo; Previous</p></a>
+                <?php
+            }
             ?>
-            <a href="Testimonial.php?page=<?php echo 1;?>"><p class='text-center'>&laquo; Previous</p></a>
-        <?php
-        }
-        ?>
-
+        </div>
         <?php
         for ($p = 1; $p <= $num_page; $p++)
         {
@@ -124,15 +122,17 @@
         }
         ?>
         <div class="col">
+            <?php
+            if ($page < $num_page)
+            {
+            ?>
             <a href="Testimonial.php?page=<?php echo ($page + 1);?>"><p class='text-center'>Next &raquo;</p></a>
+            <?php
+            }
+            ?>
         </div>
     </div>
 </div>
-
-
-                
-
-
 <span id="pad">
 </span>
 

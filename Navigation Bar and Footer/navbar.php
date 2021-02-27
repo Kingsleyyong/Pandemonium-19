@@ -45,9 +45,8 @@ session_start();
               </a> 
             <!--- If user signed in, show profile. 
             Else, show sign in. -->
-            <?php 
-              if()
-
+            <?php
+              //if()
             ?>
 
 
