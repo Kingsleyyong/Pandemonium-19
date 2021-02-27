@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 26, 2021 at 06:02 PM
+-- Generation Time: Feb 27, 2021 at 04:43 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -29,17 +29,21 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cart` (
   `cartID` int(10) NOT NULL,
-  `userID` int(10) NOT NULL
+  `userID` int(10) NOT NULL,
+  `shippingAddress` text NOT NULL,
+  `shippingFee` float(4,2) NOT NULL,
+  `subTotal` float(5,2) NOT NULL,
+  `TotalPayment` float(5,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `cart`
 --
 
-INSERT INTO `cart` (`cartID`, `userID`) VALUES
-(6, 1),
-(7, 7),
-(9, 10);
+INSERT INTO `cart` (`cartID`, `userID`, `shippingAddress`, `shippingFee`, `subTotal`, `TotalPayment`) VALUES
+(6, 1, 'Jalan ali', 0.00, 0.00, 0.00),
+(7, 7, 'ali baba', 0.00, 0.00, 0.00),
+(9, 10, 'bangkali', 0.00, 0.00, 0.00);
 
 -- --------------------------------------------------------
 
@@ -51,22 +55,18 @@ CREATE TABLE `cartrecord` (
   `recordID` int(10) NOT NULL,
   `cartID` int(10) NOT NULL,
   `itemID` int(10) NOT NULL,
-  `quantity` int(6) NOT NULL,
-  `shippingAddress` varchar(50) NOT NULL,
-  `shippingFee` float(4,2) NOT NULL,
-  `subTotal` float(5,2) NOT NULL,
-  `TotalPayment` float(5,2) NOT NULL
+  `quantity` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `cartrecord`
 --
 
-INSERT INTO `cartrecord` (`recordID`, `cartID`, `itemID`, `quantity`, `shippingAddress`, `shippingFee`, `subTotal`, `TotalPayment`) VALUES
-(1, 6, 1, 2, 'ali jalan ali', 0.00, 0.00, 0.00),
-(2, 6, 2, 2, 'ali jalan ali', 0.00, 0.00, 0.00),
-(3, 7, 1, 2, 'ali jalan ali', 0.00, 0.00, 0.00),
-(4, 7, 3, 2, 'ali jalan ali', 0.00, 0.00, 0.00);
+INSERT INTO `cartrecord` (`recordID`, `cartID`, `itemID`, `quantity`) VALUES
+(1, 6, 1, 2),
+(2, 6, 2, 2),
+(3, 7, 1, 2),
+(4, 7, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -117,7 +117,9 @@ INSERT INTO `feedback` (`FeedbackID`, `rating`, `category`, `comment`, `userID`)
 (2, 4, 'SomethingWrong', 'I found that there were no bangkali roti', 7),
 (3, 3, 'Suggestion', 'The website functioning well! just that some parts are not quite responsive.', 9),
 (4, 4, 'Suggestion', 'My big brother dont feel good, i dont feel good', 8),
-(5, 5, 'Suggestion', 'Everything\'s works well. Great Job of you and your team!', 10);
+(5, 5, 'Suggestion', 'Everything\'s works well. Great Job of you and your team!', 10),
+(6, 4, '', 'hello', 7),
+(7, 4, 'SomethingWrong', 'test2', 7);
 
 -- --------------------------------------------------------
 
@@ -175,7 +177,6 @@ INSERT INTO `story` (`storyID`, `storyAuthor`, `storyDate`, `storyTitle`, `story
 (7, 'bangkali adik', '2021-02-05', 'tomato fried egg', 'Tomato fried egg is good', 0, 0x756e6e616d65642e706e67),
 (8, 'bangkali kakak', '2021-02-06', 'tomato fried potato', 'tomato fried potato is good\r\n', 0, 0x756e6e616d65642e706e67),
 (9, 'bangkali', '2021-02-05', 'egg fried tomato and potato', 'Corona no virus', 0, 0x756e6e616d65642e706e67),
-(10, 'human', '2021-02-13', 'Corona', 'Corona is made by human', 0, 0x756e6e616d65642e706e67),
 (11, 'God', '2021-02-06', 'human', 'Human is small', 0, 0x756e6e616d65642e706e67);
 
 -- --------------------------------------------------------
@@ -284,7 +285,7 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `FeedbackID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `FeedbackID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `item`
