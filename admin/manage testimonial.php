@@ -76,9 +76,9 @@
 
                 ?>
                 <tr>
-                    <td><?php echo $id;?></td>
-                    <td><?php echo $date;?></td>
-                    <td><?php echo $title;?></td>
+                    <td class="text-center"><?php echo $id;?></td>
+                    <td class="text-center"><?php echo $date;?></td>
+                    <td class="text-center"><?php echo $title;?></td>
                     <td></td>
                 </tr>
                 <?php
