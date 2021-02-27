@@ -6,7 +6,6 @@
         <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
                                 integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
                                 crossorigin="anonymous">
-        <script type="text/javascript" src="../assets/javascript1.js"></script>
         <!-- NAV UI Import here -->
         <?php require("../Navigation Bar and Footer/navbar.html"); ?> 
     </head>
@@ -15,7 +14,7 @@
             <div class="row">
                 <div class="col-4">
                     <img src="../assets/default.jpg" class="d-block mx-auto" alt="Default Profile Picture"/><br/>
-                    <input type="file" name="displayPicture" accept="image/*" id="dpt" onchange="changeImage();">
+                    <input type="file" required name="displayPicture" accept="image/*" id="dpt" onchange="changeImage();">
                 </div>
                 <div class="col">
                     <form name="profileForm" id="profileForm" method="post">
@@ -80,7 +79,6 @@
     </body>
 
     <?php include("data_connection.php");
-
         if(isset($_POST['savebtn'])){
             $pic = $_POST['displayPicture'];
             $username = $_POST['username'];
