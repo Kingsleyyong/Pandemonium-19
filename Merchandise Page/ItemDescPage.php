@@ -77,6 +77,7 @@ session_start();
                 </div>
                 <form action="" method="get">
                     <div class="pb-4">
+                        <input type=hidden id="itemID" name="itemID" value="<?php echo $ID;?>">
                         <label for="quantity">Quantity: </label>
                         <input type="button" class="btn btn-danger" onclick="minus()" value="-">
                         <input type="number" id="quantityValue" name="quantity" value = 0 readonly style="background: transparent; border: 0; 
@@ -92,21 +93,39 @@ session_start();
 
     if(isset($_GET['addToCart'])){
         $quantity = $_GET['quantity'];
+        $itemID = $_GET['itemID'];
+        $userID = $user_data['userID'];
 
-        $sql_getting_cartID = 'SELECT cartID FROM cart WHERE userID="$ID"';
+
+        $sql_getting_cartID = "SELECT * FROM cart WHERE userID = $userID ";
+
+
 
         $result = mysqli_query($con, $sql_getting_cartID);
+        $cartID_record = mysqli_fetch_assoc($result);
+        
+        //if there is no record in the cart table for this userID
+        if(!$cartID_record['cartID'])
+        {
+           $result3 = mysqli_query($con, "insert into cart (userID) value ($userID)") or die("Error inserting data to cart");
+           $result4 = mysqli_query($con, "select * from cart where userID = $userID" or die("Error selecting data"));
+           $cartID_record = mysqli_fetch_assoc($result4);
+        }
 
-        $cartID = mysqli_fetch_assoc($result);
+        
+        
+        $cartID = $cartID_record['cartID'];
+
+        $sql_item_add = "insert into cartrecord (cartID, itemID, quantity) value ('$cartID','$itemID', '$quantity')";
         
         // $sql_item_add = 'INSERT INTO cartrecord (cartID, itemID, quantity)
         //                 VALUES("$cartID['cartID']", itemID="$ID", quantity="quantity")';
                         
-        foreach($cartID as $idCart){
-            // $sql_item_add = 'INSERT INTO cartrecord (cartID, itemID, quantity)
-            //             VALUES("$idCart['cartID']", itemID="$ID", quantity="quantity")';
+        // foreach($cartID_record as $idCart){
+        //     // $sql_item_add = 'INSERT INTO cartrecord (cartID, itemID, quantity)
+        //     //             VALUES("$idCart['cartID']", itemID="$ID", quantity="quantity")';
                         
-        }
+        // }
         $result2 = mysqli_query($con, $sql_item_add);
 
         if(!$result2){
