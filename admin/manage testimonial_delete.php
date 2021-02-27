@@ -36,7 +36,16 @@
 
     <script type="text/javascript">
         function confirmation() {
-            confirm("Do you want to delete this story?");
+            $confirm = confirm("Do you want to delete this story?");
+            if($confirm)
+            {
+                return true;
+            }
+            else
+            {
+                event.stopPropagation(); 
+				event.preventDefault();
+            }
         }
 
     </script>
