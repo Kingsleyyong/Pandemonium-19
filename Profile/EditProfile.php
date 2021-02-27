@@ -1,3 +1,19 @@
+<?php
+session_start();
+
+	include("../database/connect.php");
+	include("../signin_signup_signout_forgetpass_automail/function.php");
+
+	$user_data = check_log($con);
+    $upic = $user_data["profilePicture"];
+    $uname = $user_data["userName"];
+    $ugender = $user_data["gender"];
+    $udob = $user_data["dateOfBirth"];
+    $ucontact = $user_data["userContact"];
+    $uemail = $user_data["userEmail"];
+    $uaddress = $user_data["residentialAddress"];
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
