@@ -8,7 +8,7 @@
 </head>
 <script src="story%20page.js"></script>
 <body class="bg-dark text-light">
-    <?php require("../Navigation Bar and Footer/navbar.html") ?>
+    <?php require("../Navigation Bar and Footer/navbar.php") ?>
     <div class="container">
         <div class="row p-3 bg-secondary">
             <div class="col">

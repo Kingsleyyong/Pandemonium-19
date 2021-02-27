@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="../assets/CSS/style1.css"/>
     </head>
     <body class="bg-dark">
-        <?php require("../Navigation Bar and Footer/navbar.html") ?>
+        <?php require("../Navigation Bar and Footer/navbar.php") ?>
         <div class="loc text-light text-center">
             <img src="../assets/logo.png" id="aboutUsLogo" alt="Pandemonium 19" onclick="location.href='../Index Page/main.php'"/>
             <div id="aboutUs">

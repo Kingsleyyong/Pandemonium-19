@@ -1,3 +1,19 @@
+<?php
+session_start();
+
+	include("../database/connect.php");
+	include("../signin_signup_signout_forgetpass_automail/function.php");
+
+	$user_data = check_log($con);
+    $upic = $user_data["profilePicture"];
+    $uname = $user_data["userName"];
+    $ugender = $user_data["gender"];
+    $udob = $user_data["dateOfBirth"];
+    $ucontact = $user_data["userContact"];
+    $uemail = $user_data["userEmail"];
+    $uaddress = $user_data["residentialAddress"];
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,16 +22,15 @@
         <link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
                                 integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
                                 crossorigin="anonymous">
-        <script type="text/javascript" src="../assets/javascript1.js"></script>
         <!-- NAV UI Import here -->
-        <?php require("../Navigation Bar and Footer/navbar.html"); ?> 
+        <?php require("../Navigation Bar and Footer/navbar.php"); ?> 
     </head>
     <body class="bg-dark text-light">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-4">
-                    <img src="../assets/default.jpg" class="d-block mx-auto" alt="Default Profile Picture"/><br/>
-                    <input type="file" name="displayPicture" accept="image/*" id="dpt" onchange="changeImage();">
+                    <img src="../assets/default.jpg" class="d-block mx-auto" alt="Default Profile Picture" id="dp"/><br/>
+                    <input type="file" name="displayPicture" accept="image/*" id="dpt" onchange="changeImage();" required>
                 </div>
                 <div class="col">
                     <form name="profileForm" id="profileForm" method="post">
@@ -79,7 +94,14 @@
         <?php require("../Navigation Bar and Footer/footer.html"); ?> 
     </body>
 
-    <?php include("data_connection.php");
+    <?php include("data_connection.php"); ?>
+        <script>
+            function changeImage( ) {
+                dp.src=URL.createObjectURL(event.target.files[0]);
+            }
+        </script>
+
+    <?php
 
         if(isset($_POST['savebtn'])){
             $pic = $_POST['displayPicture'];

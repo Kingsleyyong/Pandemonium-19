@@ -4,6 +4,9 @@
     font-family: Arial, Helvetica, sans-serif;
     margin: 5px;
 } 
+.collttr {
+    font-size: 30px
+}
 #dp {
     float: left;
 }

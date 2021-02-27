@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+	include("../database/connect.php");
+	include("../signin_signup_signout_forgetpass_automail/function.php");
+
+	$user_data = check_log($con);
+    $uname = $user_data["userName"];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +46,7 @@
             <!--- If user signed in, show profile. 
             Else, show sign in. -->
             <div class="dropdown-menu col align-self-end">
+              <div ><?php echo "Hi, ".$uname?></div>
               <a class="dropdown-item" href="../Profile/ViewProfile.php">View Profile</a>
               <a class="dropdown-item" href="../Profile/EditProfile.php">Edit Profile</a>
               <div class="dropdown-divider"></div>

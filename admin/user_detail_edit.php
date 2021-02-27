@@ -11,58 +11,66 @@ session_start();
 <html>
 <head>
     <title>Edit User</title>
-    <style>
-        body,html{
-			background-color: #30343F;
-		}
-		#edit{
-			width: 600px;
-			height: 300px;
-			position: relative;
-			margin: 6% auto;
-			border: 1pt solid #30343F;
-			border-radius: 10px;
-			padding: 5px;
-			background-color: #E4D9FF;
-		}
-
-        #edit form{
-            text-align: center;
-        }
-        #edit form input{
-            background: transparent;
-            border: 1px dotted black;
-        }
-
-        #edit form input[type=submit]{
-            background: red;
-            border-radius: 2px;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
-<body>
-    <div id="edit">
-        <?php 
-            if(isset($_GET['pageedit']))
-            {
-                $userid = $_GET['id'];
-                $result = mysqli_query($con,"select * from user where userID = $userid");
-                $details = mysqli_fetch_assoc($result);
-                echo "<p>ID : ".$userid."</p>";
+<body class="bg-dark text-light">
+    <div class="container">
+        <div class="row my-3">
+            <div class="col">
+                <?php 
+                if(isset($_GET['pageedit']))
+                {
+                    $userid = $_GET['id'];
+                    $result = mysqli_query($con,"select * from user where userID = $userid");
+                    $details = mysqli_fetch_assoc($result);
+                    echo 'ID :</div> <div class="col">'.$userid."";
                 ?>
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col">
+                User Name: 
+            </div>
+            <div class="col">
+                <input type = "text" name = "user_name" class="form-control" size =50 value = "<?php echo $details['userName']?>">
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col">
+                Email : 
+            </div>
+            <div class="col">
+                <input type ="email" name="user_email" class="form-control" size=50 value="<?php echo $details['userEmail'];?>">
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col">
+                Password : 
+            </div>
+            <div class="col">
+                <input type = "text" name="user_pass" class="form-control" size=50 value="<?php echo $details['userPassword'];?>">
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col">
+                Role ( Admin / User ) : 
+            </div>
+            <div class="col">
+                <input type = "text" name="user_role" class="form-control" size=5 value="<?php echo $details['userType'];?>">
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col">
 
-                <form name="editUser" method="post" action="">
-                    <p>User Name: <input type = "text" name = "user_name" size =50 value = "<?php echo $details['userName']?>">
-                    <p>Email : <input type ="email" name="user_email" size=50 value="<?php echo $details['userEmail'];?>">
-                    <p>Password : <input type = "text" name="user_pass" size=50 value="<?php echo $details['userPassword'];?>">
-                    <p>Role ( Admin / User ) : <input type = "text" name="user_role" size=5 value="<?php echo $details['userType'];?>">
-                    <p><input type="submit" name="savebtn" value="Update">
-                </form> 
-            <?php
+            </div>
+            <div class="col">
+                <input type="submit" class="btn btn-primary" name="savebtn" value="Update">
+            </div>
+        </div>
+    </div>
+    <?php
             }
         ?>
-    </div>
 </body>
 </html>
 

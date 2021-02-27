@@ -5,7 +5,7 @@
     <title>Contact Us</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!--<link href="../assets/CSS/Contact Us.css" rel="stylesheet">-->
-    <?php require("../Navigation Bar and Footer/navbar.html"); ?> 
+    <?php require("../Navigation Bar and Footer/navbar.php"); ?> 
 </head>
 <body class="bg-dark text-light">
     <div class="col"><br><br>

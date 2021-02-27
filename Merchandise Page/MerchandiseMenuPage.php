@@ -15,7 +15,7 @@
     </script>
 
     <!-- NAV UI Import here -->
-    <?php require("../Navigation Bar and Footer/navbar.html"); ?> 
+    <?php require("../Navigation Bar and Footer/navbar.php"); ?> 
 </head>
 <body class="bg-dark">
 <?php
