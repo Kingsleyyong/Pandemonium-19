@@ -32,8 +32,7 @@
                 <p><label>Story Author</label><input type="text" name="Story_author" size="80"
                                                      value="<?php echo $row['storyAuthor']; ?>">
 
-                <p><label>Image</label><input type="file" name="img" size="10" accept="image/*"
-                        value="<?php echo $row['storyMedia']; ?>">
+                <p><label>Image</label><input type="file" name="img" size="10" accept="image/*">
 
                 <p><label>Story</label><textarea cols="60" rows="4" name="story_text"
                     ><?php echo $row['storyBoard']; ?></textarea>
