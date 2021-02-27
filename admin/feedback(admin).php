@@ -1,3 +1,11 @@
+<?php
+session_start();
+    require ('../Database/connect.php');
+	include("../signin_signup_signout_forgetpass_automail/function.php");
+
+	$user_data = check_log($con);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,11 +59,11 @@
 				<th>Rating</th>
 				<th>Category</th>
 				<th>Comment</th>
-				<th colspan="3">Option</th>
+				<th colspan="2">Option</th>
 			</tr>
 			<?php 
 
-			$result = mysqli_query($con,"select * from feedback");
+			$result = mysqli_query($con,"select * from feedback") or die("error connecting");
 			$numRow = mysqli_num_rows($result); //counting number of rows.
 
 			while($row = mysqli_fetch_assoc($result))
@@ -68,8 +76,7 @@
 				<td><?php echo $row['rating']?></td>
 				<td><?php echo $row['category']?></td>
                 <td><?php echo $row['comment']?></td>
-				<td><a href="user_detail.php?id=<?php echo $fbID;?>&pageset=true">View Details</a></td>
-				<td><a href="user_detail_edit.php?id=<?php echo $fbID;?>&pageedit=true">Edit Details</a></td>
+				<td><a href="feedback(admin)_detail.php?id=<?php echo $fbID;?>&pageset=true">View Details</a></td>
 				<td><a href="?id=<?php echo $fbID;?>&pagedelete=true" onclick="confirmation()" style="color: red;">Delete</a></td>
 			</tr>
 			<?php
@@ -86,7 +93,7 @@
 
 if(isset($_GET['pagedelete']))
 {
-	$id = $_GET['fbID'];
+	$id = $_GET['id'];
 
 	// if fail to delete record.
 	if($deleteResult = mysqli_query($con, "delete from feedback where FeedbackID = $id"))

@@ -1,3 +1,11 @@
+<?php
+session_start();
+    require ('../Database/connect.php');
+	include("../signin_signup_signout_forgetpass_automail/function.php");
+
+	$user_data = check_log($con);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +15,8 @@
 			background-color: #30343F;
 		}
 		#detail{
-			width: 380px;
-			height: 300px;
+			width: 500px;
+			height: 500px;
 			position: relative;
 			margin: 6% auto;
 			border: 1pt solid #30343F;
@@ -30,33 +38,44 @@
 			{
 				$id = $_GET['id'];
 
-				$details = mysqli_query($con,"select * from user where FeedbackID = $id");
+				$details = mysqli_query($con,"select * from feedback where FeedbackID = $id");
 
 				$detail = mysqli_fetch_assoc($details);
 				?>
 				<table>
 					<tr>
-						<th colspan="2">User Detail</th>
+						<th colspan="2">Feedback Detail</th>
+					</tr>
+					<tr>
+						<td>Feedback ID : </td>
+						<td><?php echo $detail['FeedbackID'];?></td>
 					</tr>
 					<tr>
 						<td>User ID : </td>
 						<td><?php echo $detail['userID'];?></td>
 					</tr>
 					<tr>
-						<td>User Name : </td>
-						<td><?php echo $detail['userName'];?></td>
+						<?php
+							$idddd = $detail['userID'];
+							$query = "select * from user where userID = $idddd";
+
+							$result = mysqli_query($con, $query);
+							$dd = mysqli_fetch_assoc($result);
+						?>
+						<td>User Name :  </td>
+						<td><?php echo $dd['userName']?></td>
 					</tr>
 					<tr>
-						<td>User Email : </td>
-						<td><?php echo $detail['userEmail'];?></td>
+						<td>rating : </td>
+						<td><?php echo $detail['rating']." star";?></td>
 					</tr>
 					<tr>
-						<td>Password : </td>
-						<td><?php echo $detail['userPassword'];?></td>
+						<td>Category : </td>
+						<td><?php echo $detail['category'];?></td>
 					</tr>
 					<tr>
-						<td>User Role : </td>
-						<td><?php echo $detail['userType'];?></td>
+						<td>Comment : </td>
+						<td><?php echo $detail['comment'];?></td>
 					</tr>
 
 				</table>
