@@ -9,3 +9,5 @@ if(isset($_SESSION['userID']))
 
 header("Location: login&register.php");
 die;
+
+?>

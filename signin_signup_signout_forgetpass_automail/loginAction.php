@@ -29,7 +29,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 					}
 					else if($user_data['userType'] === "Admin"){
 						$_SESSION['userID'] = $user_data['userID'];
-						header("Location: ../admin/home.html");
+						header("Location: ../admin/home.php");
 						die;
 					}
 				}
