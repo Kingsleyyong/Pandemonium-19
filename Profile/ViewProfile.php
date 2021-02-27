@@ -23,7 +23,8 @@
                 <div id="field">
                     <div class="form-group">
                         <label class="pr-4 mr-5">Username : </label>
-                        <input type="text" name="username" class="form-control-lg ml-2" maxlength="24" size="48px" />
+                        <label class="form-control-lg ml-2"><?php echo "test"; ?></label>
+                        <!-- <input type="text" name="username" class="form-control-lg ml-2" maxlength="24" size="48px" /> -->
                     </div>
                     <p><label class="pr-5 mr-5">Gender : </label>
                         <input type="radio" class="mx-3" name="gender" value="Male" /> Male
@@ -50,9 +51,9 @@
                     <p><label>Residential Address : </label>
                         <textarea name="address" class="form-control-lg" rows="6" cols="51" ></textarea>
                     </p>
-                    <a href="../About Us Page/AboutUs.php"><button name="editbtn" id="editbtn" class="btn btn-primary m-auto" value="EDIT">EDIT</button></a>
                 </div>
             </form>
+            <a href="EditProfile.php"><button name="editbtn" id="editbtn" class="btn btn-primary m-auto" value="EDIT">EDIT</button>
         </div>
         <!-- Footer UI Import Here -->
         <?php require("../Navigation Bar and Footer/footer.html"); ?> 

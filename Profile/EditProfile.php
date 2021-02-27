@@ -63,7 +63,7 @@
         if(isset($_POST['savebtn'])){
             $pic = $_POST['displayPicture'];
             $username = $_POST['username'];
-             $gender = $_POST['gender'];
+            $gender = $_POST['gender'];
             $birthday = $_POST['dob'];
             $contactNumber = $_POST['phone'];
             $email = $_POST['email'];
