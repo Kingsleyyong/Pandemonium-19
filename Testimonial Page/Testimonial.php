@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Testimonial</title>
-    <link href="../assets/CSS/testimonial.css" rel="stylesheet">
     <!-- NAV UI Import here -->
     <?php require("../Navigation Bar and Footer/navbar.php"); ?>
     <?php include("data_connection.php"); ?>

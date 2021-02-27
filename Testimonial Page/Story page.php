@@ -34,7 +34,7 @@
                             .base64_encode($pic).'" alt="Default Profile Picture"/>';
                     }
                     else {
-                        echo '<img src="../assets/storyDefault.png" class="mx-auto d-block" alt="article image">';
+                        echo '<img src="../assets/storyDefault.png" class="mx-auto d-block img-fluid" alt="article image">';
                     }         
                 ?>
             </div>
