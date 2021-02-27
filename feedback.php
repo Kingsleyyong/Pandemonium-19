@@ -11,8 +11,9 @@
 <head>
 	<meta charset="utf-8">
 	<title>Feedback</title>
-	<style>
-		html,body{
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<style>/*
+		#html,body{
 			background: #30343F;
 		}
 
@@ -26,12 +27,11 @@
 			padding: 10px;
 			background-color: #E4D9FF;
 			text-align: center;
-		}
+		}*/
 		.star-rating{
-			margin: 25px 0 0px;
 			font-size: 0;
 			white-space: nowrap;
-			display: inline-block;
+			display: block;
 			width: 175px;
 			height: 35px;
 			overflow: hidden;
@@ -85,38 +85,56 @@
 		}
 	</style>
 </head>
-<body>
-	<div id="feedback">
-		<p style="text-align: left; margin:0;">Feedback</p>
-		<p>We would be much appreciate to have your feedback about our website in order to improve our website.</p>
-		<form id="feedback-form" method="post" action="feedback.php">
-			<label for="rating">How is your experience on our website? (Please rate)</label><br>
-			<span class="star-rating">
-				<input type="radio" name="rating" value="1" required oninvalid="this.setCustomValidity('You need to rate aleast a star to submit.')" onclick="setCustomValidity('')"><i></i>
-				<input type="radio" name="rating" value="2"><i></i>
-				<input type="radio" name="rating" value="3"><i></i>
-				<input type="radio" name="rating" value="4"><i></i>
-				<input type="radio" name="rating" value="5"><i></i>
-			</span>
-			<hr>
-			<p>Please select the category for your feedback:</p>
-			<span id="type">
-				<input type="radio" name="feedback-category" id="suggestion" class="suggestion" value="suggestion">
-				<label for="suggestion">Suggestion</label>
-				<input type="radio" name="feedback-category" id="somethingWrong" class="somethingWrong" value="somethingWrong">
-				<label for="somethingWrong">Something's wrong</label>
-				<input type="radio" name="feedback-category" id="complement" class="complement" value="complement">
-				<label for="complement">Complement</label>
-				<hr>
-			</span>
-			<label for="comment">Leave any suggestion below.</label><br>
-			<textarea cols="80" name="comment" rows="5" placeholder="Enter text here. . ." style="margin-top: 10px;background: transparent; padding: 5px" ></textarea>
-			<br>
-			<input type="submit" value="Submit Feedback" style="position: absolute;right: 0; margin-top: 10px;background: #8080ff;border: 0;border-radius: 30px;padding: 10px 20px;
-			cursor: pointer; margin-right: 5px;" name="submit"></form>
-		</form>
+<body class="bg-dark text-light">
+	<h1 class="text-center my-3">Feedback</h1>
+	<p class="text-center">We would be much appreciate to have your feedback about our website in order to improve our website.</p>
 
-        <?php
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<p class="text-center">How is your experience on our website? (Please rate)</p><br>
+				<span class="star-rating mx-auto" width="200px">
+					<input type="radio" name="rating" value="1" required oninvalid="this.setCustomValidity('You need to rate aleast a star to submit.')" onclick="setCustomValidity('')"><i></i>
+					<input type="radio" name="rating" value="2"><i></i>
+					<input type="radio" name="rating" value="3"><i></i>
+					<input type="radio" name="rating" value="4"><i></i>
+					<input type="radio" name="rating" value="5"><i></i>
+				</span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<form id="feedback-form" method="post" action="feedback.php">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col mt-4">
+								<p class="text-center">Please select the category for your feedback:</p>
+								<span class="mx-auto" style="display: block; width: 400px;">
+									<input type="radio" name="feedback-category" id="suggestion" class="suggestion" value="suggestion">
+									<label for="suggestion">Suggestion</label>
+									<input type="radio" name="feedback-category" id="somethingWrong" class="somethingWrong" value="somethingWrong">
+									<label for="somethingWrong">Something's wrong</label>
+									<input type="radio" name="feedback-category" id="complement" class="complement" value="complement">
+									<label for="complement">Complement</label>
+								</span>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<label for="comment">Leave any suggestion below.</label><br>
+								<textarea cols="80" name="comment" rows="5" class="form-control" placeholder="Enter text here. . ." style="margin-top: 10px;background: transparent; padding: 5px" ></textarea>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<input type="submit" class="btn btn-primary" value="Submit Feedback" >
+							</div>
+						</div>
+					</div>	
+				</form>
+			</div>
+		</div>
+		<?php
             if(isset($_POST['submit']))
             {
                 $id = $user['userID'];
