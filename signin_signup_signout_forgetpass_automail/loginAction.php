@@ -13,7 +13,6 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 
 	if( !empty($password) && !empty($userEmail)){
 		$query = "select * from user where userEmail = '$userEmail'";
-
 		$result = mysqli_query($con,$query);
 						
 		//if result is succesful

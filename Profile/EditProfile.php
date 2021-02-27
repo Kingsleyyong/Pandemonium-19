@@ -59,7 +59,7 @@ session_start();
                                     <label>Contact Number : </label>
                                     <input type="tel" name="phone" class="form-control" 
                                         pattern="([0]{1}[1]{1}[0-9]{8})|([0]{1}[1]{1}[0-9]{9})" size="48px" 
-                                        placeholder="01X-(7 to 8 digits)" required>
+                                        placeholder="Contact eg: 0123456789" required>
                                 </div>
                             </div>
                             <div class="row my-2">

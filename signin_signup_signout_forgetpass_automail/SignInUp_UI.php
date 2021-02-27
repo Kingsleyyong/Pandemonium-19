@@ -39,7 +39,8 @@
 		<!-- Register form -->
 			<form id="Register" class="inputGroup" action="registerAction.php" method="post">
 				<input type="text" class="inputMember" placeholder="Username" name="username" required>
-				<input type="text" class="inputMember" placeholder="Contact eg: 0123456789" name="contact" required>
+				<input type="tel" class="inputMember" placeholder="Contact eg: 0123456789" 
+						pattern="([0]{1}[1]{1}[0-9]{8})|([0]{1}[1]{1}[0-9]{9})" name="contact" required>
 				<input type="radio" class="inputMemberRB" name="gender" value="Male" required>Male
 				<input type="radio" class="inputMemberRB" name="gender" value="Female" required>Female
 				<input type="Email" class="inputMember" placeholder=" Email" name="email" required>

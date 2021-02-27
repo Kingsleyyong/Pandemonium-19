@@ -12,12 +12,19 @@ session_start();
 		$password = $_POST['password'];
 		$contact = $_POST['contact'];
 		$gender = $_POST['gender'];
-		$dob = filter_input(INPUT_POST,'dob');
+		$dob = $_POST['dob'];
 
+
+		$result = mysqli_query("SELECT * FROM user WHERE userEmail = '$userEmail'");
+		$user_data = mysqli_fetch_assoc($result);
+		if($userEmail == $user_data['userEmail']) {
+			?>
+			<script type="text/javascript">
+				email.setCustomValidity("This email has been taken!");
+			</script>
+			<?php
+		}
 		
-
-
-
 		if(!empty($userName) && !empty($password) && !empty($userEmail))
 		{
 			$query = 	"INSERT INTO user (userName,userEmail,userPassword,userContact,gender,dateOfBirth) 
