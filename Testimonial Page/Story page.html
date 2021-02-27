@@ -2,21 +2,50 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="story%20page.css" rel="stylesheet">
+    <title>Title</title>    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <script src="story%20page.js"></script>
-<body id="img_background" class="Square_Text_area">
-<fieldset class="Square_Text_area" id="text_square_position"></fieldset> <!--square size for story fix-->
-    <div id="comment_part">
-        <form>
-            <label for="comment_box"></label>
-            <textarea placeholder="Leave your comment here..." id="comment_box"></textarea>
-            <div class="comment_button">
-                <input type="submit" value="comment" class="button_colour">
-                <button class="button_colour">Cancel</button>
+<body class="bg-dark text-light">
+    <div class="container">
+        <div class="row p-3 bg-secondary">
+            <div class="col">
+                <img src="../assets/No_Picture.jpg" class="mx-auto d-block" alt="article image">
             </div>
-        </form>
+        </div>
+        <div class="row mb-4 p-3 bg-secondary">
+            <div class="col">
+                <h1 class="text-center">article title</h1>
+                <h4 class="text-center">date etc</h4>
+                <p class="my-3">article here lalalalalallal</p>
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col">
+                <form>
+                    <label for="comment_box"></label>
+                    <textarea placeholder="Leave your comment here..." class="form-control"></textarea>
+                    <div class="comment_button my-2">
+                        <input type="submit" value="Comment" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row rounded bg-info p-2 my-3">
+            <div class="col">
+                <img src="../assets/default-profile-ico.png" width="50px" class="mx-auto d-block" alt="profile-photo">
+                <p class="text-center">
+                    <a href="">username</a>
+                    <br>
+                    MONTH DD, YYYY
+                    <br>
+                    HH:MM PM/AM
+                </p>
+            </div>
+            <div class="col">
+                comment here la lalalalallala
+            </div>
+        </div>
     </div>
 </body>
 </html>

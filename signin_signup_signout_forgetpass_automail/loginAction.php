@@ -1,4 +1,6 @@
 <?php 
+session_start();
+include("../database/connect.php");
 
 //The different with $_POST and $_SERVER['REQUEST_METHOD'] == "POST" is:
 //$_POST is sending the data

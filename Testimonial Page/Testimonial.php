@@ -3,22 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Testimonial</title>
-    <link href="../assets/CSS/testimonial.css" rel="stylesheet">
-    <!-- NAV UI Import here -->
+    <!-- <link href="../assets/CSS/testimonial.css" rel="stylesheet">
+    NAV UI Import here -->
     <?php require("../Navigation Bar and Footer/navbar.html"); ?> 
 </head>
 
-<body style="background-color: #30343F">
-<hr>
+<body class="bg-dark text-light">
 <div class="division_toggle">
 <table>
-    <tr> <!--to let the color of button remain differential colour-->
+        <tr> <!--to let the color of button remain differential colour-->
         <td><div id="button_remain_color"></div></td>
         <td>
-            <button type="button" class="toggle_view_button">Most View Story</button> <!-- for class toggle_view_button-->
+            <button type="button" class="btn btn-primary">Most View Story</button> <!-- for class toggle_view_button-->
         </td>
         <td>
-            <button type="button" class="toggle_view_button">Latest Story</button> <!-- for class toggle_view_button-->
+            <button type="button" class="btn btn-primary">Latest Story</button> <!-- for class toggle_view_button-->
         </td>
         <td id="storyboard">
             Story of Frontliners & Covid Patients
@@ -26,53 +25,70 @@
     </tr>
 </table>
 </div>
-<div>
-<!--1 picture contents-->
-    <table>
-        <tr>
-            <td>
-                <a><img src="../assets/No_Picture.jpg" alt="NP" id="pic_1"></a>
-                <p><span id="title1"></span></p>
-                <p style="position: relative;left: 120px"><a href="Story%20page.html">Read More</a></p>
-            </td>
-            <td>
-                <a><img src="../assets/No_Picture.jpg" alt="NP" id="pic_2"></a>
-                <p><span id="title2"></span></p>
-                <p style="position: relative;left: 370px"><a href="Story%20page.html">Read More</a></p>
-            </td>
-        </tr>
-    </table>
-</div>
-<hr class="line">
-<div>
-    <!--2 picture contents-->
-    <table>
-        <tr>
-            <td>
-                <a><img src="../assets/No_Picture.jpg" alt="NP" id="pic_3"></a>
-                <p><span id="title3"></span></p>
-                <p style="position: relative;left: 120px"><a href="Story%20page.html">Read More</a></p>
-            </td>
-            <td>
-                <a><img src="../assets/No_Picture.jpg" alt="NP" id="pic_4"></a>
-                <p><span id="title4"></span></p>
-                <p style="position: relative;left: 370px"><a href="Story%20page.html">Read More</a></p>
-            </td>
-        </tr>
-    </table>
+
+<div class="container-fluid my-3">
+    <div class="row p-3">
+        <!--- Since 1 row got 4 col, when print 4 column close div tag (line 52) and start a new row (line 30)  
+              Every story (1 column) have starting tag of line 33 and ending tag of line 37--->
+        <div class="col px-4 mx-4">
+            <a><img src="../assets/No_Picture.jpg" class="mx-auto d-block" alt="NP" id="pic_1">
+            <p class="text-center"><span id="title1">Title</span></p>
+            <p class="text-right">Read More</p></a>
+        </div>
+        <div class="col px-4 mx-4">
+            <a><img src="../assets/No_Picture.jpg" class="mx-auto d-block" alt="NP" id="pic_1">
+            <p class="text-center"><span id="title1">Title</span></p>
+            <p class="text-right">Read More</p></a>
+        </div>
+        <div class="col px-4 mx-4">
+            <a><img src="../assets/No_Picture.jpg" class="mx-auto d-block" alt="NP" id="pic_1">
+            <p class="text-center"><span id="title1">Title</span></p>
+            <p class="text-right">Read More</p></a>
+        </div>
+        <div class="col px-4 mx-4">
+            <a><img src="../assets/No_Picture.jpg" class="mx-auto d-block" alt="NP" id="pic_1">
+            <p class="text-center"><span id="title1">Title</span></p>
+            <p class="text-right">Read More</p></a>
+        </div>
+    </div>
+    <div class="row p-3">
+        <!--- Since 1 row got 4 col, when print 4 column close div tag (line 52) and start a new row (line 30)  
+              Every story (1 column) have starting tag of line 33 and ending tag of line 37--->
+        <div class="col px-4 mx-4">
+            <a><img src="../assets/No_Picture.jpg" class="mx-auto d-block" alt="NP" id="pic_1">
+            <p class="text-center"><span id="title1">Title</span></p>
+            <p class="text-right">Read More</p></a>
+        </div>
+        <div class="col px-4 mx-4">
+            <a><img src="../assets/No_Picture.jpg" class="mx-auto d-block" alt="NP" id="pic_1">
+            <p class="text-center"><span id="title1">Title</span></p>
+            <p class="text-right">Read More</p></a>
+        </div>
+        <div class="col px-4 mx-4">
+            <a><img src="../assets/No_Picture.jpg" class="mx-auto d-block" alt="NP" id="pic_1">
+            <p class="text-center"><span id="title1">Title</span></p>
+            <p class="text-right">Read More</p></a>
+        </div>
+        <div class="col px-4 mx-4">
+            <a><img src="../assets/No_Picture.jpg" class="mx-auto d-block" alt="NP" id="pic_1">
+            <p class="text-center"><span id="title1">Title</span></p>
+            <p class="text-right">Read More</p></a>
+        </div>
+    </div>
+    <!-- don't touch below code (for navigation)-->
+    <div class="row my-3">
+        <div class="col">
+            <a href="#"><p class="text-center">&laquo; Previous</p></a>
+        </div>
+        <div class="col">
+            <a href="#"><p class="text-center">Next &raquo;</p></a>
+        </div>
+    </div>
 </div>
 
 
-<div>
-    <table>
-        <tr>
-            <td >
-                <a href="#" class="previous_next">&laquo; Previous</a>
-                <a href="#" class="previous_next">Next &raquo;</a>
-            </td>
-        </tr>
-    </table>
-</div>
+                
+
 
 <span id="pad">
 </span>

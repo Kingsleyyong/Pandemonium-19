@@ -26,11 +26,26 @@
             overflow: hidden !important;
             text-overflow: ellipsis;
         }
+
+        .testiDel table, .testiDel th, .testiDel tr, .testiDel td{
+            border: 1pt solid black;
+            border-collapse: collapse;
+            padding: 10px;
+        }
     </style>
 
     <script type="text/javascript">
         function confirmation() {
-            confirm("Do you want to delete this story?");
+            $confirm = confirm("Do you want to delete this story?");
+            if($confirm)
+            {
+                return true;
+            }
+            else
+            {
+                event.stopPropagation(); 
+				event.preventDefault();
+            }
         }
 
     </script>
@@ -43,27 +58,24 @@
         <td style="padding-left: 20px"><button class="_button" onclick="location.href='manage testimonial_delete.php'">Delete</button></td>
         <td style="padding-left: 20px" ><button class="_button" onclick="location.href = 'addStory.php'">Add Story</button></td>
         <td style="padding-left: 20px">
-            <form class="search_box" name="search_testimonial">
+            <form class="search_box" name="search_testimonial" method="POST">
                 <input type="search" spellcheck="false" placeholder="Search..." style="width:200px;
                  border-bottom-left-radius: 30px;border-top-left-radius: 30px"
                        name="search" id="search_text">
-                <button class="_button">Search</button>
+                <input class="_button" type="submit" value="SEARCH">
             </form>
         </td>
         </td>
     </tr>
 </table>
 <hr>
-<div>
+<div class = "testiDel">
     <table>
         <tr>
-            <td style="padding-left: 50px">
-                <p style="word-spacing: 4cm;"><span style="word-spacing: normal">Page ID</span>
-                    <span style="word-spacing: normal">Date  Posted</span>
-                    <span style="word-spacing: normal">Page Title</span>
-                    <span style="word-spacing: normal;padding-left: 300px">Manage</span>
-                </p>
-            </td>
+            <th>Page ID</th>
+            <th>Date  Posted</th>
+            <th>Page Title</th>
+            <th>Manage</th>
         </tr>
         <?php include "data_connection.php";
         ob_start();
@@ -113,28 +125,59 @@
 
         $result = mysqli_query($conn, $query) or die( mysqli_error($conn));;
 
-        while($row = mysqli_fetch_array($result))
-        {
-            $id = $row["storyID"];
-            $date = $row["storyDate"];
-            $title = $row["storyTitle"];
 
-            ?>
-            <tr>
-                <td style="padding-left: 95px">
-                    <p style="word-spacing: 4cm;"><span style="word-spacing: normal" ><?php echo $id;?></span>
-                        <span style="word-spacing: normal"><?php echo $date;?></span>
-                        <span style="word-spacing: normal;" class="dots"><?php echo $title;?></span>
-                        <span style="word-spacing: normal;padding-left: 1px">
-                        <a style="text-decoration: none;" href="?page_delete=true&id=<?php echo $id;?>" onclick="confirmation()">DELETE</a>
-                    </span>
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td><hr></td>
-            </tr>
-            <?php
+        if(!isset($_POST['search']))
+        {
+            while($row = mysqli_fetch_array($result))
+            {
+                $id = $row["storyID"];
+                $date = $row["storyDate"];
+                $title = $row["storyTitle"];
+
+                ?>
+                <tr>
+                    <td><?php echo $id;?></td>
+                    <td><?php echo $date;?></td>
+                    <td><?php echo $title;?></td>
+                    <td><a style="text-decoration: none;" href="?page_delete=true&id=<?php echo $id;?>" onclick="confirmation()">DELETE</a></td>
+                </tr>
+                <?php
+            }
+        }
+        
+        else
+        {
+            $search_item = $_POST['search'];
+            $search_item = preg_replace("#[^0-9a-z]#i", "", $search_item);
+            $query = mysqli_query($conn,"SELECT * FROM story WHERE storyID LIKE '%$search_item%'
+                    or storyAuthor LIKE '%$search_item%' or storyTitle LIKE '%$search_item%'") or die("No data find");
+            $count = mysqli_num_rows($query);
+
+            if ($count == 0)
+            {
+                ?>
+                <tr>
+                    <td colspan="4" style="text-align: center;">NO RESULT</td>
+                </tr>
+        <?php
+            }
+            else
+            {
+                while ($row = mysqli_fetch_array($query))
+                {
+                    $id = $row["storyID"];
+                    $date = $row["storyDate"];
+                    $title = $row["storyTitle"];
+                    ?>
+                    <tr>
+                        <td><?php echo $id;?></td>
+                        <td><?php echo $date;?></td>
+                        <td><?php echo $title;?></td>
+                        <td><a style="text-decoration: none;" href="?page_delete=true&id=<?php echo $id;?>" onclick="confirmation()">DELETE</a></td>
+                    </tr>
+                    <?php
+                }
+            }
         }
         ?>
     </table>

@@ -43,6 +43,10 @@
                         <label class="pr-5">Email Address : </label>
                         <input type="email" class="form-control-lg" name="email" size="48px" required/>
                     </div>
+                    <div class="form-group">
+                        <label class="pr-4">User Password : </label>
+                        <input type="password" class="form-control-lg" name="password" size="48px" required/>
+                    </div>
                     <p><label>Residential Address : </label>
                         <textarea name="address" class="form-control-lg" rows="6" cols="51" required></textarea>
                     </p>
@@ -54,23 +58,33 @@
         <?php require("../Navigation Bar and Footer/footer.html"); ?> 
     </body>
 
-    <?php
+    <?php include("data_connection.php");
+
         if(isset($_POST['savebtn'])){
-            // $pic = $_POST['displayPicture']
-            //$username = $_POST['username'];
-            // $gender = $_POST['gender'];
-            // $birthday = $_POST['dob'];
-            // $contactNumber = $_POST['phone'];
-            // $email = $_POST['email'];
-            // $address = $_POST['address'];
+            $pic = $_POST['displayPicture'];
+            $username = $_POST['username'];
+             $gender = $_POST['gender'];
+            $birthday = $_POST['dob'];
+            $contactNumber = $_POST['phone'];
+            $email = $_POST['email'];
+            $address = $_POST['address'];
+            $pass = $_POST['password'];
+            $id = ['userID'];
 
             $query =    "UPDATE user 
                         SET userName = '$username', userEmail = '$gender', userContact = '$contactNumber',
-                        userPassword = '$',
-                        gender, dateOfdate, residentalAddress, userType,
-                        profilePicture FROM user";
+                        userPassword = '$pass',
+                        gender = '$gender', dateOfdate = '$birthday', residentalAddress = '$address',
+                            profilePicture = '$pic' FROM user WHERE userID = '$id'";
 
+            if ($result = mysqli_query($conn, $query))
+            {
+                ?>
+                <script type="text/javascript">
+                    alert("User Details Updated");
+                </script>
+                <?php
+            }
         }
-
     ?>
 </html>

@@ -8,7 +8,7 @@
     <body class="bg-dark">
         <?php require("../Navigation Bar and Footer/navbar.html") ?>
         <div class="loc text-light text-center">
-            <img src="../assets/logo.png" id="aboutUsLogo" alt="Pandemonium 19" onclick="location.href='main.php'"/>
+            <img src="../assets/logo.png" id="aboutUsLogo" alt="Pandemonium 19" onclick="location.href='../Index Page/main.php'"/>
             <div id="aboutUs">
                 <h3 id="aboutTitle">About Us</h3>
                 <div class="about" style="margin-left: 4.8%;">

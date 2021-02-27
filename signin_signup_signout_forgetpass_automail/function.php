@@ -15,7 +15,7 @@ function check_log($con)
 		}
 	}else
 	{
-		header("Location: login&register.php");
+		header("Location: SignInUp_UI.php");
 		die;
 	}
 
