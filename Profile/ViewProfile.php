@@ -24,7 +24,7 @@ session_start();
                                 crossorigin="anonymous">
         <script type="text/javascript" src="../assets/javascript1.js"></script>
         <!-- NAV UI Import here -->
-        <?php require("../Navigation Bar and Footer/navbar.php"); ?> 
+        <?php require("../Navigation Bar and Footer/navbar.html"); ?> 
 
     </head>
     <body class="bg-dark text-light">

@@ -72,8 +72,8 @@
                 <?php
                 while($row = mysqli_fetch_array($result))
                 {
-                ?><a href='Story page.php?id=<?php echo $row['storyID'];?>">&page_set=true">
-                <?php echo '<img src="data:image/jpeg;base64,'. base64_encode( $result['storyMedia'] ).'" alt="" class="mx-auto d-block" alt="NP" id="pic_1"/>'?>
+                ?><a href="Story page.php?id&pageSet=<?php echo $row['storyID'];?>">
+                <?php echo '<img src="data:image/*;base64,'. base64_encode( $result['storyMedia'] ).'" alt="" class="mx-auto d-block" alt="NP" id="pic_1"/>'?>
                 <p class="text-center"><span id="title1"><?php echo $row['storyTitle'];?></span></p>
                 <p class="text-right">Read More</p></a>
         </div>
@@ -91,9 +91,17 @@
             {
             ?>
             <div class="col px-4 mx-4">
-                    <a href="Story%20page.php?id=<?php echo $row['storyID'];?>&pageset=true">
-                    <?php echo '<img class="mx-auto d-block" width = 150dp height = 130dp src="data:image/jpeg;base64,'.
-                base64_encode($row['storyMedia']).'" alt=""/>'?>
+                    <a href="Story page.php?id&pageSet=<?php echo $row['storyID'];?>">
+                    <?php 
+                        if($row['storyMedia']!=null) {
+                            $pic = $row['storyMedia'];
+                            echo '<img class="mx-auto d-block" width = 150dp height = 130dp src="data:image/*;base64,'.
+                                    base64_encode($row['storyMedia']).'" alt=""/>';
+                        }
+                        else {
+                            echo '<img src="../assets/storyDefault.png" width = 150dp height = 130dp class="mx-auto d-block" alt="article image">';
+                        } 
+                    ?>
                 <p class="text-center"><span id="title1"><?php echo $row['storyTitle'];?></span></p>
                 <p class="text-right">Read More</p></a>
         </div>
@@ -103,7 +111,7 @@
         ?>
         </div>
     </div>
-    <!-- don't touch below code (for navigation)-->
+    
     <div class="row my-3">
         <div class="col">
             <?php
