@@ -1,3 +1,19 @@
+<?php
+session_start();
+
+	include("../database/connect.php");
+	include("../signin_signup_signout_forgetpass_automail/function.php");
+
+	$user_data = check_log($con);
+    $upic = $user_data["profilePicture"];
+    $uname = $user_data["userName"];
+    $ugender = $user_data["gender"];
+    $udob = $user_data["dateOfBirth"];
+    $ucontact = $user_data["userContact"];
+    $uemail = $user_data["userEmail"];
+    $uaddress = $user_data["residentialAddress"];
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,46 +26,35 @@
         <!-- NAV UI Import here -->
         <?php require("../Navigation Bar and Footer/navbar.html"); ?> 
     </head>
-    <body class="bg-dark">
-        
-        <div class="localbody pb-5">
-            <form name="profileForm" id="profileForm" method="post">
-                <div class="p-3 pt-4 ml-5">
-                    <p id="dp">
-                        <img src="../assets/default.jpg" alt="Default Profile Picture"/><br/>
-                        <input type="file" name="displayPicture" accept="image/*" id="dpt" onchange="changeImage();">
-                    </p>
+    <body class="bg-dark text-light">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4">
+                    <?php echo '<img class="d-block mx-auto" src="data:image/jpeg;base64,'
+                            .base64_encode($upic).'" alt="Default Profile Pictur"/>'?>
                 </div>
                 <div id="field">
                     <div class="form-group">
                         <label class="pr-4 mr-5">Username : </label>
-                        <label class="form-control-lg ml-2"><?php echo "test"; ?></label>
-                        <!-- <input type="text" name="username" class="form-control-lg ml-2" maxlength="24" size="48px" /> -->
+                        <label class="form-control-lg ml-2"><?php echo $uname; ?></label>
                     </div>
                     <p><label class="pr-5 mr-5">Gender : </label>
-                        <input type="radio" class="mx-3" name="gender" value="Male" /> Male
-                        <input type="radio" class="mx-3" name="gender" value="Female" /> Female
+                        <label class="mx-3"><?php echo $ugender; ?></label>
                     </p>
                     <div class="form-group">
                         <label class="pr-5 mr-3">Date of Birth : </label>
-                        <input type="date" class="form-control-lg" name="dob" min="1941-01-01" max="2009-12-31"/>
+                        <label class="form-control-lg"><?php echo $udob; ?></label>
                     </div>
                     <div class="form-group">
                         <label class="pr-4 mr-1">Contact Number : </label>
-                        <input type="tel" name="phone" class="form-control-lg" 
-                            pattern="([0]{1}[1]{1}[0-9]{8})|([0]{1}[1]{1}[0-9]{9})" size="48px" 
-                            placeholder="01X-(7 to 8 digits)" >
+                        <label class="form-control-lg"><?php echo $ucontact; ?></label>
                     </div>
                     <div class="form-group">
                         <label class="pr-5">Email Address : </label>
-                        <input type="email" class="form-control-lg" name="email" size="48px"/>
-                    </div>
-                    <div class="form-group">
-                        <label class="pr-4">User Password : </label>
-                        <input type="password" class="form-control-lg" name="password" size="48px" />
+                        <label class="form-control-lg"><?php echo $uemail; ?></label>
                     </div>
                     <p><label>Residential Address : </label>
-                        <textarea name="address" class="form-control-lg" rows="6" cols="51" ></textarea>
+                        <textarae rows="6" cols="51" class="form-control-lg"><?php echo $uaddress; ?></textarea>
                     </p>
                 </div>
             </form>

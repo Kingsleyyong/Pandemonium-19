@@ -51,7 +51,7 @@
         </div>
         <div class="row">
             <div class="col rounded admincolbg m-4 p-3">
-                <a href="">
+                <a href="manage testimonial.php">
                     <div class="container">
                         <img src="../assets/admin/testimonials.png" height="150px" class="mx-auto d-block" alt="">
                         <h2>Manage Testimonials</h2>
@@ -59,7 +59,7 @@
                 </a>
             </div>
             <div class="col rounded admincolbg m-4 p-3">
-                <a href="">
+                <a href="Contact List.php">
                     <div class="container">
                         <img src="../assets/admin/feedback.png" height="150px" class="mx-auto d-block" alt="">
                         <h2>Print Feedback</h2>
@@ -67,7 +67,7 @@
                 </a>
             </div>
             <div class="col rounded admincolbg m-4 p-3">
-                <a href="">
+                <a href="user_management.php">
                     <div class="container">
                         <img src="../assets/admin/users.png" height="150px" class="mx-auto d-block" alt="">
                         <h2>Manage Users</h2>
