@@ -5,11 +5,12 @@
     <title>Contact Us</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!--<link href="../assets/CSS/Contact Us.css" rel="stylesheet">-->
+    <?php require("../Navigation Bar and Footer/navbar.html"); ?> 
 </head>
 <body class="bg-dark text-light">
-    <div class="col">
-        <p class="text-center">Contact Us for support or any question at <a href="mailto:www@gmail.com">www@gmail.com</a></p> <!--hyperlink for our gmail-->
-        <p class="text-center">GET IN TOUCH AND WE WILL BE IN TOUCH AS SOON AS POSSIBLE</p>
+    <div class="col"><br><br>
+        <p class="text-center">Contact Us for support or enquiries at <a href="mailto:www@gmail.com">www@gmail.com</a></p> <!--hyperlink for our gmail-->
+        <p class="text-center">WE WILL REPLY YOU AS SOON AS POSSIBLE</p><br><br>
     </div>
     <div class="container">
         <div class="row">
@@ -56,10 +57,12 @@
                 <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15938.441917421716!2d101.6419004!3d2.9277715!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd0f74e8ad10f1129!2sMultimedia%20University%20-%20MMU%20Cyberjaya!5e0!3m2!1sen!2smy!4v1611408350513!5m2!1sen!2smy"
                 width="250" height="250" frameborder="0"
                 style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" id="map" class="d-block mx-auto"></iframe>
+                <br><p class="text-center">Multimedia University (MMU)</p>
                 <p class="text-center">Persiaran Multimedia, 63100 Cyberjaya, Selangor</p>
             </div>
         </div>
     </div>
+    <?php require("../Navigation Bar and Footer/footer.html"); ?> 
 </body>
 </html>
 
