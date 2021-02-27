@@ -5,64 +5,38 @@
     <title>Title</title>
     <link href="manage%20testimonial.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        ._button:hover{
-            background-color: #232F57;
-            color: #FAFFFF;
-            cursor: pointer;
-            outline: none;
-            border: none;
-        }
-
-        ._button:active{
-            background-color: #E4D9FF;
-            color: #FAFFFF;
-            cursor: pointer;
-        }
-        .dots {
-            display: inline-block;
-            width: 400px;
-            white-space: nowrap;
-            overflow: hidden !important;
-            text-overflow: ellipsis;
-        }
-
-        #testitable table, #testitable th, #testitable tr, #testitable td{
-            border: 1pt solid black;
-            border-collapse: collapse;
-            padding: 10px;
-        }
-
-       
-    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
-<body>
-<table >
-    <tr>
-        <td style="padding-left: 50px" >
-        <td style="padding-left: 20px"><button class="_button" onclick="location.href = 'manage testimonial.php'">ALL</button></td>
-        <td style="padding-left: 20px"><button class="_button" onclick="location.href = 'manage testimonial_edit.php'">Edit</button></td>
-        <td style="padding-left: 20px"><button class="_button" onclick="location.href='manage testimonial_delete.php'">Delete</button></td>
-        <td style="padding-left: 20px" ><button class="_button" onclick="location.href = 'addStory.php'">Add Story</button></td>
-        <td style="padding-left: 20px">
-            <form class="search_box" name="search_testimonial" method="post">
-                <input type="search" spellcheck="false" placeholder="Search..." style="width:200px;
-                 border-bottom-left-radius: 30px;border-top-left-radius: 30px"
-                       name="search" id="search_text">
-                <input class="_button" type="submit" value="SEARCH">
-            </form>
-        </td>
-        </td>
-    </tr>
-</table>
-<hr>
+<body class="bg-dark text-light">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-light mx-auto d-block" onclick="location.href = 'manage testimonial.php'">ALL</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-warning mx-auto d-block" onclick="location.href = 'manage testimonial_edit.php'">Edit</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-danger mx-auto d-block" onclick="location.href='manage testimonial_delete.php'">Delete</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-info mx-auto d-block" onclick="location.href = 'addStory.php'">Add Story</button>
+            </div>
+            <div class="col mx-auto d-block">
+                <form name="search_testimonial" method="post">
+                    <input type="search" class="form-control-sm" spellcheck="false" placeholder="Search..." name="search" id="search_text">
+                    <input class="btn-sm btn-primary" type="submit" value="Search">
+                </form>
+            </div>
+        </div>
+    </div>
 <div id="testitable">
-    <table>
+    <table class="table">
         <tr>
-            <th>Page ID</th>
-            <th>Date  Posted</th>
-            <th>Page Title</th>
-            <th>Manage</th>
+            <th scope="col" class="text-center">Page ID</th>
+            <th scope="col" class="text-center">Date  Posted</th>
+            <th scope="col" class="text-center">Page Title</th>
+            <th scope="col" class="text-center">Manage</th>
         </tr>
         <?php include "data_connection.php";
 

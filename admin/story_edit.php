@@ -3,17 +3,10 @@
 <html>
 <head><title>Edit a Movie</title>
     <link href="design.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
-<body>
-
-<div id="wrapper">
-
-    <div id="left">
-    </div>
-
-    <div id="right">
-
-        <?php
+<body class="bg-dark text-light">
+    <?php
         $storyId = $_GET["id"];
 
         if(isset($_GET["pageset"]))
@@ -22,33 +15,42 @@
             $row = mysqli_fetch_assoc($result);
             ?>
 
-            <h1>Edit a Story</h1>
-
-            <form name="edit_addfrm" method="post" action="">
-
-                <p><label>Story name</label><input type="text" name="Story_title" size="80"
-                    value="<?php echo $row['storyTitle']; ?>">
-
-                <p><label>Story Author</label><input type="text" name="Story_author" size="80"
-                                                     value="<?php echo $row['storyAuthor']; ?>">
-
-                <p><label>Image</label><input type="file" name="img" size="10" accept="image/*">
-
-                <p><label>Story</label><textarea cols="60" rows="4" name="story_text"
-                    ><?php echo $row['storyBoard']; ?></textarea>
-
-                <p><label>Posted Date:</label><input type="date" name="story_release_date"
-                        value="<?php echo $row['storyDate']; ?>">
-
-                <p><input type="submit" name="savebtnstory" id="button" value="UPDATE STORY">
-            </form>
-            <p><button class="_button" onclick="location.href = 'manage testimonial.php'">BACK TO MANAGE TESTIMONIAL</button></p>
-            <?php
+    <form name="edit_addfrm" method="post" class="m-4" action="">
+        <div class="row">
+            <h1>Add Story</h1>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>Story name</label>
+                <input type="text" class="form-control" size="80" name="Story_title" value="<?php echo $row['storyTitle']; ?>" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Story Author</label>
+                <input type="text" name="Story_author" class="form-control" size="80" value="<?php echo $row['storyAuthor']; ?>" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md">
+                <label>Image</label>
+                <input type="file" name="img" size="10" class="form-control-file" accept="image/*" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Posted Date:</label>
+                <input type="date" name="story_release_date" class="form-control" value="<?php echo $row['storyDate']; ?>" required>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md">
+                <label>Story</label>
+                <textarea cols="60" rows="4" name="story_text" class="form-control" required><?php echo $row['storyBoard']; ?></textarea>
+            </div>
+        </div>
+        <input type="submit" name="savebtnstory" class="btn btn-primary" id="button" value="UPDATE STORY">
+        <input type="submit" id="button1" value="BACK TO MANAGE TESTIMONIAL"  class="btn btn-info" onclick="location.href = 'manage testimonial.php'">
+    </form>
+    <?php
         }
         ?>
-    </div>
-
-</div>
 
 
 </body>

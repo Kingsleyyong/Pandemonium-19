@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-	include("connect.php");
-	include("function.php");
+	include("../database/connect.php");
+	include("../signin_signup_signout_forgetpass_automail/function.php");
 
 	$user_data = check_log($con);
 ?>
