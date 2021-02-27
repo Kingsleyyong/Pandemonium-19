@@ -45,11 +45,11 @@
         <td style="padding-left: 20px"><button class="_button" onclick="location.href ='manage testimonial_delete.php'">Delete</button></td>
         <td style="padding-left: 20px" ><button class="_button" onclick="location.href = 'addStory.php'">Add Story</button></td>
         <td style="padding-left: 20px">
-            <form class="search_box" name="search_testimonial">
+            <form class="search_box" name="search_testimonial" method = "POST">
                 <input type="search" spellcheck="false" placeholder="Search..." style="width:200px;
                  border-bottom-left-radius: 30px;border-top-left-radius: 30px"
                        name="search" id="search_text">
-                <button class="_button">Search</button>
+                <input class="_button" type="submit" value="SEARCH">
             </form>
         </td>
         </td>
@@ -90,23 +90,61 @@
 
         $query = 'SELECT * FROM story LIMIT ' . $first_page_result . ',' . $per_page;
 
-        $result = mysqli_query($conn, $query) or die( mysqli_error($conn));;
+        $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
 
-        while($row = mysqli_fetch_array($result))
+
+        if(!isset($_POST['search']))
         {
-            $id = $row["storyID"];
-            $date = $row["storyDate"];
-            $title = $row["storyTitle"];
+            while($row = mysqli_fetch_array($result))
+            {
+                $id = $row["storyID"];
+                $date = $row["storyDate"];
+                $title = $row["storyTitle"];
 
-            ?>
-            <tr>
-                <td><?php echo $id;?></td>
-                <td><?php echo $date;?></td>
-                <td><?php echo $title;?></td>
-                <td><a href="story_edit.php?id=<?php echo $id;?>&pageset=true" class="no_underline">Edit</a></td>
-            </tr>
-            
-            <?php
+                ?>
+                <tr>
+                    <td><?php echo $id;?></td>
+                    <td><?php echo $date;?></td>
+                    <td><?php echo $title;?></td>
+                    <td><a href="story_edit.php?id=<?php echo $id;?>&pageset=true" class="no_underline">Edit</a></td>
+                </tr>
+                
+                <?php
+            }
+        }
+        else
+        {
+            $search_item = $_POST['search'];
+            $search_item = preg_replace("#[^0-9a-z]#i", "", $search_item);
+            $query = mysqli_query($conn,"SELECT * FROM story WHERE storyID LIKE '%$search_item%'
+                    or storyAuthor LIKE '%$search_item%' or storyTitle LIKE '%$search_item%'") or die("No data find");
+            $count = mysqli_num_rows($query);
+
+            if ($count == 0)
+            {
+                ?>
+                <tr>
+                    <td colspan="4" style="text-align: center;">NO RESULT</td>
+                </tr>
+        <?php
+            }
+            else
+            {
+                while ($row = mysqli_fetch_array($query))
+                {
+                    $id = $row["storyID"];
+                    $date = $row["storyDate"];
+                    $title = $row["storyTitle"];
+                    ?>
+                    <tr>
+                        <td><?php echo $id;?></td>
+                        <td><?php echo $date;?></td>
+                        <td><?php echo $title;?></td>
+                        <td><a href="story_edit.php?id=<?php echo $id;?>&pageset=true" class="no_underline">Edit</a></td>
+                    </tr>
+                    <?php
+                }
+            }
         }
         ?>
     </table>
