@@ -1,0 +1,6 @@
+if($cartAdd = mysqli_query($con,$itemAdding)){ ?>
+            <script> alert("Sucessfull Add to Cart.");</script>
+        <?php }
+        else{ ?>
+            <script>alert("Error Occur." <?php echo $result?>);</script>
+        <?php }
