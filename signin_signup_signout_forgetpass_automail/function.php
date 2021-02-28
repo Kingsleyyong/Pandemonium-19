@@ -15,7 +15,7 @@ function check_log($con)
 		}
 	}else
 	{
-		header("Location: SignInUp_UI.php");
+		header("Location: ../signin_signup_signout_forgetpass_automail/SignInUp_UI.php");
 		die;
 	}
 
