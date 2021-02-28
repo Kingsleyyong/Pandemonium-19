@@ -44,6 +44,7 @@
 				<input type="password" class="inputMember" placeholder="Confirm Password" name="confirm_password" required
 					id="confirm_password">
 				<input type="date" class="inputMember" name="dob" required placeholder="Date Of Birth">
+				<textarea class="inputMember" name="address" required placeholder="Residential Address"></textarea>
 				<input type="checkbox" class="checkbox" required><span>I agree to the <a href="termNcondition_UI.html"
 						target="_blank"><u>Terms & Conditions<u></a></span>
 				<button type="submit" class="LoginBtn">Register</button>

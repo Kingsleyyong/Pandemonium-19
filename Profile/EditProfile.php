@@ -100,8 +100,20 @@
                             <div class="row my-2">
                                 <div class="col">
                                     <label>Residential Address : </label>
-                                    <textarea name="address" class="form-control" rows="6" cols="51" required><?php echo $uaddress?>
-                                    </textarea>
+
+                                    <?php 
+                                        if($uaddress!=0){
+                                    ?>
+                                        <textarea name="address" class="form-control" rows="6" cols="51"><?php echo $uaddress?></textarea>
+                                    <?php
+                                        }
+                                        else if($uaddress==0){
+                                    ?>
+                                        <textarea name="address" class="form-control" rows="6" cols="51" required></textarea>
+                                    <?php
+                                        }
+                                    ?>     
+                                                                 
                                 </div>
                             </div>
                             <div class="row my-2">

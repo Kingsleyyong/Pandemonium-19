@@ -7,9 +7,9 @@ body, html {
 
 #loginbox {
 	width: 380px;
-	height: 600px;
+	height: 900px;
 	position: relative;
-	margin: 4% auto;
+	margin: 1% auto;
 	border: 1pt solid #30343F;
 	border-radius: 10px;
 	padding: 5px;
@@ -19,7 +19,7 @@ body, html {
 
 #ButtonBox {
 	width: 220px;
-	margin: 35px auto;
+	margin: 24px auto;
     position: relative;
 	border-radius: 30px;
 	box-shadow: 0 0 20px 9px #8997D2;

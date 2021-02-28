@@ -13,16 +13,6 @@
 <?php
 
     if(isset($_GET["pageSet"])) {
-        /*if(isset($_GET["id"]))
-        {
-            $story_id = $_GET["id"];
-            setcookie('count', isset($_COOKIE['count']) ? $_COOKIE['count']++ : 1);
-
-            $visitCount = $_COOKIE['count'];
-            $query = "UPDATE story SET storyView = '$visitCount' WHERE storyID = '$story_id'";
-            $result = mysqli_query($conn, $query) or die("HELLO CANNOT");
-
-        }*/
 
         $story_id = $_GET["id"];
         $result = mysqli_query($conn, "SELECT * FROM story WHERE storyID=$story_id") or die("die");
@@ -32,6 +22,11 @@
         $author = $row['storyAuthor'];
         $board = $row['storyBoard'];
         $date = $row['storyDate'];
+        $view = $row['storyView'];
+
+        $view = $view + 1;
+        mysqli_query($conn, "UPDATE story SET storyView='$view' WHERE storyID='$story_id'; ");
+        
     }
 ?>
 
