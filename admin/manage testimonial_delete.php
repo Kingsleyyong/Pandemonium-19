@@ -88,74 +88,61 @@
         $num_page = ceil($number_of_result/$per_page);
 
         // to know which page number user is on
-        if (!isset($_GET['page']))
+        if (!isset($_GET["page"]))
         {
             $p = 1;
         }
         else
         {
-            $p = $_GET['page'];
+            $p = $_GET["page"];
         }
 
         $first_page_result = ($p - 1) * $per_page;
 
         $query = 'SELECT * FROM story LIMIT ' . $first_page_result . ',' . $per_page;
 
-        $result = mysqli_query($conn, $query) or die( mysqli_error($conn));;
+        $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
 
-
-        if(!isset($_POST['search']))
+        if (!isset($_POST['search']))
         {
-            while($row = mysqli_fetch_array($result))
-            {
-                $id = $row["storyID"];
-                $date = $row["storyDate"];
-                $title = $row["storyTitle"];
+        $query = "SELECT * FROM story";
 
-                ?>
-                <tr>
-                    <td class="text-center"><?php echo $id;?></td>
-                    <td class="text-center"><?php echo $date;?></td>
-                    <td class="text-center"><?php echo $title;?></td>
-                    <td class="text-center"><a style="text-decoration: none;" href="?page_delete=true&id=<?php echo $id;?>" onclick="confirmation()">DELETE</a></td>
-                </tr>
-                <?php
-            }
+        $result = mysqli_query($conn, $query) or die( mysqli_error($conn));;
+        $number_of_result = mysqli_num_rows($result);//used to count number of rows results
+
+        //to know the number page available
+        $num_page = ceil($number_of_result/$per_page);
+
+        // to know which page number user is on
+        if (!isset($_GET["page"]))
+        {
+            $p = 1;
         }
-        
         else
         {
-            $search_item = $_POST['search'];
-            $search_item = preg_replace("#[^0-9a-z]#i", "", $search_item);
-            $query = mysqli_query($conn,"SELECT * FROM story WHERE storyID LIKE '%$search_item%'
-                    or storyAuthor LIKE '%$search_item%' or storyTitle LIKE '%$search_item%'") or die("No data find");
-            $count = mysqli_num_rows($query);
+            $p = $_GET["page"];
+        }
 
-            if ($count == 0)
-            {
-                ?>
-                <tr>
-                    <td colspan="4" style="text-align: center;">NO RESULT</td>
-                </tr>
-        <?php
-            }
-            else
-            {
-                while ($row = mysqli_fetch_array($query))
-                {
-                    $id = $row["storyID"];
-                    $date = $row["storyDate"];
-                    $title = $row["storyTitle"];
-                    ?>
-                    <tr>
-                        <td><?php echo $id;?></td>
-                        <td><?php echo $date;?></td>
-                        <td><?php echo $title;?></td>
-                        <td><a style="text-decoration: none;" href="?page_delete=true&id=<?php echo $id;?>" onclick="confirmation()">DELETE</a></td>
-                    </tr>
-                    <?php
-                }
-            }
+        $first_page_result = ($p - 1) * $per_page;
+
+        $query = 'SELECT * FROM story LIMIT ' . $first_page_result . ',' . $per_page;
+
+        $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
+        while($row = mysqli_fetch_array($result))
+        {
+            $id = $row["storyID"];
+            $date = $row["storyDate"];
+            $title = $row["storyTitle"];
+
+            ?>
+            <tr>
+                <td class="text-center"><?php echo $id;?></td>
+                <td class="text-center"><?php echo $date;?></td>
+                <td class="text-center"><?php echo $title;?></td>
+                <td class="text-center"><a style="text-decoration: none;" href="?page_delete=true&id=<?php echo $id;?>"
+                       onclick="confirmation()">DELETE</a></td>
+            </tr>
+            <?php
         }
         ?>
     </table>
@@ -164,7 +151,44 @@
     for ($p = 1; $p <= $num_page; $p++)
     {
         echo '<a style="padding-left: 100px;" href="manage testimonial_delete.php?page=' . $p . '">' . $p . '</a> ';
-    }?>
+    }
+    }
+    else
+    {
+        $search_item = $_POST['search'];
+        $search_item = preg_replace("#[^0-9a-z]#i", "", $search_item);
+        $query = mysqli_query($conn,"SELECT * FROM story WHERE storyID LIKE '%$search_item%'
+                    or storyAuthor LIKE '%$search_item%' or storyTitle LIKE '%$search_item%'") or die("No data find");
+        $count = mysqli_num_rows($query);
+
+        if ($count == 0)
+        {
+            ?>
+            <tr>
+                <td colspan="4" style="text-align: center;">NO RESULT</td>
+            </tr>
+            <?php
+        }
+        else
+        {
+            while ($row = mysqli_fetch_array($query))
+            {
+                $id = $row["storyID"];
+                $date = $row["storyDate"];
+                $title = $row["storyTitle"];
+                ?>
+                <tr>
+                    <td class="text-center"><?php echo $id;?></td>
+                    <td class="text-center"><?php echo $date;?></td>
+                    <td class="text-center"><?php echo $title;?></td>
+                    <td class="text-center"><a style="text-decoration: none;" href="?page_delete=true&id=<?php echo $id;?>"
+                           onclick="confirmation()">DELETE</a></td>
+                </tr>
+                <?php
+            }
+        }
+    }
+    ?>
 
 </div>
 </body>
