@@ -17,6 +17,9 @@
         <div class="col">
             <h1>Contact List</h1>
         </div>
+        <div class="col">
+            <input type="button" class="btn-lg btn-primary" value="HOME">
+        </div>
     </div>
     <div class="row">
         <div class="col">
