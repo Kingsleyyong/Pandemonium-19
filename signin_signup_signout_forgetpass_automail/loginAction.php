@@ -39,6 +39,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 alert("Invalid user name or password!");
 </script>
 <?php
+	header("refresh: 0.2;url = SignInUp_UI.php");
 			}				
 		}						
 	}
