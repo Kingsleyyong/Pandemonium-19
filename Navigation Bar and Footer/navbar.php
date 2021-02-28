@@ -1,12 +1,10 @@
 <?php
 session_start();
-
-	include("../database/connect.php");
+    require ('../database/connect.php');
 	include("../signin_signup_signout_forgetpass_automail/function.php");
 
 	$user_data = check_log($con);
-    $uname = $user_data["userName"];
-    $uID = $user_data["userID"];
+  $uname = $user_data['userName'];
 ?>
 
 <!DOCTYPE html>
@@ -44,20 +42,15 @@ session_start();
               <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
               <img src="../assets/default-profile-ico.png" alt="User" width="30px">
               </a> 
-            <!--- If user signed in, show profile. 
-            Else, show sign in. -->
-            <?php
-              //if()
-            ?>
-
 
             <div class="dropdown-menu col align-self-end">
               <div style="font-weight: bold; "><?php echo "Hi, ".$uname?></div>
               <a class="dropdown-item" href="../Profile/ViewProfile.php?view&uid=<?php echo $user_data["userID"]; ?>">View Profile</a>
               <a class="dropdown-item" href="../Profile/EditProfile.php?view&uid=<?php echo $user_data["userID"]; ?>">Edit Profile</a>
-              <a class="dropdown-item" href="../Merchandise Page/CartPage.php?id=<?php echo $uID; ?>">Your Cart</a>
+              <a class="dropdown-item" href="../Merchandise Page/CartPage.php?id=<?php echo $user_data["userID"]; ?>">Your Cart</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="../signin_signup_signout_forgetpass_automail/SignInUp_UI.php">Log In</a>
+              <a class="dropdown-item" href="../Contact Us Page/feedback.php?fb&uid=<?php echo $user_data["userID"]; ?>">Feel free to drop us your feedback :D</a>
+              <a class="dropdown-item" href="../signin_signup_signout_forgetpass_automail/logoutAction.php">Log Out</a>
             </div>
         </div>
       </nav>
