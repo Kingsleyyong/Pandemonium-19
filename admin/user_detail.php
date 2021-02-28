@@ -1,20 +1,22 @@
-<?php
-session_start();
-
-	include("../database/connect.php");
-	include("../signin_signup_signout_forgetpass_automail/function.php");
-
-	$user_data = check_log($con);
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title>User Detail</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+	<title>Admin | View User Detail</title>
+    <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<?php require ('../Database/connect.php'); ?>
+	<script>
+		    function goBack() {		window.history.back();		}
+	</script>
 </head>
-<body class="bg-dark text-light">
+<body class="bg-dark text-light" style="padding:20px;">
+	<div class="row mx-2 my-3">
+        <div class="col">
+            <h1>User Details</h1>
+        </div>
+    </div>
+	<hr style="border: 1px solid white;">
     <div class="container">
         <div class="row my-3">
             <div class="col">
@@ -70,8 +72,7 @@ session_start();
 				<?php
 			}
 		?>
-		
+		<button onclick="goBack();" class="btn btn-primary m-auto" style="float:right;">Go Back</button>
 	</div>
-
 </body>
 </html>

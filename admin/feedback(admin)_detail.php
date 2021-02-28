@@ -1,22 +1,19 @@
-<?php
-session_start();
-    require ('../Database/connect.php');
-	include("../signin_signup_signout_forgetpass_automail/function.php");
-
-	$user_data = check_log($con);
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
-	<title>User Detail</title>
+	<title>Admin | View Feedback</title>
+	<link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
+	<link rel="stylesheet"  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+                                integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+                                crossorigin="anonymous">
+	<?php require ('../Database/connect.php'); ?>
 	<style type="text/css">
 		body,html{
 			background-color: #30343F;
 		}
 		#detail{
-			width: 500px;
-			height: 500px;
+			width: 80%;
+			height: 80%;
 			position: relative;
 			margin: 6% auto;
 			border: 1pt solid #30343F;
@@ -28,8 +25,12 @@ session_start();
 		#detail table,td,tr,th{
 			padding: 10px;
 		}
-
 	</style>
+
+	<script>
+		function goBack() {		window.history.back();		}
+	</script>
+	
 </head>
 <body>
 	<div id="detail">
@@ -77,7 +78,9 @@ session_start();
 						<td>Comment : </td>
 						<td><?php echo $detail['comment'];?></td>
 					</tr>
-
+					<tr>
+					<td><button onclick="goBack();" class="btn btn-primary m-auto">Go Back</button></td>
+					</tr>
 				</table>
 				<?php
 			}

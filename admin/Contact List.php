@@ -2,23 +2,38 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Admin | Contact Us List</title>
+    <?php include("data_connection.php"); ?>
+	<link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <script type="text/javascript">
         function confirmation() {
             confirm("Do you want to delete this story?");
         }
-
     </script>
+
+    <!-- NAV UI Import here -->
+    <?php require("adminNav.php"); ?> 
+
+    <?php 
+        if (isset($_GET['delete']))
+        {
+            $id = $_GET['id'];
+            $delete = "DELETE FROM contact WHERE contactID = '$id'";
+            mysqli_query($conn, $delete);
+            header("refresh:0.5; url= Contact List.php"); //refresh the page
+        }
+    ?>
+
 </head>
 <body class="bg-dark text-light">
+<form method="post">
 <div class="container-fluid">
     <div class="row mr-2 my-3">
         <div class="col">
-            <h1>Contact List</h1>
-        </div>
-        <div class="col">
-            <input type="button" class="btn-lg btn-primary" value="HOME">
+            <h1>Contact Us List</h1>
         </div>
     </div>
     <div class="row">
@@ -31,28 +46,8 @@
                     <th scope="col" class="text-center">Phone Number</th>
                     <th scope="col" colspan="3" class="text-center">Manage</th>
                 </tr>
-                <?php include "data_connection.php";
-                ob_start();
-                if (isset($_GET['_delete']))
-                {
-                    $id = $_GET['Cid'];
-                    $delete = "DELETE FROM contact WHERE contactID = $id";
-                    mysqli_query($conn, $delete);
-                    header("refresh:0.5; url= Contact List.php"); //refresh the page
-                    if ($conn -> query($delete)==TRUE && $conn->affected_rows > 0) {
-                        ?>
-                        <script>
-                            alert("Person Information Deleted Successfully!");
-                        </script>
-                        <?php
-                    } else {
-                        echo "Error: " . $delete . "<br>" . $conn->error;
-                    }
-                }
-                ob_end_flush();
-                ?>
-                <?php include "data_connection.php";
-
+            
+                <?php 
                 $per_page = 6; //the page we want per page
 
                 $q = "SELECT * FROM contact";
@@ -94,13 +89,14 @@
                         <td class="text-center"><?php echo $email;?></th></td>
                         <td class="text-center"><?php echo $number_contact;?></td>
                         <td class="text-center">
-                                <a style="text-decoration: none;" href="?_delete=true&id=<?php echo $Cid;?>" onclick="confirmation()">DELETE</a>
+                            <a style="text-decoration: none;" href="Contact List.php?delete&id=<?php echo $Cid;?>" 
+                                onclick="confirmation()">DELETE</a>
                         </td>
-                                <td class="text-center">
-                                <a style="text-decoration: none;word-spacing: normal;"
-                                href="Contact%20View%20More%20Detail.php?id=<?php echo $Cid;?>&pageset=true">
-                                    VIEW MORE DETAILS</a>
-                                </td>
+                        <td class="text-center">
+                        <a style="text-decoration: none;word-spacing: normal;"
+                        href="Contact%20View%20More%20Detail.php?id=<?php echo $Cid;?>&pageset=true">
+                            VIEW MORE DETAILS</a>
+                        </td>
                     </tr>
                     <?php
                 }
@@ -118,10 +114,8 @@
         }?>
         </div>
     </div>
-    
-    
-
 </div>
+</form>
 </body>
 </html>
 

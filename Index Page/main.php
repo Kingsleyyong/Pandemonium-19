@@ -8,7 +8,6 @@
     <?php require("../Navigation Bar and Footer/navbar.php"); ?> 
 </head>
 <body>
-
     <iframe src="https://ourworldindata.org/grapher/total-cases-covid-19?tab=map" width="100%" height="600px"></iframe>
 
     <?php require("rules-sop.html"); ?>

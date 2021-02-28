@@ -1,17 +1,14 @@
 <?php
-session_start();
-
 	include("../database/connect.php");
 	include("../signin_signup_signout_forgetpass_automail/function.php");
-
-	$user_data = check_log($con);
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>User Management</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<title>Admin | User Management</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<!--<style type="text/css">
 		body,html{
 			background-color: #30343F;		
@@ -47,13 +44,29 @@ session_start();
 				event.preventDefault();
 			}
 		}
-		
-			
 	</script>
+
+	<!-- NAV UI Import here -->
+    <?php require("adminNav.php"); ?> 
+
+	<!-- for deleting user -->
+	<?php 
+	if(isset($_GET['pagedelete']))
+	{
+		$id = $_GET['id'];
+
+		mysqli_query($con, "DELETE FROM user WHERE userID='$id'") or die('sorry, no query');
+	
+		header("refresh:0.5; url= user_management.php" );
+	}
+	?>
+
 </head>
+
 <body class="bg-dark text-light">
-	<h1 class="m-3">User Management</h1>
-	<div class = "user-container">
+	<form method="get">
+	<div class = "user-container" style="margin:1%;">
+		<h1 class="m-3">User Management</h1>
 		<table class="table">
 			<tr>
 				<th scope="col" class="text-center">ID</th>
@@ -78,7 +91,7 @@ session_start();
 				<td class="text-center"><?php echo $row['userType']?></td>
 				<td class="text-center"><a href="user_detail.php?id=<?php echo $userid;?>&pageset=true">View Details</a></td>
 				<td class="text-center"><a href="user_detail_edit.php?id=<?php echo $userid;?>&pageedit=true">Edit Details</a></td>
-				<td class="text-center"><a href="?id=<?php echo $userid;?>&pagedelete=true" onclick="confirmation()" style="color: red;">Delete</a></td>
+				<td class="text-center"><a href="user_management.php?pagedelete&id=<?php echo $userid;?>" onclick="return confirmation()" style="color: red;">Delete</a></td>
 			</tr>
 			<?php
 			}
@@ -86,30 +99,6 @@ session_start();
 		</table>
 		<footer style="color: white;">Total record found : <?php echo $numRow?></footer>
 	</div>
+	</form>
 </body>
 </html>
-
-<!-- for deleting user -->
-<?php 
-
-if(isset($_GET['pagedelete']))
-{
-	$id = $_GET['id'];
-
-	// if fail to delete record.
-	if($deleteResult = mysqli_query($con, "delete from user where userID = $id"))
-	{
-		?>
-		<script type="text/javascript">
-		alert("You have successfull deleted a record");
-		</script>
-	<?php
-	}
-	else
-	{
-		echo "fail to delete record";
-	}
-	
-	header("refresh:0.5; url= user_management.php" );
-}
-?>
