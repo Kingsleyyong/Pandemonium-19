@@ -12,6 +12,9 @@
 <div class="container-fluid">
         <div class="row">
             <div class="col">
+                <button class="btn btn-primary mx-auto d-block" onclick="location.href = 'home.php'">HOME</button>
+            </div>
+            <div class="col">
                 <button class="btn btn-light mx-auto d-block" onclick="location.href = 'manage testimonial.php'">ALL</button>
             </div>
             <div class="col">
