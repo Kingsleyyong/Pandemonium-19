@@ -121,9 +121,11 @@
         else
         {
             $search_item = $_POST['search'];
+            $search_item = mysqli_real_escape_string($conn, $search_item);
             $search_item = preg_replace("#[^0-9a-z]#i", "", $search_item);
-            $query = mysqli_query($conn,"SELECT * FROM story WHERE storyID LIKE '%$search_item%'
-                    or storyAuthor LIKE '%$search_item%' or storyTitle LIKE '%$search_item%'") or die("No data find");
+            $search_item = mysqli_real_escape_string($conn, $search_item);
+            $query = mysqli_query($conn,"SELECT * FROM story WHERE storyID LIKE '%".$search_item."%'
+                    or storyAuthor LIKE '%".$search_item."%' or storyTitle LIKE '%".$search_item."%'") or die("No data find");
             $count = mysqli_num_rows($query);
 
             if ($count == 0)
