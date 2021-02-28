@@ -1,18 +1,10 @@
-<?php
-    session_start();
-    include("database/connect.php");
-    include("signin_signup_signout_forgetpass_automail/function.php");
-
-    $user = check_log($con);
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<title>Feedback</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<style>/*
+	<style>
 		#html,body{
 			background: #30343F;
 		}
@@ -27,7 +19,7 @@
 			padding: 10px;
 			background-color: #E4D9FF;
 			text-align: center;
-		}*/
+		} 
 		.star-rating{
 			font-size: 0;
 			white-space: nowrap;
@@ -83,18 +75,24 @@
 		#type input{
 			cursor: pointer;
 		}
+		textarea {
+            color: white !important;
+        }
 	</style>
+	<!-- NAV UI Import here -->
+	<?php require("../Navigation Bar and Footer/navbar.php"); ?> 
 </head>
 <body class="bg-dark text-light">
-	<h1 class="text-center my-3">Feedback</h1>
+	<h1 class="text-center my-3" style="text-shadow: rgb(255,255,153) 2px -1px 5px;">Feedback</h1>
 	<p class="text-center">We would be much appreciate to have your feedback about our website in order to improve our website.</p>
 
+	<form id="feedback-form" method="post" action="feedback.php">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col">
 				<p class="text-center">How is your experience on our website? (Please rate)</p><br>
 				<span class="star-rating mx-auto" width="200px">
-					<input type="radio" name="rating" value="1" required oninvalid="this.setCustomValidity('You need to rate aleast a star to submit.')" onclick="setCustomValidity('')"><i></i>
+					<input type="radio" name="rating" value="1" required><i></i>
 					<input type="radio" name="rating" value="2"><i></i>
 					<input type="radio" name="rating" value="3"><i></i>
 					<input type="radio" name="rating" value="4"><i></i>
@@ -104,13 +102,12 @@
 		</div>
 		<div class="row">
 			<div class="col">
-				<form id="feedback-form" method="post" action="feedback.php">
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col mt-4">
 								<p class="text-center">Please select the category for your feedback:</p>
 								<span class="mx-auto" style="display: block; width: 400px;">
-									<input type="radio" name="feedback-category" id="suggestion" class="suggestion" value="suggestion">
+									<input type="radio" name="feedback-category" id="suggestion" class="suggestion" value="suggestion" required>
 									<label for="suggestion">Suggestion</label>
 									<input type="radio" name="feedback-category" id="somethingWrong" class="somethingWrong" value="somethingWrong">
 									<label for="somethingWrong">Something's wrong</label>
@@ -122,12 +119,13 @@
 						<div class="row">
 							<div class="col">
 								<label for="comment">Leave any suggestion below.</label><br>
-								<textarea cols="80" name="comment" rows="5" class="form-control" placeholder="Enter text here. . ." style="margin-top: 10px;background: transparent; padding: 5px" ></textarea>
+								<textarea cols="80" name="comment" rows="5" class="form-control" placeholder="Enter text here. . ." style="margin-top: 10px;
+									background: transparent; padding: 5px " required></textarea>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col">
-								<input type="submit" class="btn btn-primary" value="Submit Feedback" >
+								<input type="submit" name="submit" class="btn btn-primary" value="Submit Feedback" >
 							</div>
 						</div>
 					</div>	
@@ -135,29 +133,35 @@
 			</div>
 		</div>
 		<?php
-            if(isset($_POST['submit']))
-            {
-                $id = $user['userID'];
-                $rating = $_POST['rating'];
-                $type = $_POST['feedback-category'];
-                $comment= $_POST['comment'];
+			if(isset($_GET['fb'])){
+				$id = $_GET['uid'];
 
+				if(isset($_POST['submit']))
+				{
 
-                $query = "insert into feedback(rating,category,comment,userID) value ('$rating','$type','$comment','$id')";
+					$rating = $_POST['rating'];
+					$type = $_POST['feedback-category'];
+					$comment= $_POST['comment'];
+	
+					$query = "INSERT INTO feedback(rating,category,comment,userID) VALUES ('$rating','$type','$comment','$id')";
 
-                if($result = mysqli_query($con,$query))
-                {
-                ?>
-                    <script>
-                        alert("Thank you for your feedback!!");
-                    </script>
-                <?php
-                }
-                else{
-                    echo "Error inserting data";
-                }
-            }
+					if($result = mysqli_query($con,$query))
+					{
+					?>
+						<script>
+							alert("Thank you for your feedback!!");
+						</script>
+					<?php
+					}
+					else{
+						echo "Error inserting data";
+					}
+				}
+			}
         ?>
 	</div>
+
+	<!-- Footer UI Import Here -->
+	<?php require("../Navigation Bar and Footer/footer.html"); ?> 
 </body>
 </html>
