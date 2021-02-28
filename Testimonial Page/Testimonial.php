@@ -6,6 +6,12 @@
     <!-- NAV UI Import here -->
     <?php require("../Navigation Bar and Footer/navbar.php"); ?>
     <?php include("data_connection.php"); ?>
+    <style>
+        a p {
+            text-decoration: none !important;
+            color: white !important;
+        }
+    </style>
 </head>
 
 <body class="bg-dark text-light">
