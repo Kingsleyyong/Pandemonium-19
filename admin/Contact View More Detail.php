@@ -20,27 +20,27 @@
                 $result = mysqli_query($conn, "select * from contact where contactID = $id");
                 $row = mysqli_fetch_assoc($result);
 
-                echo '<div class="row mx-2 my-3"><div class="col">Contact ID</div></div><div class="row mx-2 my-3"><div class="col">';
+                echo '<div class="row mx-2 my-3"><div class="col">Contact ID</div><div class="col">';
                 echo $row["contactID"];
                 ?>
             <?php
-                echo '</div></div><div class="row mx-2 my-3"><div class="col">First Name</div></div><div class="row mx-2 my-3"><div class="col">';
+                echo '</div></div><div class="row mx-2 my-3"><div class="col">First Name</div><div class="col">';
                 echo $row["firstName"];
                 ?>
                 <?php
-                echo '</div></div><div class="row mx-2 my-3"><div class="col">Last Name</div></div><div class="row mx-2 my-3"><div class="col">';
+                echo '</div></div><div class="row mx-2 my-3"><div class="col">Last Name</div><div class="col">';
                 echo $row["lastName"];
                 ?>
                 <?php
-                echo '</div></div><div class="row mx-2 my-3"><div class="col">Contact Email</div></div><div class="row mx-2 my-3"><div class="col">';
+                echo '</div></div><div class="row mx-2 my-3"><div class="col">Contact Email</div><div class="col">';
                 echo $row["contactEmail"];
                 ?>
                 <?php
-                echo '</div></div><div class="row mx-2 my-3"><div class="col">Contact Number</div></div><div class="row mx-2 my-3"><div class="col">';
+                echo '</div></div><div class="row mx-2 my-3"><div class="col">Contact Number</div><div class="col">';
                 echo $row["contactNumber"];
                 ?>
                 <?php
-                echo '</div></div><div class="row mx-2 my-3"><div class="col">Message Leave</div></div><div class="row mx-2 my-3"><div class="col">';
+                echo '</div></div><div class="row mx-2 my-3"><div class="col">Message Leave</div><div class="col">';
                 echo $row["message"];
                 ?>
                 <?php

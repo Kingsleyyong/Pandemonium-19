@@ -5,34 +5,8 @@
     <title>Title</title>
     <link href="manage%20testimonial.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        ._button:hover{
-            background-color: #232F57;
-            color: #FAFFFF;
-            cursor: pointer;
-            outline: none;
-            border: none;
-        }
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-        ._button:active{
-            background-color: #E4D9FF;
-            color: #FAFFFF;
-            cursor: pointer;
-        }
-        .dots {
-            display: inline-block;
-            width: 400px;
-            white-space: nowrap;
-            overflow: hidden !important;
-            text-overflow: ellipsis;
-        }
-
-        .testiDel table, .testiDel th, .testiDel tr, .testiDel td{
-            border: 1pt solid black;
-            border-collapse: collapse;
-            padding: 10px;
-        }
-    </style>
 
     <script type="text/javascript">
         function confirmation() {
@@ -50,32 +24,39 @@
 
     </script>
 </head>
-<body>
-<table>
-    <tr>
-        <td style="padding-left: 50px" >
-        <td style="padding-left: 20px"><button class="_button" onclick="location.href = 'manage testimonial_edit.php'">Edit</button></td>
-        <td style="padding-left: 20px"><button class="_button" onclick="location.href='manage testimonial_delete.php'">Delete</button></td>
-        <td style="padding-left: 20px" ><button class="_button" onclick="location.href = 'addStory.php'">Add Story</button></td>
-        <td style="padding-left: 20px">
-            <form class="search_box" name="search_testimonial" method="POST">
-                <input type="search" spellcheck="false" placeholder="Search..." style="width:200px;
-                 border-bottom-left-radius: 30px;border-top-left-radius: 30px"
-                       name="search" id="search_text">
-                <input class="_button" type="submit" value="SEARCH">
-            </form>
-        </td>
-        </td>
-    </tr>
-</table>
-<hr>
+<body class="bg-dark text-light">
+<div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-primary mx-auto d-block" onclick="location.href = 'home.php'">HOME</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-light mx-auto d-block" onclick="location.href = 'manage testimonial.php'">ALL</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-warning mx-auto d-block" onclick="location.href = 'manage testimonial_edit.php'">Edit</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-danger mx-auto d-block" onclick="location.href='manage testimonial_delete.php'">Delete</button>
+            </div>
+            <div class="col">
+                <button class="btn btn-info mx-auto d-block" onclick="location.href = 'addStory.php'">Add Story</button>
+            </div>
+            <div class="col mx-auto d-block">
+                <form name="search_testimonial" method="post">
+                    <input type="search" class="form-control-sm" spellcheck="false" placeholder="Search..." name="search" id="search_text">
+                    <input class="btn-sm btn-primary" type="submit" value="Search">
+                </form>
+            </div>
+        </div>
+    </div>
 <div class = "testiDel">
-    <table>
+    <table class="table">
         <tr>
-            <th>Page ID</th>
-            <th>Date  Posted</th>
-            <th>Page Title</th>
-            <th>Manage</th>
+            <th scope="col" class="text-center">Page ID</th>
+            <th scope="col" class="text-center">Date  Posted</th>
+            <th scope="col" class="text-center">Page Title</th>
+            <th scope="col" class="text-center">Manage</th>
         </tr>
         <?php include "data_connection.php";
         ob_start();
@@ -110,74 +91,61 @@
         $num_page = ceil($number_of_result/$per_page);
 
         // to know which page number user is on
-        if (!isset($_GET['page']))
+        if (!isset($_GET["page"]))
         {
             $p = 1;
         }
         else
         {
-            $p = $_GET['page'];
+            $p = $_GET["page"];
         }
 
         $first_page_result = ($p - 1) * $per_page;
 
         $query = 'SELECT * FROM story LIMIT ' . $first_page_result . ',' . $per_page;
 
-        $result = mysqli_query($conn, $query) or die( mysqli_error($conn));;
+        $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
 
-
-        if(!isset($_POST['search']))
+        if (!isset($_POST['search']))
         {
-            while($row = mysqli_fetch_array($result))
-            {
-                $id = $row["storyID"];
-                $date = $row["storyDate"];
-                $title = $row["storyTitle"];
+        $query = "SELECT * FROM story";
 
-                ?>
-                <tr>
-                    <td><?php echo $id;?></td>
-                    <td><?php echo $date;?></td>
-                    <td><?php echo $title;?></td>
-                    <td><a style="text-decoration: none;" href="?page_delete=true&id=<?php echo $id;?>" onclick="confirmation()">DELETE</a></td>
-                </tr>
-                <?php
-            }
+        $result = mysqli_query($conn, $query) or die( mysqli_error($conn));;
+        $number_of_result = mysqli_num_rows($result);//used to count number of rows results
+
+        //to know the number page available
+        $num_page = ceil($number_of_result/$per_page);
+
+        // to know which page number user is on
+        if (!isset($_GET["page"]))
+        {
+            $p = 1;
         }
-        
         else
         {
-            $search_item = $_POST['search'];
-            $search_item = preg_replace("#[^0-9a-z]#i", "", $search_item);
-            $query = mysqli_query($conn,"SELECT * FROM story WHERE storyID LIKE '%$search_item%'
-                    or storyAuthor LIKE '%$search_item%' or storyTitle LIKE '%$search_item%'") or die("No data find");
-            $count = mysqli_num_rows($query);
+            $p = $_GET["page"];
+        }
 
-            if ($count == 0)
-            {
-                ?>
-                <tr>
-                    <td colspan="4" style="text-align: center;">NO RESULT</td>
-                </tr>
-        <?php
-            }
-            else
-            {
-                while ($row = mysqli_fetch_array($query))
-                {
-                    $id = $row["storyID"];
-                    $date = $row["storyDate"];
-                    $title = $row["storyTitle"];
-                    ?>
-                    <tr>
-                        <td><?php echo $id;?></td>
-                        <td><?php echo $date;?></td>
-                        <td><?php echo $title;?></td>
-                        <td><a style="text-decoration: none;" href="?page_delete=true&id=<?php echo $id;?>" onclick="confirmation()">DELETE</a></td>
-                    </tr>
-                    <?php
-                }
-            }
+        $first_page_result = ($p - 1) * $per_page;
+
+        $query = 'SELECT * FROM story LIMIT ' . $first_page_result . ',' . $per_page;
+
+        $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
+        while($row = mysqli_fetch_array($result))
+        {
+            $id = $row["storyID"];
+            $date = $row["storyDate"];
+            $title = $row["storyTitle"];
+
+            ?>
+            <tr>
+                <td class="text-center"><?php echo $id;?></td>
+                <td class="text-center"><?php echo $date;?></td>
+                <td class="text-center"><?php echo $title;?></td>
+                <td class="text-center"><a style="text-decoration: none;" href="?page_delete=true&id=<?php echo $id;?>"
+                       onclick="confirmation()">DELETE</a></td>
+            </tr>
+            <?php
         }
         ?>
     </table>
@@ -186,7 +154,44 @@
     for ($p = 1; $p <= $num_page; $p++)
     {
         echo '<a style="padding-left: 100px;" href="manage testimonial_delete.php?page=' . $p . '">' . $p . '</a> ';
-    }?>
+    }
+    }
+    else
+    {
+        $search_item = $_POST['search'];
+        $search_item = preg_replace("#[^0-9a-z]#i", "", $search_item);
+        $query = mysqli_query($conn,"SELECT * FROM story WHERE storyID LIKE '%$search_item%'
+                    or storyAuthor LIKE '%$search_item%' or storyTitle LIKE '%$search_item%'") or die("No data find");
+        $count = mysqli_num_rows($query);
+
+        if ($count == 0)
+        {
+            ?>
+            <tr>
+                <td colspan="4" style="text-align: center;">NO RESULT</td>
+            </tr>
+            <?php
+        }
+        else
+        {
+            while ($row = mysqli_fetch_array($query))
+            {
+                $id = $row["storyID"];
+                $date = $row["storyDate"];
+                $title = $row["storyTitle"];
+                ?>
+                <tr>
+                    <td class="text-center"><?php echo $id;?></td>
+                    <td class="text-center"><?php echo $date;?></td>
+                    <td class="text-center"><?php echo $title;?></td>
+                    <td class="text-center"><a style="text-decoration: none;" href="?page_delete=true&id=<?php echo $id;?>"
+                           onclick="confirmation()">DELETE</a></td>
+                </tr>
+                <?php
+            }
+        }
+    }
+    ?>
 
 </div>
 </body>

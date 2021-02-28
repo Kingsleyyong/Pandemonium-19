@@ -11,6 +11,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col">
+                <button class="btn btn-primary mx-auto d-block" onclick="location.href = 'home.php'">HOME</button>
+            </div>
+            <div class="col">
                 <button class="btn btn-light mx-auto d-block" onclick="location.href = 'manage testimonial.php'">ALL</button>
             </div>
             <div class="col">
@@ -68,6 +71,29 @@
 
         if (!isset($_POST['search']))
         {
+            $query = "SELECT * FROM story";
+
+            $result = mysqli_query($conn, $query) or die( mysqli_error($conn));;
+            $number_of_result = mysqli_num_rows($result);//used to count number of rows results
+
+            //to know the number page available
+            $num_page = ceil($number_of_result/$per_page);
+
+            // to know which page number user is on
+            if (!isset($_GET["page"]))
+            {
+                $p = 1;
+            }
+            else
+            {
+                $p = $_GET["page"];
+            }
+
+            $first_page_result = ($p - 1) * $per_page;
+
+            $query = 'SELECT * FROM story LIMIT ' . $first_page_result . ',' . $per_page;
+
+            $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
             while($row = mysqli_fetch_array($result))
             {
                 $id = $row["storyID"];
@@ -82,6 +108,14 @@
                     <td></td>
                 </tr>
                 <?php
+            }
+            ?>
+    </table>
+    <p>Story Posted Records : <?php echo $number_of_result?></p>
+    <?php
+            for ($p = 1; $p <= $num_page; $p++)
+            {
+                echo '<a style="padding-left: 100px;" href="manage testimonial.php?page=' . $p . '">' . $p . '</a> ';
             }
         }
         else
@@ -109,9 +143,9 @@
                     $title = $row["storyTitle"];
                     ?>
                     <tr>
-                        <td><?php echo $id;?></td>
-                        <td><?php echo $date;?></td>
-                        <td><?php echo $title;?></td>
+                        <td class="text-center"><?php echo $id;?></td>
+                        <td class="text-center"><?php echo $date;?></td>
+                        <td class="text-center"><?php echo $title;?></td>
                         <td></td>
                     </tr>
                     <?php
@@ -119,14 +153,6 @@
             }
         }
         ?>
-    </table>
-    <p>Story Posted Records : <?php echo $number_of_result?></p>
-    <?php
-    for ($p = 1; $p <= $num_page; $p++)
-    {
-        echo '<a style="padding-left: 100px;" href="manage testimonial.php?page=' . $p . '">' . $p . '</a> ';
-    }?>
-
 </div>
 </body>
 </html>

@@ -22,8 +22,8 @@
     </style>
 </head>
 <body>
-    <div class="container m-4">
-        <div class="row">
+    <div class="container-fluid">
+        <div class="row justify-content-md-center">
             <div class="col rounded admincolbg m-4 p-3">
                 <a href="">
                     <div class="container">
@@ -49,7 +49,7 @@
                 </a>
             </div>
         </div>
-        <div class="row">
+        <div class="row d-flex justify-content-center">
             <div class="col rounded admincolbg m-4 p-3">
                 <a href="manage testimonial.php">
                     <div class="container">
