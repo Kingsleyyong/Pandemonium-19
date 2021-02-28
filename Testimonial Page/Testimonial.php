@@ -57,8 +57,24 @@
 
         $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
 
-        if (isset($_GET["most_view"]))
+        if (isset($_POST["most_view"]))
         {
+            $query = 'SELECT storyView FROM story ORDER BY storyView DESC LIMIT'  . $first_page_result . ',' . $per_page;
+
+            $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
+        ?>
+        <div class="col px-4 mx-4">
+            <?php
+            while($row = mysqli_fetch_array($result))
+            {
+            ?>
+                <a href='Story page.php?id=<?php echo $row['storyID'];?>&pageSet=true">
+                <?php echo '<img src="data:image/jpeg;base64,'. base64_encode( $result['storyMedia'] ).'" alt="" class="mx-auto d-block" alt="NP" id="pic_1"/>'?>
+                <p class="text-center"><span id="title1"><?php echo $row['storyTitle'];?></span></p>
+                <p class="text-right">Read More</p></a>
+        </div>
+        <?php
+            }
         }
         else if (isset($_GET["latest_story"]))
         {
@@ -71,7 +87,7 @@
                 <?php
                 while($row = mysqli_fetch_array($result))
                 {
-                ?><a href="Story page.php?id&pageSet=<?php echo $row['storyID'];?>">
+                ?><a href="Story page.php?id=<?php echo $row['storyID'];?>&pageSet=true">
                 <?php echo '<img src="data:image/*;base64,'. base64_encode( $result['storyMedia'] ).'" alt="" class="mx-auto d-block" alt="NP" id="pic_1"/>'?>
                 <p class="text-center"><span id="title1"><?php echo $row['storyTitle'];?></span></p>
                 <p class="text-right">Read More</p></a>
@@ -90,7 +106,7 @@
             {
             ?>
             <div class="col px-4 mx-4">
-                    <a href="Story page.php?id&pageSet=<?php echo $row['storyID'];?>">
+                    <a href="Story page.php?id=<?php echo $row['storyID'];?>&pageSet=true">
                     <?php 
                         if($row['storyMedia']!=null) {
                             $pic = $row['storyMedia'];

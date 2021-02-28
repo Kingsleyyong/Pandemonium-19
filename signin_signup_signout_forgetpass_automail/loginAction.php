@@ -32,15 +32,25 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
 						die;
 					}
 				}
+				else
+				{
+				?>
+				<script type="text/javascript">
+				alert("Invalid user name or password!");
+				</script>
+				<?php
+					header("refresh: 0.2;url = SignInUp_UI.php");
+				}
 			}
 			else{
-?>
-<script type="text/javascript">
-alert("Invalid user name or password!");
-</script>
-<?php
-			}				
-		}						
-	}
-} 
-?>
+			?>
+			<script type="text/javascript">
+			alert("Invalid user name or password!");
+			</script>
+			<?php
+				header("refresh: 0.2;url = SignInUp_UI.php");
+						}				
+					}						
+				}
+			} 
+			?>

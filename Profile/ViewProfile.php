@@ -95,7 +95,7 @@
                                 </div>
                             </div>
 
-                            <a href="EditProfile.php?view&uid=<?php echo $user_data["userID"]; ?>"><button name="editbtn" id="editbtn" class="btn btn-primary m-auto" value="EDIT">EDIT</button>
+                            <a href="EditProfile.php?view&uid=<?php echo $user_data["userID"]; ?>"><button name="editbtn" id="editbtn" class="btn btn-primary m-auto" value="EDIT">EDIT</button></a>
                             
                         </div>
                 </div>

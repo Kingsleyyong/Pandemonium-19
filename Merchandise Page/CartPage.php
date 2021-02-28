@@ -42,7 +42,7 @@
                 <div class="rounded bg-info p-2 my-3">
 <?php
     require ('../Database/connect.php');
-    $merchantTotal;
+    $merchantTotal = 0;
     if(isset($_REQUEST['id'])){
         $userID = $_REQUEST['id'];
 
