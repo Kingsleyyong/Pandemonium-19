@@ -1,9 +1,9 @@
 <?php
-session_start();
-    require ('../Database/connect.php');
-	include("../signin_signup_signout_forgetpass_automail/function.php");
+// session_start();
+//     require ('../Database/connect.php');
+// 	include("../signin_signup_signout_forgetpass_automail/function.php");
 
-	$user_data = check_log($con);
+// 	$user_data = check_log($con);
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +14,9 @@ session_start();
     <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Item Description Page</title>
+    <!-- NAV UI Import here -->
+    <?php require("../Navigation Bar and Footer/navbar.php"); ?>
+    
 </head>
 <style>
     input::-webkit-outer-spin-button,
@@ -58,9 +61,9 @@ session_start();
     
 ?>
 
-<body>
-    <div class="container">
-        <div class="row rounded bg-dark text-light p-4">
+<body class="bg-dark">
+    <div class="container ">
+        <div class="row rounded bg-secondary text-light p-4">
             <div id="col-sm">
                 <?php echo '<img class="rounded mx-auto d-block" width="200px" alt="" width = 150dp 
                 height = 130dp src="data:image/jpeg;base64,'.base64_encode( $info['image'] ).'"/>'; ?>
@@ -130,5 +133,7 @@ session_start();
     }
 
 ?>
+<!-- Footer UI Import Here -->
+<?php require("../Navigation Bar and Footer/footer.html"); ?> 
 </body>
 </html>
