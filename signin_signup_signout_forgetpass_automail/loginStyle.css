@@ -7,8 +7,8 @@ body, html {
 
 #loginbox {
 	width: 380px;
-	height: 600px;
-	position: relative;
+	height: 5000px;
+	position:absolute;
 	margin: 4% auto;
 	border: 1pt solid #30343F;
 	border-radius: 10px;

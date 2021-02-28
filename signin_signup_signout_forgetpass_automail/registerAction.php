@@ -13,27 +13,32 @@ session_start();
 		$contact = $_POST['contact'];
 		$gender = $_POST['gender'];
 		$dob = $_POST['dob'];
-		$addr = $_POST['address'];
+		$mailmatch = false;
+
 
 		$result = mysqli_query($con,"SELECT * FROM user WHERE userEmail = '$userEmail'");
 
 		$user_data = mysqli_fetch_assoc($result);
-		if($userEmail == $user_data['userEmail']) {
+		if($user_data != null) {
+			if($userEmail == $user_data['userEmail'])
+			{
 		?>
+			
+			
 			<script type="text/javascript">
 				alert("This email has been taken!");
 			</script>
 			<?php
 			$mailmatch = true;
 
-			header("refresh: 0.5; url = SignInUp_Ui.php");
-
+			header("refresh: 0.2; url = SignInUp_Ui.php");
+			}
 		}
 		else{
 			if(!empty($userName) && !empty($password) && !empty($userEmail) &&$mailmatch != true)
 			{
-				$query = 	"INSERT INTO user (userName,userEmail,userPassword,userContact,gender,dateOfBirth,residentialAddress) 
-							VALUE ('$userName','$userEmail','$password','$contact','$gender','$dob','$addr')";
+				$query = 	"INSERT INTO user (userName,userEmail,userPassword,userContact,gender,dateOfBirth) 
+							VALUE ('$userName','$userEmail','$password','$contact','$gender','$dob')";
 				if($result = mysqli_query($con, $query))
 				{
 					?>
@@ -46,7 +51,7 @@ session_start();
 				{
 					echo "Fail to register";
 				}
-				header("refresh: 0.5; url = SignInUp_Ui.php");
+				header("refresh: 0.2; url = SignInUp_Ui.php");
 			}else
 			{
 				echo "Invalid information";

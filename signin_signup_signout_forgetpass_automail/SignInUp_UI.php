@@ -14,6 +14,7 @@
     <!-- <link rel="stylesheet" href="loginStyle.css"> -->
     <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
     <title>Sign In Page</title>
+<<<<<<< HEAD
 
 	<style>
 		
@@ -122,6 +123,113 @@ body, html {
 }
 	</style>
 
+=======
+	<style>
+		body, html {
+			margin: 0;
+			padding: 0;
+			background: #30343F;
+		}
+
+		#loginbox {
+			width: 380px;
+			height: 650px;
+			position: relative;
+			margin: 5% auto;
+			border: 1pt solid #30343F;
+			border-radius: 10px;
+			padding: 5px;
+			background-color: #E4D9FF;
+			overflow: hidden;
+		}
+
+		#ButtonBox {
+			width: 220px;
+			margin: 35px auto;
+			position: relative;
+			border-radius: 30px;
+			box-shadow: 0 0 20px 9px #8997D2;
+		}
+
+		.sButton {
+			padding: 10px 30px;
+			cursor: pointer;
+			border: none;
+			background: transparent;
+			position: relative;
+			outline: none;
+		}
+
+		#btn {
+			top: 0;
+			left: 0;
+			position: absolute;
+			width: 110px;
+			height: 100%;	
+			background: linear-gradient(to right, #8997D2, #8997D2);
+			border-radius: 30px;
+			transition: .4s;
+		}
+
+		.inputGroup {
+			top: 120px;
+			position: absolute;
+			width: 280px;
+			transition: .4s;
+		}
+
+		.inputMember {
+			width: 100%;
+			padding: 10px 10px;
+			margin: 5px 0;
+			border: none;
+			border-bottom: 1px solid black;
+			background: transparent;
+		}
+
+		.inputMemberRB {
+			margin: 15px 15px;
+			border: none;
+			border-bottom: 1px solid black;
+			background: transparent;
+		}
+
+		.LoginBtn {
+			width: 85%;
+			padding: 10px 30px;
+			cursor: pointer;
+			margin: auto;
+			margin-top: 20px;
+			margin-left: 30px;
+			border: none;
+			border-radius: 30px;
+			background: #8080ff;
+		}
+
+		.LoginBtn:hover {
+			background: #2e2eb8;
+		}
+
+		#forget {
+			font-size: 15px;
+			bottom: -30px;
+			position: absolute;
+			left: 10px;
+		}
+
+		#signin {
+			left: 50px;
+		}
+
+		#Register {
+			left: 450px;
+		}
+
+		.checkbox {
+			margin: 30px 10px 30px 0;
+		}
+	</style>
+>>>>>>> 795da15ba9e8be2cf3f524394115b375ff87fd92
 </head>
 <body>
     <div id="container">
