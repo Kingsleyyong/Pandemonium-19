@@ -14,7 +14,7 @@ session_start();
 		$gender = $_POST['gender'];
 		$dob = $_POST['dob'];
 		$mailmatch = false;
-
+		$addr = $_POST['address'];
 
 		$result = mysqli_query($con,"SELECT * FROM user WHERE userEmail = '$userEmail'");
 
@@ -23,8 +23,6 @@ session_start();
 			if($userEmail == $user_data['userEmail'])
 			{
 		?>
-			
-			
 			<script type="text/javascript">
 				alert("This email has been taken!");
 			</script>
@@ -37,8 +35,8 @@ session_start();
 		else{
 			if(!empty($userName) && !empty($password) && !empty($userEmail) &&$mailmatch != true)
 			{
-				$query = 	"INSERT INTO user (userName,userEmail,userPassword,userContact,gender,dateOfBirth) 
-							VALUE ('$userName','$userEmail','$password','$contact','$gender','$dob')";
+				$query = 	"INSERT INTO user (userName,userEmail,userPassword,userContact,gender,dateOfBirth,residentialAddress) 
+							VALUE ('$userName','$userEmail','$password','$contact','$gender','$dob','$addr')";
 				if($result = mysqli_query($con, $query))
 				{
 					?>
@@ -57,7 +55,5 @@ session_start();
 				echo "Invalid information";
 			}
 		}
-		
-		
 	}
 ?>
