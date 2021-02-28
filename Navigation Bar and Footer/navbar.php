@@ -33,7 +33,7 @@ session_start();
                 <a class="nav-link mx-3" href="../Merchandise Page/MerchandiseMenuPage.php">Merchandise</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link mx-3" href="../Testimonial Page/Testimonial.php">Testimonials</a>
+                <a class="nav-link mx-3" href="../Testimonial Page/Testimonial.php?story">Testimonials</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link mx-3" href="../About Us Page/AboutUs.php">About Us</a>

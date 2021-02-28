@@ -60,22 +60,17 @@
 
         $first_page_result = ($page - 1) * $per_page;
 
-        $query = 'SELECT * FROM story LIMIT ' . $first_page_result . ',' . $per_page;
-
-        $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
-
         if(isset($_POST['mostView']))
         {
-            $query = 'SELECT storyTitle, storyView, storyMedia FROM story ORDER BY storyView DESC';
+            $query = 'SELECT * FROM story ORDER BY storyView DESC LIMIT ' . $first_page_result . ',' . $per_page;
 
-            $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
-        ?>
-        <div class="col px-4 mx-4">
-            <?php
-            if(mysqli_num_rows($result)>0){
-                while($row = mysqli_fetch_assoc($result))
-                {
+            $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
             ?>
+            <?php
+            while($row = mysqli_fetch_array($result))
+            {
+            ?>
+            <div class="col px-4 mx-4">
                 <a href="Story page.php?id=<?php echo $row['storyID'];?>&pageSet=true">
                 <?php 
                     if($row['storyMedia']!=null) {
@@ -89,37 +84,41 @@
                 ?>
                 <p class="text-center"><span id="title1"><?php echo $row['storyTitle'];?></span></p>
                 <p class="text-right">Read More</p></a>
-        </div>
+            </div>
         <?php
-                }
             }
         }
 
-
-
-        else if (isset($_GET["latest_story"]))
+        else if (isset($_GET['story']) || isset($_GET["latest_story"]))
         {
-            $query = 'SELECT storyID, storyAuthor, storyDate(updated_at), storyTitle,
-             as date FROM story ORDER BY updated_at ASC and LIMIT ' . $first_page_result . ',' . $per_page;
+            $query = 'SELECT * FROM story LIMIT ' . $first_page_result . ',' . $per_page;
 
             $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
-            ?>
-        <div class="col px-4 mx-4">
-            <?php
+            
             while($row = mysqli_fetch_array($result))
             {
-            ?><a href="Story page.php?id=<?php echo $row['storyID'];?>&pageSet=true">
-            <?php echo '<img src="data:image/*;base64,'. base64_encode( $result['storyMedia'] ).'" alt="" class="mx-auto d-block" alt="NP" id="pic_1"/>'?>
-            <p class="text-center"><span id="title1"><?php echo $row['storyTitle'];?></span></p>
-            <p class="text-right">Read More</p></a>
-        </div>
+            ?>
+            <div class="col px-4 mx-4">
+                <a href="Story page.php?id=<?php echo $row['storyID'];?>&pageSet=true">
+                <?php 
+                    if($row['storyMedia']!=null) {
+                        $pic = $row['storyMedia'];
+                        echo '<img class="mx-auto d-block" width = 150dp height = 130dp src="data:image/*;base64,'.
+                                base64_encode($row['storyMedia']).'" alt=""/>';
+                    }
+                    else {
+                        echo '<img src="../assets/storyDefault.png" width = 150dp height = 130dp class="mx-auto d-block" alt="article image">';
+                    } 
+                ?>
+                <p class="text-center"><span id="title1"><?php echo $row['storyTitle'];?></span></p>
+                <p class="text-right">Read More</p></a>
+            </div>
         <?php
             }
         }
         
         else
         {
-
             $query = 'SELECT * FROM story LIMIT ' . $first_page_result . ',' . $per_page;
 
             $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
