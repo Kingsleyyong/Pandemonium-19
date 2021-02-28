@@ -53,7 +53,6 @@
 
         $info = mysqli_fetch_assoc($result);
 
-        
     }
     else{
         echo "not connected";

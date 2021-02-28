@@ -136,7 +136,6 @@
 			$userid = $user_data['userID'];
 			if(isset($_POST['submit']))
 			{
-
 				$rating = $_POST['rating'];
 				$type = $_POST['feedback-category'];
 				$comment= $_POST['comment'];

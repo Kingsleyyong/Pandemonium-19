@@ -13,7 +13,7 @@ session_start();
 		$contact = $_POST['contact'];
 		$gender = $_POST['gender'];
 		$dob = $_POST['dob'];
-
+		$addr = $_POST['address'];
 
 		$result = mysqli_query($con,"SELECT * FROM user WHERE userEmail = '$userEmail'");
 
@@ -33,8 +33,8 @@ session_start();
 		else{
 			if(!empty($userName) && !empty($password) && !empty($userEmail) &&$mailmatch != true)
 			{
-				$query = 	"INSERT INTO user (userName,userEmail,userPassword,userContact,gender,dateOfBirth) 
-							VALUE ('$userName','$userEmail','$password','$contact','$gender','$dob')";
+				$query = 	"INSERT INTO user (userName,userEmail,userPassword,userContact,gender,dateOfBirth,residentialAddress) 
+							VALUE ('$userName','$userEmail','$password','$contact','$gender','$dob','$addr')";
 				if($result = mysqli_query($con, $query))
 				{
 					?>
