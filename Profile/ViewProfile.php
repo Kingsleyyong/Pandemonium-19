@@ -19,8 +19,7 @@
             $uID = $_GET['uid'];
             $result = mysqli_query($conn, "SELECT * FROM user WHERE userID=$uID");
             $userData = mysqli_fetch_assoc($result);
-            
-            $upic = $user_data["profilePicture"];
+
             $uname = $user_data["userName"];
             $ugender = $user_data["gender"];
             $udob = $user_data["dateOfBirth"];
@@ -33,17 +32,7 @@
     <body class="bg-dark text-light">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-4">
-                    <?php 
-                        if($user_data['profilePicture']!=null) {
-                            echo '<img class="d-block mx-auto img-fluid" src="data:image/*;base64,'
-                                .base64_encode($upic).'" alt="Default Profile Picture"/>';
-                        }
-                        else {
-                            echo '<img src="../assets/default.jpg" class="mx-auto d-block img-fluid" alt="Default Profile Picture">';
-                        }  
-                    ?>
-                </div>
+                
                 <div class="col">
                     <div class="container-fluid">
                             <div class="row">

@@ -8,6 +8,11 @@
                                 crossorigin="anonymous">
         <!-- NAV UI Import here -->
         <?php require("../Navigation Bar and Footer/navbar.php"); ?> 
+        <script>
+            function changeImage( ) {
+                dp.src=URL.createObjectURL(event.target.files[0]);
+            }
+        </script>
     </head>
 
     <?php 
@@ -17,8 +22,7 @@
             $uID = $_GET['uid'];
             $result = mysqli_query($conn, "SELECT * FROM user WHERE userID=$uID");
             $userData = mysqli_fetch_assoc($result);
-            
-            $upic = $user_data["profilePicture"];
+
             $uname = $user_data["userName"];
             $ugender = $user_data["gender"];
             $udob = $user_data["dateOfBirth"];
@@ -26,25 +30,34 @@
             $uemail = $user_data["userEmail"];
             $uaddress = $user_data["residentialAddress"];
         }
+
+        if(isset($_POST['savebtn'])){
+            
+            $username = $_POST['username'];
+            $gender = $_POST['gender'];
+            $birthday = $_POST['dob'];
+            $contactNumber = $_POST['phone'];
+            $email = $_POST['email'];
+            $address = $_POST['address'];
+            $pass = $_POST['confirmPass'];
+
+            $query =    "UPDATE user SET userName = '$username', userEmail = '$email', userContact = '$contactNumber',
+                        userPassword = '$pass', gender = '$gender', dateOfBirth = '$birthday', residentialAddress = '$address'
+                        WHERE userID = '$uID' ";
+
+            mysqli_query($conn, $query);
+
+            ?>
+	        <script>alert("Successfully updated!!"); </script>
+	        <?php 
+            header("Location: ViewProfile.php?view&uid=$uID");
+        }
     ?>
     
     <body class="bg-dark text-light">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-4">
-
-                    <?php 
-                        if($user_data['profilePicture']!=null) {
-                            echo '<img id="dp" class="d-block mx-auto img-fluid" src="data:image/*;base64,'
-                                .base64_encode($upic).'" alt="Default Profile Picture"/>';
-                        }
-                        else {
-                            echo '<img id="dp" src="../assets/default.jpg" class="mx-auto d-block img-fluid" alt="Default Profile Picture">';
-                        }  
-                    ?>
-
-                    <input type="file" name="displayPicture" accept="image/*" onchange="changeImage();" required>
-                </div>
+                
                 <div class="col">
                     <form name="profileForm" id="profileForm" method="post">
                         <div class="container form-group">
@@ -143,61 +156,4 @@
         <!-- Footer UI Import Here -->
         <?php require("../Navigation Bar and Footer/footer.html"); ?> 
     </body>
-
-    <?php include("data_connection.php"); ?>
-        <script>
-            function changeImage( ) {
-                dp.src=URL.createObjectURL(event.target.files[0]);
-            }
-        </script>
-
-    <?php
-
-        if(isset($_POST['savebtn'])){
-            
-            // if (count($_FILES) > 0) {
-            //     if (is_uploaded_file($_FILES['displayPicture']['tmp_name'])) {
-            //         require_once "database.php";
-            //         $imgData = addslashes(file_get_contents($_FILES['displayPicture']['tmp_name']));
-            //         $imageProperties = getimageSize($_FILES['displayPicture']['tmp_name']);
-                    
-            //         $sql = "INSERT INTO output_images(imageType ,imageData)
-            //     VALUES('{$imageProperties['mime']}', '{$imgData}')";
-            //         $current_id = mysqli_query($conn, $sql) or die("<b>Error:</b> Problem on Image Insert<br/>" . mysqli_error($conn));
-            //         if (isset($current_id)) {
-            //             header("Location: listImages.php");
-            //         }
-            //     }
-            // }
-
-
-            $username = $_POST['username'];
-            $gender = $_POST['gender'];
-            $birthday = $_POST['dob'];
-            $contactNumber = $_POST['phone'];
-            $email = $_POST['email'];
-            $address = $_POST['address'];
-            $pass = $_POST['confirmPass'];
-            $id = ['userID'];
-
-            $query =    "UPDATE user 
-                        SET userName = '$username', userEmail = '$gender', userContact = '$contactNumber',
-                        userPassword = '$pass',
-                        gender = '$gender', dateOfdate = '$birthday', residentalAddress = '$address',
-                            profilePicture = '$picName' FROM user WHERE userID = '$id'";
-
-            if(move_uploaded_file($tempName, $fol)) {
-                alert("Picture Saved!");
-            }
-
-            if ($result = mysqli_query($conn, $query))
-            {
-                ?>
-                <script type="text/javascript">
-                    alert("User Details Updated");
-                </script>
-                <?php
-            }
-        }
-    ?>
 </html>

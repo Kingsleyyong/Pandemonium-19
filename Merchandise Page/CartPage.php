@@ -35,9 +35,6 @@
                 $itemAmount = $row2['quantity'];
                 $recordID = $row2['recordID'];
 
-                ?><script>
-                    alert("<?php echo $recordID?>");
-                </script><?php
 
                 $result3 = mysqli_query($con, "SELECT * FROM item WHERE itemID = '$itemID'");
                 foreach($result3 as $row3):
