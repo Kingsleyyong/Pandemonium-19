@@ -56,21 +56,15 @@
 
         $first_page_result = ($page - 1) * $per_page;
 
-        if(isset($_POST['mostView'])){
+        $query = 'SELECT * FROM story ORDER BY storyView DESC LIMIT ' . $first_page_result . ',' . $per_page;
+        $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
+
+        if(isset($_POST['latestStory'])){
             $query = 'SELECT * FROM story ORDER BY storyView DESC LIMIT ' . $first_page_result . ',' . $per_page;
             $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
             ?><script>
-                window.location.replace("mostView.php");
+                window.location.replace("Testimonial.php?story");
             </script><?php
-        }
-        else if(isset($_POST["latestStory"])) {
-            $query = 'SELECT * FROM story LIMIT ' . $first_page_result . ',' . $per_page;
-            $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
-
-        }
-        else {
-            $query = 'SELECT * FROM story LIMIT ' . $first_page_result . ',' . $per_page;
-            $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
         }
 
         while($row = mysqli_fetch_array($result))
@@ -101,7 +95,7 @@
             if ($page != 1)
             {
                 ?>
-                <a href="Testimonial.php?page=<?php echo 1; ?>"><p class="text-center">&laquo; Previous</p></a>
+                <a href="mostView.php?page=<?php echo 1; ?>"><p class="text-center">&laquo; Previous</p></a>
                 <?php
             }
             ?>
@@ -109,7 +103,7 @@
         <?php
         for ($p = 1; $p <= $num_page; $p++)
         {
-        echo '<a style="padding: 0px 80px;" href="Testimonial.php?page=' . $p . '">' . $p . '</a> ';
+        echo '<a style="padding: 0px 80px;" href="mostView.php?page=' . $p . '">' . $p . '</a> ';
         }
         ?>
         <div class="col">
@@ -117,7 +111,7 @@
             if ($page < $num_page)
             {
             ?>
-            <a href="Testimonial.php?page=<?php echo ($page + 1);?>"><p class='text-center'>Next &raquo;</p></a>
+            <a href="mostView.php?page=<?php echo ($page + 1);?>"><p class='text-center'>Next &raquo;</p></a>
             <?php
             }
             ?>
