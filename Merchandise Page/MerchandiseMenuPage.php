@@ -34,8 +34,6 @@
     
     //make query & get result
     $result = mysqli_query($con, $sql); 
-
-    
 ?>
 
 <body>

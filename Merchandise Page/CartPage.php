@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
-    <title>Add to Cart</title>
+    <title>My Cart</title>
     
     <!-- NAV UI Import here -->
     <?php require("../Navigation Bar and Footer/navbar.php") ?>
 </head>
 
-<body class="bg-dark">
+<body class="bg-dark"><form name="cartPage" id="cartPage" method="post">
     <div class="container">
         <!-- This is the items that inside the cart,scrollable -->
         <div class="row rounded bg-secondary text-light p-4">
@@ -28,11 +28,16 @@
             $cartID = $row ['cartID'];
             $address = $row ['shippingAddress'];
 
-            $result2 = mysqli_query($con,"SELECT itemID, quantity FROM cartrecord WHERE cartID='$cartID'");
+            $result2 = mysqli_query($con,"SELECT * FROM cartrecord WHERE cartID='$cartID'");
             foreach($result2 as $row2):
                 echo '<div class="rounded bg-info p-2 my-3"><div class="container"><div class="row">';
                 $itemID = $row2['itemID'];
                 $itemAmount = $row2['quantity'];
+                $recordID = $row2['recordID'];
+
+                ?><script>
+                    alert("<?php echo $recordID?>");
+                </script><?php
 
                 $result3 = mysqli_query($con, "SELECT * FROM item WHERE itemID = '$itemID'");
                 foreach($result3 as $row3):
@@ -61,15 +66,15 @@
 
                         <label for="quantity">Quantity: <?php echo $itemAmount; ?></label>
 
+                        <div class="m-3"><input type="submit" class="btn btn-secondary" value="Delete Item" name="delete" 
+                            onclick="deleteRecord(rID);"> </div>
                     </div>                
                 </div>
                 </div>
                 </div>
-
-
 <?php
                 endforeach;
-            endforeach;
+           endforeach;
         endforeach;        
     }
 ?>
@@ -103,7 +108,6 @@
                         <p class="col-sm"> 
                             <div class="m-3"><input type="submit" class="btn btn-secondary" value="Edit Address" onclick=""></div>
                             <div class="m-3"><input type="submit" class="btn btn-primary btn-lg" value="Checkout" onclick="checkoutButton"></div>
-                            <div class="m-3"><input type="submit" class="btn btn-secondary" value="Delete Item" onclick=""> </div>
                         </p>
                         <p class="col-sm"> 
                              
@@ -115,25 +119,17 @@
     </div>
     <!-- Footer UI Import Here -->
     <?php require("../Navigation Bar and Footer/footer.html"); ?> 
+</form>
 </body>
 </html>
 
-<!-- Store data into databse-->
- <?php 
-     if(!$_POST('checkoutBtn')){}else{
-         $sql = 'UPDATE cart 
-                 SET shippingAddress = "$shipAddress", shippingFee = "$shipSub", subTotal = "$subTotal", TotalPayment = "$total" 
-                 WHERE cartID = "$cartID" AND userID = "$userID"';
 
-         if($sqlResult){
-             $sqlResult = mysqli_query($con, $sql);?>
-             <script>alert("Done, please proceed to checkout at our partner bank.")</script>
-             <?php }else{?>
-             <script>alert("Error.")</script>    
- <?php
-         }
-     }
+<!-- delete record from database -->
+<?php 
+    if(isset($_POST['delete'])) {
+        $recordID = $_GET['recordID'];
+        mysqli_query($con, "DELETE FROM cartrecord WHERE recordID='$recordID'");
+    }
 
+?>
 
-
- ?> 

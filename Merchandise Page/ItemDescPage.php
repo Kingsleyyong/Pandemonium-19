@@ -1,11 +1,3 @@
-<?php
-// session_start();
-//     require ('../Database/connect.php');
-// 	include("../signin_signup_signout_forgetpass_automail/function.php");
-
-// 	$user_data = check_log($con);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,7 +78,9 @@
                         width:30px; color: white; text-align: center; ">
                         <input type="button" class="btn btn-success" onclick="plus(<?php echo $info['stockNumber'];?>)" value="+">
                     </div><br>
+
                     <input type="submit" name="addToCart" class="btn btn-primary" value="Add To Cart">
+                    <a href="MerchandiseMenuPage.php?id=<?php echo $info['itemID'];?>&pagepass=true;"><button name="backToList" id="backToList" class="btn btn-primary">BACK</button></a>
                 </form>
             </div>
         </div>
@@ -121,13 +115,11 @@
 
         if(!$result2){
             ?> <script>alert("<?php echo "Unsucessful, please try again."; ?>")</script> <?php
-            header("location: MerchandiseMenuPage.php?result=0");
         }else{
             ?> <script>alert("<?php echo "Sucessful add item to cart!"; ?>")</script> <?php
-            header("location: MerchandiseMenuPage.php?result=1");
+
         } 
     }
-
 ?>
 <!-- Footer UI Import Here -->
 <?php require("../Navigation Bar and Footer/footer.html"); ?> 
