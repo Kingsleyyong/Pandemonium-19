@@ -22,11 +22,11 @@
         <div class="col">
             <table class="table">
                 <tr>
-                    <th scope="col">Contact ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Phone Number</th>
-                    <th scope="col" colspan="3">Manage</th>
+                    <th scope="col" class="text-center">Contact ID</th>
+                    <th scope="col" class="text-center">Name</th>
+                    <th scope="col" class="text-center">Email</th>
+                    <th scope="col" class="text-center">Phone Number</th>
+                    <th scope="col" colspan="3" class="text-center">Manage</th>
                 </tr>
                 <?php include "data_connection.php";
                 ob_start();
@@ -86,13 +86,14 @@
 
                     ?>
                     <tr>
-                        <td><?php echo $f_name . " " . $l_name;?></td>
-                        <td><?php echo $email;?></th></td>
-                        <td><?php echo $number_contact;?></td>
-                        <td>
+                        <td class="text-center"><?php echo $Cid;?></td>
+                        <td class="text-center"><?php echo $f_name . " " . $l_name;?></td>
+                        <td class="text-center"><?php echo $email;?></th></td>
+                        <td class="text-center"><?php echo $number_contact;?></td>
+                        <td class="text-center">
                                 <a style="text-decoration: none;" href="?_delete=true&id=<?php echo $Cid;?>" onclick="confirmation()">DELETE</a>
                         </td>
-                                <td>
+                                <td class="text-center">
                                 <a style="text-decoration: none;word-spacing: normal;"
                                 href="Contact%20View%20More%20Detail.php?id=<?php echo $Cid;?>&pageset=true">
                                     VIEW MORE DETAILS</a>
