@@ -21,6 +21,14 @@
 <?php
     require ('../Database/connect.php');
 
+    if(isset($_GET['result'])){
+        if(($_GET['result'])==0){
+            ?> <script>alert("<?php echo "Unsucessful, please try again."; ?>")</script> <?php
+        }else{
+            ?> <script>alert("<?php echo "Sucessful add item to cart!"; ?>")</script> <?php
+        }
+    }
+
     //query from item table
     $sql = 'SELECT itemID, itemName, itemPrice, itemDescription, image FROM item ORDER BY itemID'; 
     

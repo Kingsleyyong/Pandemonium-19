@@ -99,8 +99,6 @@ session_start();
 
         $sql_getting_cartID = "SELECT * FROM cart WHERE userID = $userID ";
 
-
-
         $result = mysqli_query($con, $sql_getting_cartID);
         $cartID_record = mysqli_fetch_assoc($result);
         
@@ -113,26 +111,21 @@ session_start();
         }
 
         
-        
         $cartID = $cartID_record['cartID'];
 
         $sql_item_add = "insert into cartrecord (cartID, itemID, quantity) value ('$cartID','$itemID', '$quantity')";
         
-        // $sql_item_add = 'INSERT INTO cartrecord (cartID, itemID, quantity)
-        //                 VALUES("$cartID['cartID']", itemID="$ID", quantity="quantity")';
-                        
-        // foreach($cartID_record as $idCart){
-        //     // $sql_item_add = 'INSERT INTO cartrecord (cartID, itemID, quantity)
-        //     //             VALUES("$idCart['cartID']", itemID="$ID", quantity="quantity")';
-                        
-        // }
         $result2 = mysqli_query($con, $sql_item_add);
 
         if(!$result2){
-            ?> <script>alert("<?php echo "unsucessful"; ?>")</script> <?php
+            ?> <script>alert("<?php echo "Unsucessful, please try again."; ?>")</script> <?php
+            header("location: MerchandiseMenuPage.php?result=0");
         }else{
-            ?> <script>alert("<?php echo "sucessful"; ?>")</script> <?php
+            ?> <script>alert("<?php echo "Sucessful add item to cart!"; ?>")</script> <?php
+            header("location: MerchandiseMenuPage.php?result=1");
         }
+
+       
         
     }
 

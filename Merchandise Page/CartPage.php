@@ -102,21 +102,21 @@
                         </p>
                         <p class="col-sm">
                             Merchandse Subtotal: <br>
-                            <span id="merchandSubtotal" name="merchandSubtotal">RM <?php echo number_format($merchantTotal, 2, '.', ''); ?></span>
+                            <span id="merchandSubtotal" name="merchandSub">RM <?php echo number_format($merchantTotal, 2, '.', ''); ?></span>
                         </p>
             
                         <p class="col-sm">
                             Shipping Subtotal: <br>
-                            <span id="shipSubtotal" ></span>
+                            <span id="shipSubtotal" name="shipSub"></span>
                         </p>
                     </div>
                     <div class="row">
                         <p class="col-md">
                             Total Payment: <br>
-                            <span id="total"></span>
+                            <span id="total" name="total"></span>
                         </p>
                         <p class="col-sm"> 
-                            <input type="submit" class="btn btn-primary" value="Checkout" onclick="checkoutButton"> 
+                            <input type="submit" class="btn btn-primary" name="checkoutBtn" value="Checkout" > 
                         </p>
                     </div>
                 </form>
@@ -128,6 +128,27 @@
 </body>
 </html>
 
+<!-- Store data into databse-->
 <?php 
+    $shipAddress = $_POST['shipAddress'];
+    $shipSub = $_POST['shipSub'];
+    $subTotal = $_POST['merchandSub'];
+    $total = $_POST['total'];
+
+    if(!$_POST('checkoutBtn')){}else{
+        $sql = 'UPDATE cart 
+                SET shippingAddress = "$shipAddress", shippingFee = "$shipSub", subTotal = "$subTotal", TotalPayment = "$total" 
+                WHERE cartID = "$cartID" AND userID = "$userID"';
+
+        if($sqlResult){
+            $sqlResult = mysqli_query($con, $sql);?>
+            <script>alert("Done, please proceed to checkout at our partner bank.")</script>
+            <?php }else{?>
+            <script>alert("Error.")</script>    
+<?php
+        }
+    }
+    
+
 
 ?>

@@ -7,7 +7,7 @@ if(isset($_SESSION['userID']))
 	unset($_SESSION['userID']);
 }
 
-header("Location: login&register.php");
+header("Location: SignInUp.php");
 die;
 
 ?>
