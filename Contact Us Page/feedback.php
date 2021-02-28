@@ -133,29 +133,26 @@
 			</div>
 		</div>
 		<?php
-			if(isset($_GET['fb'])){
-				$id = $_GET['uid'];
+			$userid = $user_data['userID'];
+			if(isset($_POST['submit']))
+			{
 
-				if(isset($_POST['submit']))
-				{
-
-					$rating = $_POST['rating'];
-					$type = $_POST['feedback-category'];
-					$comment= $_POST['comment'];
+				$rating = $_POST['rating'];
+				$type = $_POST['feedback-category'];
+				$comment= $_POST['comment'];
 	
-					$query = "INSERT INTO feedback(rating,category,comment,userID) VALUES ('$rating','$type','$comment','$id')";
+				$query = "INSERT INTO feedback(rating,category,comment,userID) VALUES ('$rating','$type','$comment','$userid')";
 
-					if($result = mysqli_query($con,$query))
-					{
-					?>
-						<script>
-							alert("Thank you for your feedback!!");
-						</script>
-					<?php
-					}
-					else{
-						echo "Error inserting data";
-					}
+				if($result = mysqli_query($con,$query))
+				{
+				?>
+					<script>
+						alert("Thank you for your feedback!!");
+					</script>
+				<?php
+				}
+				else{
+					echo "Error inserting data";
 				}
 			}
         ?>
