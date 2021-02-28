@@ -37,7 +37,7 @@
 <body class="bg-dark">
     <div class="container">
         <!-- This is the items that inside the cart,scrollable -->
-        <div class="row rounded bg-secondary text-light p-4">
+        <div class="row rounded bg-secondary text-light p-4 my-3">
             <div class="col-sm mx-4">
                 <div class="rounded bg-info p-2 my-3">
 <?php

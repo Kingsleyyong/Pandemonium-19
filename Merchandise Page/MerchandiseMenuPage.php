@@ -35,32 +35,30 @@
     //make query & get result
     $result = mysqli_query($con, $sql); 
 
-    //fetch the result's row as an array
-    $items = mysqli_fetch_all($result, MYSQLI_ASSOC);
     
 ?>
 
 <body>
         <div class="container-fluid p-5" >
-        <div class="row row-cols-3">
-            <?php foreach ($items as $item){?> 
-
-                <a href="ItemDescPage.php?id=<?php echo $item['itemID'];?>&pagepass=true;">
-                    <div class="row-cols-1 bg-light rounded m-2 p-2" >
-                        <div class="col m-auto">
-                            <?php echo '<img width = 150dp height = 130dp src="data:image/jpeg;base64,'.base64_encode( $item['image'] ).'"/>'; ?>
+        <div class="row justify-content-md-center row-cols-3">
+            <?php while($items = mysqli_fetch_assoc($result)){?>
+                <a href="ItemDescPage.php?id=<?php echo $items['itemID'];?>&pagepass=true;">
+                        <div class="row-cols-1 bg-light rounded m-5 p-1 py-4" >
+                            <div class="col m-auto">
+                                <?php echo '<img width = 300dp height = 300dp src="data:image/jpeg;base64,'.base64_encode( $items['image'] ).'"/>'; ?>
+                            </div>
+                            <div class="col text-center">
+                                <h3><?php echo $items["itemName"]; ?></h3>
+                            </div>
+                            <div class="col my-auto">
+                                <p>RM <?php echo $items["itemPrice"]; ?> </p>
+                            </div>
                         </div>
-                        <div class="col">
-                            <h3><?php echo $item["itemName"]; ?></h3>
-                        </div>
-                        <div class="col my-auto">
-                            <p>RM <?php echo $item["itemPrice"]; ?> </p>
-                        </div>
-                    </div>
                 </a>
-                
             <?php } ?>
         </div>
+        <!-- when 3 items reach, close div tag (line 55) and start new div tag (line 37), both of these are for row
+             one column div tag starts at line 41 and ends at line 51 -->
     </div>
 
     <!-- Footer UI Import Here -->
