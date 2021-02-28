@@ -55,7 +55,7 @@
         </div>
         <div class="row mb-4 p-3 bg-secondary">
             <div class="col">
-                <h1 class="text-center"><?php echo $story_id; ?></h1>
+                <h1 class="text-center"><?php echo $title; ?></h1>
                 <h4 class="text-center"><?php echo "Author : ".$author; ?></h4>
                 <h5 class="text-center"><?php echo "[ ".$date," ]"; ?></h5>
                 <p class="my-3"><?php echo $board?></p>
