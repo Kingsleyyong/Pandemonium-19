@@ -98,9 +98,6 @@
                                     VIEW MORE DETAILS</a>
                                 </td>
                     </tr>
-                    <tr>
-                        <td><hr></td>
-                    </tr>
                     <?php
                 }
                 ?>
@@ -109,7 +106,7 @@
     </div>
     <div class="row">
         <div class="col">
-        <p>Story Posted Records : <?php echo $number_of_result?></p>
+        <p>Records : <?php echo $number_of_result?></p>
         <?php
         for ($p = 1; $p <= $num_page; $p++)
         {
