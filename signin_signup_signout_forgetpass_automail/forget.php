@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include("connect.php");
+	include("../database/connect.php");
 
 	$email = $_POST['email'];
 
@@ -12,7 +12,7 @@
 		if($resullt = mysqli_query($con,$querrry))
 		{
 			//sending an email
-			require_once('PHPMailer/PHPMailerAutoload.php');
+			require_once('../PHPMailer/PHPMailerAutoload.php');
 			$mail = new PHPMailer();
 			$mail->isSMTP();
 			$mail->SMTPAuth = true;
@@ -29,7 +29,13 @@
 			
 			$mail->Send();
 
-			header("Location: SignInUp_UI.php");
+			?>
+				<script>
+					alert("Successfully resetted password! Please try again if you did not receive an email from us in 60 seconds.");
+				</script>
+			<?php
+
+			header("refresh: 0.2; url = SignInUp_UI.php");
 
 		}else{
 			echo "Error resetting";
