@@ -25,7 +25,7 @@
         <td>
             <button type="button" class="btn btn-primary" name="latest_story">Latest Story</button> <!-- for class toggle_view_button-->
         </td>
-        <td id="storyboard">
+        <td id="storyboard" style="font-size: 1.2em; ">
             Story of Frontliners & Covid Patients
         </td>
     </tr>

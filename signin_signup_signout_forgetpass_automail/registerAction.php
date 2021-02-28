@@ -21,7 +21,6 @@ session_start();
 		if($userEmail == $user_data['userEmail']) {
 		?>
 			<script type="text/javascript">
-				// email.setCustomValidity("This email has been taken!");
 				alert("This email has been taken!");
 			</script>
 			<?php

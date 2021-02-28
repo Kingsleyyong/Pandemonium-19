@@ -65,7 +65,7 @@
         <div class="row rounded bg-secondary text-light p-4">
             <div id="col-sm">
                 <?php echo '<img class="rounded mx-auto d-block" width="200px" alt="" width = 150dp 
-                height = 130dp src="data:image/jpeg;base64,'.base64_encode( $info['image'] ).'"/>'; ?>
+                    height = 130dp src="data:image/jpeg;base64,'.base64_encode( $info['image'] ).'"/>'; ?>
             </div>
             <div class="col-sm mx-4">
                 <h1> <?php echo $info['itemName'];?> </h1>
@@ -125,10 +125,7 @@
         }else{
             ?> <script>alert("<?php echo "Sucessful add item to cart!"; ?>")</script> <?php
             header("location: MerchandiseMenuPage.php?result=1");
-        }
-
-       
-        
+        } 
     }
 
 ?>
