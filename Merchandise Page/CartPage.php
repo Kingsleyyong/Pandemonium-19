@@ -63,8 +63,8 @@
 
                         <label for="quantity">Quantity: <?php echo $itemAmount; ?></label>
 
-                        <div class="m-3"><input type="submit" class="btn btn-secondary" value="Delete Item" name="delete" 
-                            onclick="deleteRecord(rID);"> </div>
+                        <div class="m-3"><a href="?id=<?php echo $userID;?>&recordID=<?php echo $recordID?>&pageset=true">Delete item</a> 
+                        </div>
                     </div>                
                 </div>
                 </div>
@@ -123,7 +123,7 @@
 
 <!-- delete record from database -->
 <?php 
-    if(isset($_POST['delete'])) {
+    if(isset($_GET['pageset'])) {
         $recordID = $_GET['recordID'];
         mysqli_query($con, "DELETE FROM cartrecord WHERE recordID='$recordID'");
     }
