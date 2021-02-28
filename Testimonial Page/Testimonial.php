@@ -15,22 +15,23 @@
 </head>
 
 <body class="bg-dark text-light">
-<div class="division_toggle">
-<table>
-        <tr> <!--to let the color of button remain differential colour-->
-        <td><div id="button_remain_color"></div></td>
-        <td>
-            <button type="button" class="btn btn-primary" name="most_view">Most View Story</button> <!-- for class toggle_view_button-->
-        </td>
-        <td>
-            <button type="button" class="btn btn-primary" name="latest_story">Latest Story</button> <!-- for class toggle_view_button-->
-        </td>
-        <td id="storyboard" style="font-size: 1.2em; ">
-            Story of Frontliners & Covid Patients
-        </td>
-    </tr>
-</table>
-</div>
+<form name="storyHead" id="storyHead" method="post">
+    <div class="division_toggle">
+        <table>
+            <tr> <!--to let the color of button remain differential colour-->
+            <td><div id="button_remain_color"></div></td>
+            <td>
+                <input type="submit" class="btn btn-primary" name="mostView" value="Most View Story"> <!-- for class toggle_view_button-->
+            </td>
+            <td>
+                <input type="submit" class="btn btn-primary" name="latest_story" value="Latest Story"> <!-- for class toggle_view_button-->
+            </td>
+            <td id="storyboard" style="font-size: 1.2em; ">
+                Story of Frontliners & Covid Patients
+            </td>
+            </tr>
+        </table>
+    </div>
 
 <div class="container-fluid my-3">
     <div class="row p-3">
@@ -41,7 +42,7 @@
 
         $query = "SELECT * FROM story";
 
-        $result = mysqli_query($conn, $query) or die( mysqli_error($conn));;
+        $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
         $number_of_result = mysqli_num_rows($result);//used to count number of rows results
 
         //to know the number page available
@@ -61,18 +62,20 @@
 
         $query = 'SELECT * FROM story LIMIT ' . $first_page_result . ',' . $per_page;
 
-        $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
+        $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
 
-        if (isset($_POST["most_view"]))
+        if(isset($_POST['mostView']))
         {
-            $query = 'SELECT storyView FROM story ORDER BY storyView DESC LIMIT'  . $first_page_result . ',' . $per_page;
+            echo "test";
+            $query = 'SELECT storyTitle, storyView FROM story ORDER BY storyView DESC';
 
-            $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
+            $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
         ?>
         <div class="col px-4 mx-4">
             <?php
-            while($row = mysqli_fetch_array($result))
-            {
+            if(mysqli_num_rows($result)>0){
+                while($row = mysqli_fetch_assoc($result))
+                {
             ?>
                 <a href='Story page.php?id=<?php echo $row['storyID'];?>&pageSet=true">
                 <?php echo '<img src="data:image/jpeg;base64,'. base64_encode( $result['storyMedia'] ).'" alt="" class="mx-auto d-block" alt="NP" id="pic_1"/>'?>
@@ -80,8 +83,12 @@
                 <p class="text-right">Read More</p></a>
         </div>
         <?php
+                }
             }
         }
+
+
+
         else if (isset($_GET["latest_story"]))
         {
             $query = 'SELECT storyID, storyAuthor, storyDate(updated_at), storyTitle,
@@ -90,41 +97,13 @@
             $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
             ?>
         <div class="col px-4 mx-4">
-                <?php
-                while($row = mysqli_fetch_array($result))
-                {
-                ?><a href="Story page.php?id=<?php echo $row['storyID'];?>&pageSet=true">
-                <?php echo '<img src="data:image/*;base64,'. base64_encode( $result['storyMedia'] ).'" alt="" class="mx-auto d-block" alt="NP" id="pic_1"/>'?>
-                <p class="text-center"><span id="title1"><?php echo $row['storyTitle'];?></span></p>
-                <p class="text-right">Read More</p></a>
-        </div>
-        <?php
-                }
-        }
-        else
-        {
-            $query = 'SELECT * FROM story LIMIT ' . $first_page_result . ',' . $per_page;
-
-            $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
-            ?>
-                <?php
+            <?php
             while($row = mysqli_fetch_array($result))
             {
-            ?>
-            <div class="col px-4 mx-4">
-                    <a href="Story page.php?id=<?php echo $row['storyID'];?>&pageSet=true">
-                    <?php 
-                        if($row['storyMedia']!=null) {
-                            $pic = $row['storyMedia'];
-                            echo '<img class="mx-auto d-block" width = 150dp height = 130dp src="data:image/*;base64,'.
-                                    base64_encode($row['storyMedia']).'" alt=""/>';
-                        }
-                        else {
-                            echo '<img src="../assets/storyDefault.png" width = 150dp height = 130dp class="mx-auto d-block" alt="article image">';
-                        } 
-                    ?>
-                <p class="text-center"><span id="title1"><?php echo $row['storyTitle'];?></span></p>
-                <p class="text-right">Read More</p></a>
+            ?><a href="Story page.php?id=<?php echo $row['storyID'];?>&pageSet=true">
+            <?php echo '<img src="data:image/*;base64,'. base64_encode( $result['storyMedia'] ).'" alt="" class="mx-auto d-block" alt="NP" id="pic_1"/>'?>
+            <p class="text-center"><span id="title1"><?php echo $row['storyTitle'];?></span></p>
+            <p class="text-right">Read More</p></a>
         </div>
         <?php
             }
@@ -139,7 +118,7 @@
             if ($page != 1)
             {
                 ?>
-                <a href="Testimonial.php?page=<?php echo 1;?>"><p class='text-center'>&laquo; Previous</p></a>
+                <a href="Testimonial.php?page=<?php echo 1; ?>"><p class="text-center">&laquo; Previous</p></a>
                 <?php
             }
             ?>
@@ -164,6 +143,7 @@
 </div>
 <span id="pad">
 </span>
+</form>
 
 <!-- Footer UI Import Here -->
 <?php require("../Navigation Bar and Footer/footer.html"); ?> 
