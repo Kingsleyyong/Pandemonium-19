@@ -74,15 +74,17 @@
                 <?php 
                     if($row['storyMedia']!=null) {
                         $pic = $row['storyMedia'];
-                        echo '<img class="mx-auto d-block" width = "350dp" src="data:image/*;base64,'.
+                        $viewNum = $row['storyView'];
+                        echo '<img class="mx-auto d-block" width = "350dp" height="240dp" src="data:image/*;base64,'.
                                 base64_encode($row['storyMedia']).'" alt=""/>';
                     }
                     else {
-                        echo '<img src="../assets/storyDefault.png" width = "350dp" class="mx-auto d-block" alt="article image">';
+                        echo '<img src="../assets/storyDefault.png" width = "350dp" height="240dp" class="mx-auto d-block" alt="article image">';
                     } 
                 ?>
                 <p class="text-center"><span id="title1"><?php echo $row['storyTitle'];?></span></p>
                 <p class="text-center">Read More</p></a>
+                <p class="text-center"><< Number of Views : <?php echo $viewNum; ?> >> </p>
             </div>
             <?php
         }   ?>
