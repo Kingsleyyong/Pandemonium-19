@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
-<head><title>Add New Story</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<head><title>Admin | Add New Story</title>
+<link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body class="bg-dark text-white">
         <form name="addStoryfrm" method="post" class="m-4" action="">
             <div class="row">
-                <h1>Add Story</h1>
+                <h1>Add New Story</h1>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-6">

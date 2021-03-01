@@ -12,6 +12,7 @@
         require("../Navigation Bar and Footer/navbar.php");
         require('../Database/connect.php');
         $uid = $user_data['userID'];
+        $num=0;
     ?>
 
     <?php 
@@ -19,6 +20,7 @@
         if(isset($_GET['pageset'])) {
             $recordID = $_GET['recordID'];
             mysqli_query($con, "DELETE FROM cartrecord WHERE recordID='$recordID'");
+            mysqli_query($con, "DELETE FROM cart WHERE userID='$uid'");
             header("refresh:0.5; url=CartPage.php?cart&uid=$uid");
         }
 
@@ -32,7 +34,8 @@
             {
                 if($getCartID = mysqli_fetch_assoc($result)) {
                     $cartid = $getCartID['cartID'];
-                    mysqli_query($con, "DELETE FROM cartrecord WHERE cartID='$cartid'") or die("test2");
+                    mysqli_query($con, "DELETE FROM cartrecord WHERE cartID='$cartid'") or die("Fail");
+                    mysqli_query($con, "DELETE FROM cart WHERE userID='$uid'") or die("Fail");
                 }
             }
             // go to main
@@ -51,17 +54,17 @@
     $merchantTotal = 0;
     if(isset($_GET['cart'])){
 
-        $result = mysqli_query($con, "SELECT cartID, shippingAddress FROM cart WHERE userID=$uid");
+        $result = mysqli_query($con, "SELECT * FROM cart WHERE userID=$uid");
 
         $num = mysqli_num_rows($result); 
 
         if($num>0){
             foreach($result as $row):
                 $cartID = $row ['cartID'];
+                $shippingSubtotal = $row['shippingFee'];
                 $rslt = mysqli_query($con, "select * from user where userID = $uid");
                 $getaddress = mysqli_fetch_assoc($rslt);
                 $address = $getaddress['residentialAddress'];
-                $shippingSubtotal = 3.00;
                 $rslt2 = mysqli_query($con, "update cart set shippingAddress='$address', shippingFee='$shippingSubtotal' where userID=$uid");
 
                 $result2 = mysqli_query($con,"SELECT * FROM cartrecord WHERE cartID='$cartID'");

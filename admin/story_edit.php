@@ -1,8 +1,9 @@
 <?php include("data_connection.php"); ?>
 
 <html>
-<head><title>Edit a Movie</title>
+<head><title>Admin | Edit Story</title>
     <link href="design.css" type="text/css" rel="stylesheet" />
+    <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body class="bg-dark text-light">
@@ -17,11 +18,11 @@
 
     <form name="edit_addfrm" method="post" class="m-4" action="">
         <div class="row">
-            <h1>Add Story</h1>
+            <h1>Add New Story</h1>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label>Story name</label>
+                <label>Story Title</label>
                 <input type="text" class="form-control" size="80" name="Story_title" value="<?php echo $row['storyTitle']; ?>" required>
             </div>
             <div class="form-group col-md-6">
@@ -51,8 +52,6 @@
     <?php
         }
         ?>
-
-
 </body>
 </html>
 
@@ -67,7 +66,7 @@ if(isset($_POST['savebtnstory']))
     $sStory = $_POST['story_text'];
 
     if ($result = mysqli_query($conn, "UPDATE story set storyAuthor = 
-'$sAuthor', storyDate = '$spost_date', 
+            '$sAuthor', storyDate = '$spost_date', 
                  storyMedia = '$sImg', storyTitle = '$stitle',storyBoard = '$sStory' WHERE storyID = '$storyId'"))
     {
         ?>

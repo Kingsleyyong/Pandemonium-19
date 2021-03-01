@@ -60,8 +60,7 @@
     <div class="container ">
         <div class="row rounded bg-secondary text-light p-4">
             <div id="col-sm">
-                <?php echo '<img class="rounded mx-auto d-block" width="200px" alt="" width = 150dp 
-                    height = 130dp src="data:image/jpeg;base64,'.base64_encode( $info['image'] ).'"/>'; ?>
+                <?php echo '<img class="rounded mx-auto d-block img-fliud" width="200px" alt="" src="data:image/jpeg;base64,'.base64_encode( $info['image'] ).'"/>'; ?>
             </div>
             <div class="col-sm mx-4">
                 <h1> <?php echo $info['itemName'];?> </h1>
@@ -97,8 +96,9 @@
         $quantity = $_GET['quantity'];
         $itemID = $_GET['itemID'];
         $userID = $user_data['userID'];
+        $shippingFee = 3.00;
 
-        $sql = "select * from item where itemID = $itemID";
+        $sql = "SELECT * from item where itemID = $itemID";
 
         $result = mysqli_query($con,$sql);
 
@@ -117,12 +117,16 @@
             //if there is no record in the cart table for this userID
             if(!$cartID_record['cartID'])
             {
-            $result3 = mysqli_query($con, "insert into cart (userID) value ($userID)") or die("Error inserting data to cart");
-            $result4 = mysqli_query($con, "select * from cart where userID = $userID" or die("Error selecting data"));
+            $result3 = mysqli_query($con, "INSERT into cart (userID, shippingFee) value ($userID, $shippingFee)") or die("Error inserting data to cart");
+            $result4 = mysqli_query($con, "SELECT * from cart where userID = $userID" or die("Error selecting data"));
             $cartID_record = mysqli_fetch_assoc($result4);
             }
 
-            
+            $sql_getting_cartID = "SELECT * FROM cart WHERE userID = $userID ";
+
+            $result = mysqli_query($con, $sql_getting_cartID);
+            $cartID_record = mysqli_fetch_assoc($result);
+
             $cartID = $cartID_record['cartID'];
 
             $sql_item_add = "insert into cartrecord (cartID, itemID, quantity) value ('$cartID','$itemID', '$quantity')";
