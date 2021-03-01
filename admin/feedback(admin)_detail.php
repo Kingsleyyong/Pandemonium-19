@@ -7,7 +7,7 @@
                                 integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
                                 crossorigin="anonymous">
 	<?php require ('../Database/connect.php'); ?>
-	<style type="text/css">
+	<!--<style type="text/css">
 		body,html{
 			background-color: #30343F;
 		}
@@ -25,15 +25,21 @@
 		#detail table,td,tr,th{
 			padding: 10px;
 		}
-	</style>
+	</style>-->
 
 	<script>
 		function goBack() {		window.history.back();		}
 	</script>
 	
 </head>
-<body>
-	<div id="detail">
+<body class="bg-dark text-light"> 
+<div id="container" style="padding:20px;">
+    <div class="row mx-2 my-3">
+        <div class="col">
+            <h1>Details of feedback</h1>
+        </div>
+    </div>
+    <hr style="border: 1px solid white;">
 		<?php
 			if(isset($_GET['pageset']))
 			{
@@ -43,19 +49,15 @@
 
 				$detail = mysqli_fetch_assoc($details);
 				?>
-				<table>
-					<tr>
-						<th colspan="2">Feedback Detail</th>
-					</tr>
-					<tr>
-						<td>Feedback ID : </td>
-						<td><?php echo $detail['FeedbackID'];?></td>
-					</tr>
-					<tr>
-						<td>User ID : </td>
-						<td><?php echo $detail['userID'];?></td>
-					</tr>
-					<tr>
+				<div class="row mx-2 my-3"><div class="col">
+				Feedback ID : 
+				</div><div class="col">
+				<?php echo $detail['FeedbackID'];?></td>
+				</div></div><div class="row mx-2 my-3"><div class="col">
+				User ID : 
+				</div><div class="col">
+				<?php echo $detail['userID'];?>
+				</div></div><div class="row mx-2 my-3"><div class="col">
 						<?php
 							$idddd = $detail['userID'];
 							$query = "select * from user where userID = $idddd";
@@ -63,25 +65,24 @@
 							$result = mysqli_query($con, $query);
 							$dd = mysqli_fetch_assoc($result);
 						?>
-						<td>User Name :  </td>
-						<td><?php echo $dd['userName']?></td>
-					</tr>
-					<tr>
-						<td>rating : </td>
-						<td><?php echo $detail['rating']." star";?></td>
-					</tr>
-					<tr>
-						<td>Category : </td>
-						<td><?php echo $detail['category'];?></td>
-					</tr>
-					<tr>
-						<td>Comment : </td>
-						<td><?php echo $detail['comment'];?></td>
-					</tr>
-					<tr>
-					<td><button onclick="goBack();" class="btn btn-primary m-auto">Go Back</button></td>
-					</tr>
-				</table>
+				User Name :  
+				</div><div class="col">
+				<?php echo $dd['userName']?>
+				</div></div><div class="row mx-2 my-3"><div class="col">
+				Rating : 
+				</div><div class="col">
+				<?php echo $detail['rating']." star";?>
+				</div></div><div class="row mx-2 my-3"><div class="col">
+				Category : 
+				</div><div class="col">
+				<?php echo $detail['category'];?>
+				</div></div><div class="row mx-2 my-3"><div class="col">
+				Comment : 
+				</div><div class="col">
+				<?php echo $detail['comment'];?>
+				</div></div><div class="row mx-2 my-3"><div class="col">
+				<button onclick="goBack();" class="btn btn-primary m-auto" style="float:right;">Go Back</button>
+				</div>
 				<?php
 			}
 		?>
