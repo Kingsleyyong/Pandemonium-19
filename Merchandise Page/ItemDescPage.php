@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Item Description Page</title>
     <!-- NAV UI Import here -->
-    <?php require("../Navigation Bar and Footer/navbar.php"); ?>
+    <?php ob_start(); 
+    require("../Navigation Bar and Footer/navbar.php"); ?>
     
 </head>
 <style>
@@ -78,16 +79,18 @@
                         width:30px; color: white; text-align: center; ">
                         <input type="button" class="btn btn-success" onclick="plus(<?php echo $info['stockNumber'];?>)" value="+">
                     </div><br>
-
-                    <input type="submit" name="addToCart" class="btn btn-primary" value="Add To Cart">
-                    <a href="MerchandiseMenuPage.php?id=<?php echo $info['itemID'];?>&pagepass=true;"><button name="backToList" id="backToList" class="btn btn-primary">BACK</button></a>
+                    <input type="submit" name="submit" class="btn btn-primary" value="Add To Cart">
+                    <button name="backToList" id="backToList" class="btn btn-primary">BACK</button>
                 </form>
             </div>
         </div>
     </div>
 <?php
+    if(isset($_GET['backToList'])){
+        header("location: MerchandiseMenuPage.php?result=1");
+    }
 
-    if(isset($_GET['addToCart'])){
+    if(isset($_GET['submit'])){
         $quantity = $_GET['quantity'];
         $itemID = $_GET['itemID'];
         $userID = $user_data['userID'];
@@ -111,14 +114,14 @@
 
         $sql_item_add = "insert into cartrecord (cartID, itemID, quantity) value ('$cartID','$itemID', '$quantity')";
         
-        $result2 = mysqli_query($con, $sql_item_add);
-
-        if(!$result2){
-            ?> <script>alert("<?php echo "Unsucessful, please try again."; ?>")</script> <?php
+        if($result2 = mysqli_query($con, $sql_item_add)){
+            header("location: MerchandiseMenuPage.php?result=1");
         }else{
-            ?> <script>alert("<?php echo "Sucessful add item to cart!"; ?>")</script> <?php
+            ?><script>alert("Unsucessful.")</script><?php
+            header("location: MerchandiseMenuPage.php?result=0");
+        }
+        ob_end_flush();
 
-        } 
     }
 ?>
 <!-- Footer UI Import Here -->
