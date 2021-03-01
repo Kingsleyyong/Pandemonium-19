@@ -48,12 +48,14 @@
         $result = mysqli_query($con, $sql) or die("error");
 
         $info = mysqli_fetch_assoc($result);
+        
 
     }
     else{
         echo "not connected";
     }
-    
+    $stockNum = (int)$info['stockNumber'];
+    echo $stockNum;
 ?>
 
 <body class="bg-dark">
@@ -67,7 +69,7 @@
                 <div class="rounded bg-info p-2 my-3">
                     <p class="font-weight-bold" id="itemPrice">RM <?php echo $info['itemPrice'];?></p>
                     <p id="itemDescription"><?php echo $info['itemDescription'];?></p>
-                    <p for="stockLeft">Stock Left:  <?php echo $info['stockNumber'];?></p>
+                    <p for="stockLeft">Stock Left:  <?php echo $stockNum;?></p>
                     <p for="choices">Color: <?php echo $info['itemColour'];?> </p>
                     <p for="size">Size: <?php echo $info['itemSize'];?> </p>
 
@@ -93,7 +95,7 @@
     }
 
     if(isset($_GET['submit'])){
-        $quantity = $_GET['quantity'];
+        $quantity = (int)$_GET['quantity'];
         $itemID = $_GET['itemID'];
         $userID = $user_data['userID'];
         $shippingFee = 3.00;
@@ -121,12 +123,16 @@
             $result4 = mysqli_query($con, "SELECT * from cart where userID = $userID" or die("Error selecting data"));
             $cartID_record = mysqli_fetch_assoc($result4);
             }
+<<<<<<< HEAD
 
             $sql_getting_cartID = "SELECT * FROM cart WHERE userID = $userID ";
 
             $result = mysqli_query($con, $sql_getting_cartID);
             $cartID_record = mysqli_fetch_assoc($result);
 
+=======
+            
+>>>>>>> 0b807bb6ec89f5e436eaf220fd5db73fbd3f509f
             $cartID = $cartID_record['cartID'];
 
             $sql_item_add = "insert into cartrecord (cartID, itemID, quantity) value ('$cartID','$itemID', '$quantity')";
@@ -134,6 +140,7 @@
             if($result2 = mysqli_query($con, $sql_item_add)){
                 $updateStock = mysqli_query($con, "update item set stockNumber = '$leftstock' where itemID='$itemID'");
                 header("location: MerchandiseMenuPage.php?result=1");
+                
             }else{
                 ?><script>alert("Unsucessful.")</script><?php
                 header("location: MerchandiseMenuPage.php?result=0");
