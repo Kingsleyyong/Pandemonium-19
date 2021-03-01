@@ -6,6 +6,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Admin | Add Product Details</title>
+    <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body class="bg-dark text-light" style="padding:20px;">
 	<form name="add-product" method="POST">
         <div class="row mx-2 my-3">
             <div class="col">
@@ -71,9 +77,8 @@
                 <div class="col">
                     <input type="file" name="item_img" size="10" class="form-control-file" accept="image/*" required>
                 </div>
+            </div>
             <div class="row my-3">
-                <div class="col">
-                </div>
                 <div class="col">
                     <input type="submit" class="btn btn-primary" name="addbtn" value="ADD">
                 </div>

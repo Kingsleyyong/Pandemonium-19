@@ -8,7 +8,7 @@
 
 	<?php require ('../Database/connect.php'); ?>
 
-	<style type="text/css">
+	<!--<style type="text/css">
 		body,html{
 			background-color: #30343F;		
 		}
@@ -28,7 +28,7 @@
 			background-color: #E4D9FF;
 			text-align: center;
 		}
-	</style>
+	</style>-->
 	<script type="text/javascript">
 		function confirmation()
 		{
@@ -73,17 +73,17 @@
 	?>
 	
 </head>
-<body class="bg-dark">
+<body class="bg-dark text-light">
 	<div class = "feedback-container">
-		<h1 style="font-weight: bold; color: white; margin-left: 2%">Feedback</h1>
-		<table>
+		<h1 class="m-3">Feedback</h1>
+		<table class="table">
 			<tr>
-				<th>Feedback ID</th>
-                <th>User ID</th>
-				<th>Rating</th>
-				<th>Category</th>
-				<th>Comment</th>
-				<th colspan="2">Option</th>
+				<th scope="col" class="text-center">Feedback ID</th>
+                <th scope="col" class="text-center">User ID</th>
+				<th scope="col" class="text-center">Rating</th>
+				<th scope="col" class="text-center">Category</th>
+				<th scope="col" class="text-center">Comment</th>
+				<th scope="col" class="text-center" colspan="2">Option</th>
 			</tr>
 			<?php 
 
@@ -95,19 +95,19 @@
 				$fbID = $row['FeedbackID'];
 			?>
 			<tr>
-				<td><?php echo $row['FeedbackID']?></td>
-				<td><?php echo $row['userID']?></td>
-				<td><?php echo $row['rating']?></td>
-				<td><?php echo $row['category']?></td>
-                <td><?php echo $row['comment']?></td>
-				<td><a href="feedback(admin)_detail.php?id=<?php echo $fbID;?>&pageset=true">View Details</a></td>
-				<td><a href="?id=<?php echo $fbID;?>&pagedelete" onclick="confirmation()" style="color: red;">Delete</a></td>
+				<td scope="col" class="text-center"><?php echo $row['FeedbackID']?></td>
+				<td scope="col" class="text-center"><?php echo $row['userID']?></td>
+				<td scope="col" class="text-center"><?php echo $row['rating']?></td>
+				<td scope="col" class="text-center"><?php echo $row['category']?></td>
+                <td scope="col" class="text-center"><?php echo $row['comment']?></td>
+				<td scope="col" class="text-center"><a href="feedback(admin)_detail.php?id=<?php echo $fbID;?>&pageset=true">View Details</a></td>
+				<td scope="col" class="text-center"><a href="?id=<?php echo $fbID;?>&pagedelete" onclick="confirmation()" style="color: red;">Delete</a></td>
 			</tr>
 			<?php
 			}
 			?>
-			<div style="color: white; font-size: 1.5em; margin-left:2%">Total record found : <?php echo $numRow?></div>
 		</table>
+		<footer style="color: white;">Total record found : <?php echo $numRow?></footer>
 	</div>
 </body>
 </html>
