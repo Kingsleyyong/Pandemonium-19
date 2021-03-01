@@ -24,8 +24,10 @@
     if(isset($_GET['result'])){
         if(($_GET['result'])==0){
             ?> <script>alert("<?php echo "Unsucessful, please try again."; ?>")</script> <?php
-        }else if (($_GET['result'])==0){
+        }else if (($_GET['result'])==1){
             ?> <script>alert("<?php echo "Sucessful add item to cart!"; ?>")</script> <?php
+        }else if (($_GET['result'])==2){
+            ?> <script>alert("<?php echo "Item cannot be quantity zero, direct you back to cart."; ?>")</script> <?php
         }else{
             ?> <script>alert("<?php echo "Going back to Merchandise page..."; ?>")</script> <?php
         }

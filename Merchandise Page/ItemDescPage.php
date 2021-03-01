@@ -20,9 +20,11 @@
 </style>
 <script>
         function minus(){
-            if(value!=0){
-                value -= 1;
+            if(document.getElementById('quantityValue').value!=0){
+                document.getElementById('quantityValue').value -= 1;
                 document.getElementById("quantityValue").innerHTML=value;
+            }else{
+                alert('Please choose the quantity.');
             }
         }
 
@@ -33,6 +35,7 @@
                 document.getElementById('quantityValue').value = parseInt(document.getElementById('quantityValue').value) + 1;
             }
         }
+
 </script>
 
 <?php
@@ -76,7 +79,7 @@
                         <label for="quantity">Quantity: </label>
                         <input type="button" class="btn btn-danger" onclick="minus()" value="-">
                         <input type="number" id="quantityValue" name="quantity" value = 0 readonly style="background: transparent; border: 0; 
-                        width:30px; color: white; text-align: center; ">
+                        width:30px; color: white; text-align: center; " >
                         <input type="button" class="btn btn-success" onclick="plus(<?php echo $info['stockNumber'];?>)" value="+">
                     </div><br>
                     <input type="submit" name="submit" class="btn btn-primary" value="Add To Cart">
@@ -95,33 +98,36 @@
         $itemID = $_GET['itemID'];
         $userID = $user_data['userID'];
 
+        if($quantity!=0){
+            
+            $sql_getting_cartID = "SELECT * FROM cart WHERE userID = $userID ";
 
-        $sql_getting_cartID = "SELECT * FROM cart WHERE userID = $userID ";
+            $result = mysqli_query($con, $sql_getting_cartID);
+            $cartID_record = mysqli_fetch_assoc($result);
+            
+            //if there is no record in the cart table for this userID
+            if(!$cartID_record['cartID'])
+            {
+            $result3 = mysqli_query($con, "insert into cart (userID) value ($userID)") or die("Error inserting data to cart");
+            $result4 = mysqli_query($con, "select * from cart where userID = $userID" or die("Error selecting data"));
+            $cartID_record = mysqli_fetch_assoc($result4);
+            }
 
-        $result = mysqli_query($con, $sql_getting_cartID);
-        $cartID_record = mysqli_fetch_assoc($result);
-        
-        //if there is no record in the cart table for this userID
-        if(!$cartID_record['cartID'])
-        {
-           $result3 = mysqli_query($con, "insert into cart (userID) value ($userID)") or die("Error inserting data to cart");
-           $result4 = mysqli_query($con, "select * from cart where userID = $userID" or die("Error selecting data"));
-           $cartID_record = mysqli_fetch_assoc($result4);
-        }
+            
+            $cartID = $cartID_record['cartID'];
 
-        
-        $cartID = $cartID_record['cartID'];
-
-        $sql_item_add = "insert into cartrecord (cartID, itemID, quantity) value ('$cartID','$itemID', '$quantity')";
-        
-        if($result2 = mysqli_query($con, $sql_item_add)){
-            header("location: MerchandiseMenuPage.php?result=1");
+            $sql_item_add = "insert into cartrecord (cartID, itemID, quantity) value ('$cartID','$itemID', '$quantity')";
+            
+            if($result2 = mysqli_query($con, $sql_item_add)){
+                header("location: MerchandiseMenuPage.php?result=1");
+            }else{
+                ?><script>alert("Unsucessful.")</script><?php
+                header("location: MerchandiseMenuPage.php?result=0");
+            }
         }else{
-            ?><script>alert("Unsucessful.")</script><?php
-            header("location: MerchandiseMenuPage.php?result=0");
+            header("location: MerchandiseMenuPage.php?result=2");
         }
         ob_end_flush();
-
     }
 ?>
 <!-- Footer UI Import Here -->
