@@ -123,16 +123,13 @@
             $result4 = mysqli_query($con, "SELECT * from cart where userID = $userID" or die("Error selecting data"));
             $cartID_record = mysqli_fetch_assoc($result4);
             }
-<<<<<<< HEAD
 
             $sql_getting_cartID = "SELECT * FROM cart WHERE userID = $userID ";
 
             $result = mysqli_query($con, $sql_getting_cartID);
             $cartID_record = mysqli_fetch_assoc($result);
 
-=======
             
->>>>>>> 0b807bb6ec89f5e436eaf220fd5db73fbd3f509f
             $cartID = $cartID_record['cartID'];
 
             $sql_item_add = "insert into cartrecord (cartID, itemID, quantity) value ('$cartID','$itemID', '$quantity')";
