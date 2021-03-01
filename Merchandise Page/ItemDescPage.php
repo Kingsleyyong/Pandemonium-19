@@ -99,7 +99,16 @@
         $quantity = (int)$_GET['quantity'];
         $itemID = $_GET['itemID'];
         $userID = $user_data['userID'];
-        $stockLeft = $stockNum - $quantity;
+
+        $sql = "select * from item where itemID = $itemID";
+
+        $result = mysqli_query($con,$sql);
+
+        $getStock = mysqli_fetch_assoc($result);
+        $stock = $getStock['stockNumber'];
+
+        $leftstock = $stock - $quantity;
+
         if($quantity!=0){
             
             $sql_getting_cartID = "SELECT * FROM cart WHERE userID = $userID ";
@@ -120,7 +129,7 @@
             $sql_item_add = "insert into cartrecord (cartID, itemID, quantity) value ('$cartID','$itemID', '$quantity')";
             
             if($result2 = mysqli_query($con, $sql_item_add)){
-                mysqli_query($con,"UPDATE item SET stockNumber='($stockLeft)' WHERE itemID = '$itemID'");
+                $updateStock = mysqli_query($con, "update item set stockNumber = '$leftstock' where itemID='$itemID'");
                 header("location: MerchandiseMenuPage.php?result=1");
                 
             }else{

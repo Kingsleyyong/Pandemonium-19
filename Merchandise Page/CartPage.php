@@ -32,11 +32,11 @@
             {
                 if($getCartID = mysqli_fetch_assoc($result)) {
                     $cartid = $getCartID['cartID'];
-                    mysqli_query($con, "DELETE FROM cart WHERE cartID='$cartid'") or die($cartid);
                     mysqli_query($con, "DELETE FROM cartrecord WHERE cartID='$cartid'") or die("test2");
                 }
             }
             // go to main
+            header("refresh: 0.1; url = ../Index Page/main.php");
         }
     ?>
 
@@ -58,7 +58,11 @@
         if($num>0){
             foreach($result as $row):
                 $cartID = $row ['cartID'];
-                $address = $row ['shippingAddress'];
+                $rslt = mysqli_query($con, "select * from user where userID = $uid");
+                $getaddress = mysqli_fetch_assoc($rslt);
+                $address = $getaddress['residentialAddress'];
+                $shippingSubtotal = 3.00;
+                $rslt2 = mysqli_query($con, "update cart set shippingAddress='$address', shippingFee='$shippingSubtotal' where userID=$uid");
 
                 $result2 = mysqli_query($con,"SELECT * FROM cartrecord WHERE cartID='$cartID'");
                 foreach($result2 as $row2):
@@ -77,7 +81,7 @@
                         $image = '<img class="rounded mx-auto d-block" width="200px" alt="" width = 150dp 
                         height = 130dp src="data:image/jpeg;base64,'.base64_encode( $row3['image'] ).'"/>';
                         $merchantTotal += $itemAmount * $itemPrice;
-                        $shippingSubtotal = strlen($address)*0.5;
+                        
                         $total = $merchantTotal + $shippingSubtotal;
     ?>
                         <div class="col">

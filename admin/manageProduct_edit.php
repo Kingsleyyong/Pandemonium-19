@@ -21,8 +21,6 @@
             $itemColor = $_POST['item_colour'];
             $itemSize = $_POST['item_size'];
             $stkNum = $_POST['stock_number'];
-            
-
 
             $result = mysqli_query($con,"UPDATE item SET itemName = '$itemName', itemPrice = '$itemPrice', 
                 itemDescription = '$itemDesc', itemColour='$itemColor', itemSize ='$itemSize', stockNumber = '$stkNum' where itemID = '$itemId'");
@@ -85,7 +83,7 @@
                 Item Price : 
             </div>
             <div class="col">
-                <input type ="number" step="0.01" name="item_price" class="form-control" size=50 value="<?php echo $details['itemPrice'];?>">
+                <input type ="number" step="0.01" name="item_price" min="1" max="200" class="form-control" size=50 value="<?php echo $details['itemPrice'];?>">
             </div>
         </div>
         <div class="row my-3">
@@ -117,7 +115,7 @@
                 Stock Number : 
             </div>
             <div class="col">
-                <input type = "number" step="1" name="stock_number" class="form-control" size=5 value="<?php echo $details['stockNumber'];?>">
+                <input type = "number" step="1" name="stock_number" min="1" max="200" class="form-control" size=5 value="<?php echo $details['stockNumber'];?>">
             </div>
         </div>
         <div class="row my-3">

@@ -23,13 +23,12 @@
         }
 
     </script>
+    <!-- NAV UI Import here -->
+    <?php require("adminNav.php"); ?>
 </head>
 <body class="bg-dark text-light">
 <div class="container-fluid">
         <div class="row">
-            <div class="col">
-                <button class="btn btn-primary mx-auto d-block" onclick="location.href = 'home.php'">HOME</button>
-            </div>
             <div class="col">
                 <button class="btn btn-light mx-auto d-block" onclick="location.href = 'manage testimonial.php'">ALL</button>
             </div>
@@ -50,6 +49,7 @@
             </div>
         </div>
     </div>
+
 <div class = "testiDel">
     <table class="table">
         <tr>
