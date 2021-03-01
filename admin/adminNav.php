@@ -17,6 +17,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                  <a class="nav-link mx-3" href="home.php">Home</a>
+              </li>
             <li class="nav-item">
               <a class="nav-link mx-3" href="user_management.php">Manage User</a>
             </li>

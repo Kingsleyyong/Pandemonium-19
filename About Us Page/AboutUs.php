@@ -56,6 +56,7 @@
     function allow_music_on(){
         audio = new Audio();
         audio.src = "funmusic.mp3";
+        audio.volume = 0.05;
         audio.loop = true;
         audio.play();
         play_button = document.getElementById("unmute");
