@@ -21,8 +21,6 @@
             $itemColor = $_POST['item_colour'];
             $itemSize = $_POST['item_size'];
             $stkNum = $_POST['stock_number'];
-            
-
 
             $result = mysqli_query($con,"UPDATE item SET itemName = '$itemName', itemPrice = '$itemPrice', 
                 itemDescription = '$itemDesc', itemColour='$itemColor', itemSize ='$itemSize', stockNumber = '$stkNum' where itemID = '$itemId'");
