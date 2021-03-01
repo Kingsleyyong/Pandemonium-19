@@ -106,7 +106,7 @@
 			?>
 		</table>
 		<footer style="color: white;">Total record found : <?php echo $numRow?></footer>
-		<a href="manageProduct_add.php">Add Product</a>
+		<button><a href="manageProduct_add.php" style="text-decoration: none;">Add Item</a></button>
 	</div>
 	</form>
 </body>
