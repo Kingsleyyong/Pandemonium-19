@@ -38,7 +38,7 @@
         </div>
         <div class="row d-flex justify-content-center">
             <div class="col rounded admincolbg m-4 p-3">
-                <a href="#">
+                <a href="manageProduct.php">
                     <div class="container">
                         <img src="../assets/admin/testimonials.png" height="150px" class="mx-auto d-block" alt="">
                         <h2>Manage Product</h2>
