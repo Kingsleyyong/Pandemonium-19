@@ -54,6 +54,7 @@
 	if(isset($_GET['pagedelete']))
 	{
 		$id = $_GET['id'];
+<<<<<<< HEAD
 		if($result = mysqli_query($con,"select * from cart where userID = $id"))
 		{
 			if($get_cartID = mysqli_fetch_assoc($result)) //get the cartid on the record table which is belongs to this userid.
@@ -71,6 +72,15 @@
 				header("refresh:0.5; url= user_management.php");
 			}
 		}	
+=======
+		mysqli_query($con, "DELETE FROM user WHERE userID='$id'") or die('sorry, no query');
+		?>
+		<script>
+			alert("Record deleted!");
+		</script>
+		<?php
+		header("refresh:0.5; url= user_management.php");	
+>>>>>>> 0152783e27e9a1920ff52324bf00f6036da72bd3
 	}
 	?>
 

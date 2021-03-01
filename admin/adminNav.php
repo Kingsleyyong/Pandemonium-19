@@ -21,7 +21,7 @@
               <a class="nav-link mx-3" href="user_management.php">Manage User</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link mx-3" href="#">Manage Product</a>
+                <a class="nav-link mx-3" href="manageProduct.php">Manage Product</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link mx-3" href="manage testimonial.php?story">Manage Testimonial</a>
