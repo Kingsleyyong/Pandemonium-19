@@ -56,11 +56,11 @@
 		$id = $_GET['id'];
 		if($result = mysqli_query($con,"select * from cart where userID = $id"))
 		{
-			if($get_cartID = mysqli_fetch_assoc($result)); //get the cartid on the record table which is belongs to this userid.
+			if($get_cartID = mysqli_fetch_assoc($result)) //get the cartid on the record table which is belongs to this userid.
 			{
 				$cartID = $get_cartID['cartID'];
 				mysqli_query($con, "DELETE FROM feedback WHERE userID='$id'") or die('sorry, no query');
-				mysqli_query($con, "delete from cartrecord where cartID = '$cartID'");
+				mysqli_query($con, "DELETE FROM cartrecord WHERE cartID = '$cartID'");
 				mysqli_query($con, "DELETE FROM cart WHERE userID='$id'") or die('sorry, no query');
 				mysqli_query($con, "DELETE FROM user WHERE userID='$id'") or die('sorry, no query');
 				?>
@@ -70,10 +70,7 @@
 				<?php
 				header("refresh:0.5; url= user_management.php");
 			}
-		}
-		
-	
-		
+		}	
 	}
 	?>
 

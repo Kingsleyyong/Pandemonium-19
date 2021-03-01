@@ -47,7 +47,7 @@ session_start();
               <div style="font-weight: bold; "><?php echo "Hi, ".$uname?></div>
               <a class="dropdown-item" href="../Profile/ViewProfile.php?view&uid=<?php echo $user_data["userID"]; ?>">View Profile</a>
               <a class="dropdown-item" href="../Profile/EditProfile.php?view&uid=<?php echo $user_data["userID"]; ?>">Edit Profile</a>
-              <a class="dropdown-item" href="../Merchandise Page/CartPage.php?id=<?php echo $user_data["userID"]; ?>">My Cart</a>
+              <a class="dropdown-item" href="../Merchandise Page/CartPage.php?cart&uid=<?php echo $user_data["userID"]; ?>">My Cart</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="../Contact Us Page/feedback.php?fb&uid=<?php echo $user_data["userID"]; ?>">Feel free to drop us your feedback :D</a>
               <a class="dropdown-item" href="../signin_signup_signout_forgetpass_automail/logoutAction.php">Log Out</a>

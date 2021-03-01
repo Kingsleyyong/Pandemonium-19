@@ -8,7 +8,38 @@
     <title>My Cart</title>
     
     <!-- NAV UI Import here -->
-    <?php require("../Navigation Bar and Footer/navbar.php") ?>
+    <?php 
+        require("../Navigation Bar and Footer/navbar.php");
+        require('../Database/connect.php');
+        $uid = $user_data['userID'];
+    ?>
+
+    <?php 
+        // delete record from database
+        if(isset($_GET['pageset'])) {
+            $recordID = $_GET['recordID'];
+            mysqli_query($con, "DELETE FROM cartrecord WHERE recordID='$recordID'");
+            header("refresh:0.5; url=CartPage.php?cart&uid=$uid");
+        }
+
+        // checkout (delete all)
+        if(isset($_POST['checkOut'])) {
+            ?>
+            <script>alert("Thank you for your payment!");</script> 
+            <?php
+
+            if($result = mysqli_query($con, "SELECT * FROM cart WHERE userID='$uid' ")) 
+            {
+                if($getCartID = mysqli_fetch_assoc($result)) {
+                    $cartid = $getCartID['cartID'];
+                    mysqli_query($con, "DELETE FROM cart WHERE cartID='$cartid'") or die($cartid);
+                    mysqli_query($con, "DELETE FROM cartrecord WHERE cartID='$cartid'") or die("test2");
+                }
+            }
+            // go to main
+        }
+    ?>
+
 </head>
 
 <body class="bg-dark"><form name="cartPage" id="cartPage" method="post">
@@ -17,69 +48,79 @@
         <div class="row rounded bg-secondary text-light p-4">
             <div class="col">
 <?php
-    require ('../Database/connect.php');
     $merchantTotal = 0;
-    if(isset($_REQUEST['id'])){
-        $userID = $_REQUEST['id'];
+    if(isset($_GET['cart'])){
 
-        $result = mysqli_query($con, "SELECT cartID, shippingAddress FROM cart WHERE userID=$userID");
+        $result = mysqli_query($con, "SELECT cartID, shippingAddress FROM cart WHERE userID=$uid");
 
-        foreach($result as $row):
-            $cartID = $row ['cartID'];
-            $address = $row ['shippingAddress'];
+        $num = mysqli_num_rows($result); 
 
-            $result2 = mysqli_query($con,"SELECT * FROM cartrecord WHERE cartID='$cartID'");
-            foreach($result2 as $row2):
-                echo '<div class="rounded bg-info p-2 my-3"><div class="container"><div class="row">';
-                $itemID = $row2['itemID'];
-                $itemAmount = $row2['quantity'];
-                $recordID = $row2['recordID'];
+        if($num>0){
+            foreach($result as $row):
+                $cartID = $row ['cartID'];
+                $address = $row ['shippingAddress'];
 
+                $result2 = mysqli_query($con,"SELECT * FROM cartrecord WHERE cartID='$cartID'");
+                foreach($result2 as $row2):
+                    echo '<div class="rounded bg-info p-2 my-3"><div class="container"><div class="row">';
+                    $itemID = $row2['itemID'];
+                    $itemAmount = $row2['quantity'];
+                    $recordID = $row2['recordID'];
 
-                $result3 = mysqli_query($con, "SELECT * FROM item WHERE itemID = '$itemID'");
-                foreach($result3 as $row3):
-                    $itemName = $row3['itemName'];
-                    $itemPrice = $row3['itemPrice'];
-                    $itemColour = $row3['itemColour'];
-                    $itemSize = $row3['itemSize'];
-                    $stock = $row3['stockNumber'];
-                    $image = '<img class="rounded mx-auto d-block" width="200px" alt="" width = 150dp 
-                    height = 130dp src="data:image/jpeg;base64,'.base64_encode( $row3['image'] ).'"/>';
-                    $merchantTotal += $itemPrice;
-                    $shippingSubtotal = strlen($address)*0.5;
-                    $total = $merchantTotal + $shippingSubtotal;
-?>
-                    <div class="col">
-                        <?php echo $image; ?>            
-                    </div>
-                    <div class="col">
-                        <h2> <?php echo $itemName; ?> </h2>
-
-                        <p class="font-weight-bold" id="itemPrice">RM <?php echo $itemPrice; ?></p>
-
-                        <label for="choices">Color: <?php echo $itemColour; ?> </label><br>
-
-                        <label for="size">Size: <?php echo $itemSize; ?> </label><br>
-
-                        <label for="quantity">Quantity: <?php echo $itemAmount; ?></label>
-
-                        <div class="m-3"><a href="?id=<?php echo $userID;?>&recordID=<?php echo $recordID?>&pageset=true">Delete item</a> 
+                    $result3 = mysqli_query($con, "SELECT * FROM item WHERE itemID = '$itemID'");
+                    foreach($result3 as $row3):
+                        $itemName = $row3['itemName'];
+                        $itemPrice = $row3['itemPrice'];
+                        $itemColour = $row3['itemColour'];
+                        $itemSize = $row3['itemSize'];
+                        $stock = $row3['stockNumber'];
+                        $image = '<img class="rounded mx-auto d-block" width="200px" alt="" width = 150dp 
+                        height = 130dp src="data:image/jpeg;base64,'.base64_encode( $row3['image'] ).'"/>';
+                        $merchantTotal += $itemPrice;
+                        $shippingSubtotal = strlen($address)*0.5;
+                        $total = $merchantTotal + $shippingSubtotal;
+    ?>
+                        <div class="col">
+                            <?php echo $image; ?>            
                         </div>
-                    </div>                
+                        <div class="col">
+                            <h2> <?php echo $itemName; ?> </h2>
+
+                            <p class="font-weight-bold" id="itemPrice">RM <?php echo $itemPrice; ?></p>
+
+                            <label for="choices">Color: <?php echo $itemColour; ?> </label><br>
+
+                            <label for="size">Size: <?php echo $itemSize; ?> </label><br>
+
+                            <label for="quantity">Quantity: <?php echo $itemAmount; ?></label>
+
+                            <div class="m-3">
+                                <a href="?id=<?php echo $uid;?>&recordID=<?php echo $recordID?>&pageset=true"
+                                    class="btn btn-primary m-auto">Delete item</a> 
+                            </div>
+                        </div>                
+                    </div>
                 </div>
-                </div>
-                </div>
-<?php
-                endforeach;
-           endforeach;
-        endforeach;        
+            </div>
+    <?php
+                    endforeach;
+            endforeach;
+            endforeach;      
+        } 
+        else {
+            ?>
+            <div>
+                <h4>Your cart is empty!!</h4>
+            </div>
+            <?php
+        }
     }
 ?>
-                </div>
-        </div>  
-
+    </div>
+    </div>  
         <!-- Below is Purchase Summary side bar which was not scrollable -->
         <div class="row rounded bg-info text-light p-4">
+        <?php if($num>0){ ?>
             <div class="container">
                 <form action="#" method="post"></form>
                     <div class="row">
@@ -103,8 +144,10 @@
                     </div>
                     <div class="row justify-content-center">
                         <p class="col-sm"> 
-                            <div class="m-3"><input type="submit" class="btn btn-secondary" value="Edit Address" onclick=""></div>
-                            <div class="m-3"><input type="submit" class="btn btn-primary btn-lg" value="Checkout" onclick="checkoutButton"></div>
+                            <div class="m-3">
+                                <a href="../Profile/EditProfile.php?view&uid=<?php echo $uid; ?>" class="btn btn-primary m-auto">Edit Address</a> 
+                            </div>
+                            <div class="m-3"><input type="submit" class="btn btn-primary m-auto" value="Checkout" name="checkOut"></div>
                         </p>
                         <p class="col-sm"> 
                              
@@ -112,6 +155,19 @@
                     </div>
                 </form>
             </div>
+        <?php 
+        }
+        else {
+            ?>
+            <div>
+                <h6>Add something to make you happy :)</h6>
+                <a href="../Merchandise Page/MerchandiseMenuPage.php" 
+                    style="color:rgb(255,204,204); font-style:italic; font-weight:bold;
+                            text-shadow: rgb(102,0,51) 1px 1px 3px;">Let's Go!!!</a>
+            </div>
+            <?php
+        }
+        ?>
         </div>
     </div>
     <!-- Footer UI Import Here -->
@@ -119,14 +175,3 @@
 </form>
 </body>
 </html>
-
-
-<!-- delete record from database -->
-<?php 
-    if(isset($_GET['pageset'])) {
-        $recordID = $_GET['recordID'];
-        mysqli_query($con, "DELETE FROM cartrecord WHERE recordID='$recordID'");
-    }
-
-?>
-
