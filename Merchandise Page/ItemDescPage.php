@@ -87,7 +87,7 @@
     </div>
 <?php
     if(isset($_GET['backToList'])){
-        header("location: MerchandiseMenuPage.php?result=1");
+        header("location: MerchandiseMenuPage.php?result=3");
     }
 
     if(isset($_GET['submit'])){
