@@ -76,7 +76,7 @@
                         $stock = $row3['stockNumber'];
                         $image = '<img class="rounded mx-auto d-block" width="200px" alt="" width = 150dp 
                         height = 130dp src="data:image/jpeg;base64,'.base64_encode( $row3['image'] ).'"/>';
-                        $merchantTotal += $itemPrice;
+                        $merchantTotal += $itemAmount * $itemPrice;
                         $shippingSubtotal = strlen($address)*0.5;
                         $total = $merchantTotal + $shippingSubtotal;
     ?>
