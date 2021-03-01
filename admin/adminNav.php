@@ -35,6 +35,9 @@
             <li class="nav-item">
                 <a class="nav-link mx-3" href="feedback(admin).php">Print Feedback</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link mx-3" href="../signin_signup_signout_forgetpass_automail/logoutAction.php">Log Out</a>
+            </li>
           </ul>
         </div>
       </nav>
