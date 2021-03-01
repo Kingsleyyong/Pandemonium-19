@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Admin | Item Management</title>
+	<title>Admin | Product Management</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
 		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<!--<style type="text/css">
@@ -69,7 +69,7 @@
 <body class="bg-dark text-light">
 	<form method="get">
 	<div class = "user-container" style="margin:1%;">
-		<h1 class="m-3">Item Management</h1>
+		<h1 class="m-3">Product Management</h1>
 		<table class="table">
 			<tr>
 				<th scope="col" class="text-center">Item ID</th>

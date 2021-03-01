@@ -2,17 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Admin | Testimonial</title>
+    <?php include("data_connection.php"); ?>
+	<link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
     <link href="manage%20testimonial.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- NAV UI Import here -->
+    <?php require("adminNav.php"); ?> 
 </head>
 <body class="bg-dark text-light">
     <div class="container-fluid">
         <div class="row">
-            <div class="col">
-                <button class="btn btn-primary mx-auto d-block" onclick="location.href = 'home.php'">HOME</button>
-            </div>
             <div class="col">
                 <button class="btn btn-light mx-auto d-block" onclick="location.href = 'manage testimonial.php'">ALL</button>
             </div>
@@ -32,45 +34,23 @@
                 </form>
             </div>
         </div>
-    </div>
-<div id="testitable">
-    <table class="table">
-        <tr>
-            <th scope="col" class="text-center">Page ID</th>
-            <th scope="col" class="text-center">Date  Posted</th>
-            <th scope="col" class="text-center">Page Title</th>
-            <th scope="col" class="text-center">Manage</th>
-        </tr>
-        <?php include "data_connection.php";
+    <div class="row mr-2 my-3">
+            <div class="col">
+                <h1>Testimonial</h1>
+            </div>
+        </div>
+        <div id="testitable">
+        <table class="table">
+            <tr>
+                <th scope="col" class="text-center">Page ID</th>
+                <th scope="col" class="text-center">Date  Posted</th>
+                <th scope="col" class="text-center">Page Title</th>
+                <th scope="col" class="text-center">Manage</th>
+            </tr>
+            <?php 
 
-        $per_page = 6; //the page we want per page
+            $per_page = 6; //the page we want per page
 
-        $query = "SELECT * FROM story";
-
-        $result = mysqli_query($conn, $query) or die( mysqli_error($conn));;
-        $number_of_result = mysqli_num_rows($result);//used to count number of rows results
-
-        //to know the number page available
-        $num_page = ceil($number_of_result/$per_page);
-
-        // to know which page number user is on
-        if (!isset($_GET["page"]))
-        {
-            $p = 1;
-        }
-        else
-        {
-            $p = $_GET["page"];
-        }
-
-        $first_page_result = ($p - 1) * $per_page;
-
-        $query = 'SELECT * FROM story LIMIT ' . $first_page_result . ',' . $per_page;
-
-        $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
-
-        if (!isset($_POST['search']))
-        {
             $query = "SELECT * FROM story";
 
             $result = mysqli_query($conn, $query) or die( mysqli_error($conn));;
@@ -94,23 +74,50 @@
             $query = 'SELECT * FROM story LIMIT ' . $first_page_result . ',' . $per_page;
 
             $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
-            while($row = mysqli_fetch_array($result))
-            {
-                $id = $row["storyID"];
-                $date = $row["storyDate"];
-                $title = $row["storyTitle"];
 
+            if (!isset($_POST['search']))
+            {
+                $query = "SELECT * FROM story";
+
+                $result = mysqli_query($conn, $query) or die( mysqli_error($conn));;
+                $number_of_result = mysqli_num_rows($result);//used to count number of rows results
+
+                //to know the number page available
+                $num_page = ceil($number_of_result/$per_page);
+
+                // to know which page number user is on
+                if (!isset($_GET["page"]))
+                {
+                    $p = 1;
+                }
+                else
+                {
+                    $p = $_GET["page"];
+                }
+
+                $first_page_result = ($p - 1) * $per_page;
+
+                $query = 'SELECT * FROM story LIMIT ' . $first_page_result . ',' . $per_page;
+
+                $result = mysqli_query($conn, $query) or die( mysqli_error($conn));
+                while($row = mysqli_fetch_array($result))
+                {
+                    $id = $row["storyID"];
+                    $date = $row["storyDate"];
+                    $title = $row["storyTitle"];
+
+                    ?>
+                    <tr>
+                        <td class="text-center"><?php echo $id;?></td>
+                        <td class="text-center"><?php echo $date;?></td>
+                        <td class="text-center"><?php echo $title;?></td>
+                        <td></td>
+                    </tr>
+                    <?php
+                }
                 ?>
-                <tr>
-                    <td class="text-center"><?php echo $id;?></td>
-                    <td class="text-center"><?php echo $date;?></td>
-                    <td class="text-center"><?php echo $title;?></td>
-                    <td></td>
-                </tr>
-                <?php
-            }
-            ?>
-    </table>
+        </table>
+    </div>
     <p>Story Posted Records : <?php echo $number_of_result?></p>
     <?php
             for ($p = 1; $p <= $num_page; $p++)

@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Admin | Edit User Detail</title>
+    <title>Admin | Edit Product Details</title>
     <link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -47,7 +47,7 @@
     <form method="post">
     <div class="row mx-2 my-3">
         <div class="col">
-            <h1>Edit Item</h1>
+            <h1>Edit Product</h1>
         </div>
     </div>
     <hr style="border: 1px solid white;">
