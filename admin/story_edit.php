@@ -18,7 +18,7 @@
 
     <form name="edit_addfrm" method="post" class="m-4" action="">
         <div class="row">
-            <h1>Add New Story</h1>
+            <h1>Edit Story</h1>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
