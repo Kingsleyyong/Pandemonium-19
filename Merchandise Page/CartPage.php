@@ -19,6 +19,17 @@
         // delete record from database
         if(isset($_GET['pageset'])) {
             $recordID = $_GET['recordID'];
+            $qty = $_GET['qty'];
+            //to restore the item amount 
+            $restore = mysqli_query($con, "SELECT * FROM cartrecord WHERE recordID = '$recordID'");
+            $restore_data = mysqli_fetch_assoc($restore);
+            $restore_itemID = $restore_data['itemID'];
+            $restore1 = mysqli_query($con, "SELECT * FROM item WHERE itemID = '$restore_itemID'");
+            $restore_data1 = mysqli_fetch_assoc($restore1);
+            $restoreAmount = $restore_data1['stockNumber'] + $qty;
+            mysqli_query($con, "UPDATE item set stockNumber = '$restoreAmount' WHERE itemID = '$restore_itemID'");
+
+
             mysqli_query($con, "DELETE FROM cartrecord WHERE recordID='$recordID'");
             $test_empty = mysqli_query($con, "SELECT * FROM cartrecord WHERE recordID='$recordID'");
             $numrow = mysqli_num_rows($test_empty);
@@ -107,7 +118,7 @@
                             <label for="quantity">Quantity: <?php echo $itemAmount; ?></label>
 
                             <div class="m-3">
-                                <a href="?id=<?php echo $uid;?>&recordID=<?php echo $recordID?>&pageset=true"
+                                <a href="?id=<?php echo $uid;?>&recordID=<?php echo $recordID?>&pageset=true&qty=<?php echo $itemAmount?>"
                                     class="btn btn-primary m-auto">Delete item</a> 
                             </div>
                         </div>                
