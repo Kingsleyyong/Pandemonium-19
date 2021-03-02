@@ -22,12 +22,10 @@
             </div>
             <div class="form-row">
                 <div class="form-group col-md">
-                    <label>Image</label>
-                    <input type="file" name="img" size="10" class="form-control-file" accept="image/*" required>
-                </div>
-                <div class="form-group col-md-6">
                     <label>Posted Date:</label>
                     <input type="date" name="story_release_date" class="form-control" required>
+                </div>
+                <div class="form-group col-md-6">
                 </div>
             </div>
             <div class="form-row">
