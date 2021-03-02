@@ -20,7 +20,6 @@
         if(isset($_GET['pageset'])) {
             $recordID = $_GET['recordID'];
             mysqli_query($con, "DELETE FROM cartrecord WHERE recordID='$recordID'");
-            mysqli_query($con, "DELETE FROM cart WHERE userID='$uid'");
             header("refresh:0.5; url=CartPage.php?cart&uid=$uid");
         }
 
