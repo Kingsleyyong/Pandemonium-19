@@ -29,9 +29,11 @@
             $restoreAmount = $restore_data1['stockNumber'] + $qty;
             mysqli_query($con, "UPDATE item set stockNumber = '$restoreAmount' WHERE itemID = '$restore_itemID'");
 
-
+            $get_cart = mysqli_query($con, "SELECT * FROM cart WHERE userID = '$uid'");
+            $get_cartID = mysqli_fetch_assoc($get_cart);
+            $cartid = $get_cartID['cartID'];
             mysqli_query($con, "DELETE FROM cartrecord WHERE recordID='$recordID'");
-            $test_empty = mysqli_query($con, "SELECT * FROM cartrecord WHERE recordID='$recordID'");
+            $test_empty = mysqli_query($con, "SELECT * FROM cartrecord WHERE cartID = '$cartid'");            
             $numrow = mysqli_num_rows($test_empty);
             if($numrow<=0){
                 mysqli_query($con, "DELETE FROM cart WHERE userID = '$uid'");
