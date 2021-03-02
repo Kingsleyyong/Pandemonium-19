@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Forget Password</title>
+	<link rel="shortcut icon" href="../assets/favicon.png" type="image/x-icon">
 	<style>
 		body,html{
 			background: #30343F;
