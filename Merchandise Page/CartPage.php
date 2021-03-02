@@ -139,7 +139,6 @@
                             Merchandse Subtotal: <br>
                             <span id="merchandSubtotal" name="merchandSubtotal">RM <?php echo number_format($merchantTotal, 2, '.', ''); ?></span>
                         </p>
-            
                         <p class="col-sm">
                             Shipping Subtotal: <br> 
                             <span id="shipSubtotal" >RM <?php echo number_format($shippingSubtotal, 2, '.', ''); ?></span>

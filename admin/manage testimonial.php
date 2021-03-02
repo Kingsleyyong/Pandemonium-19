@@ -29,7 +29,7 @@
             </div>
             <div class="col mx-auto d-block">
                 <form name="search_testimonial" method="post">
-                    <input type="search" class="form-control-sm" spellcheck="false" placeholder="Search..." name="search" id="search_text">
+                    <input type="search" class="form-control-sm" spellcheck="false" placeholder="Search for keyword only..." name="search" id="search_text">
                     <input class="btn-sm btn-primary" type="submit" value="Search">
                 </form>
             </div>
@@ -131,8 +131,8 @@
             $search_item = mysqli_real_escape_string($conn, $search_item);
             $search_item = preg_replace("#[^0-9a-z]#i", "", $search_item);
             $search_item = mysqli_real_escape_string($conn, $search_item);
-            $query = mysqli_query($conn,"SELECT * FROM story WHERE storyID LIKE '%".$search_item."%'
-                    or storyAuthor LIKE '%".$search_item."%' or storyTitle LIKE '%".$search_item."%'") or die("No data find");
+            $query = mysqli_query($conn,"SELECT * FROM story WHERE storyID LIKE '%$search_item%'
+                    or storyAuthor LIKE '%$search_item%' or storyTitle LIKE '%$search_item%'") or die("No data find");
             $count = mysqli_num_rows($query);
 
             if ($count == 0)

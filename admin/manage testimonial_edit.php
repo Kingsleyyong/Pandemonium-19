@@ -27,7 +27,7 @@
             </div>
             <div class="col mx-auto d-block">
                 <form name="search_testimonial" method="post">
-                    <input type="search" class="form-control-sm" spellcheck="false" placeholder="Search..." name="search" id="search_text">
+                    <input type="search" class="form-control-sm" spellcheck="false" placeholder="Search for keyword only..." name="search" id="search_text">
                     <input class="btn-sm btn-primary" type="submit" value="Search">
                 </form>
             </div>
